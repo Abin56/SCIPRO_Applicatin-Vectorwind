@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "744404648297",
+    "project_id": "scipro-vectorwind-97415",
+    "storage_bucket": "scipro-vectorwind-97415.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744404648297:android:a7c1f784c4306dc19b7df8",
+        "android_client_info": {
+          "package_name": "com.scipro.in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-yvkPhq0Jx2WH8657S7n_efC13Oxhvbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
