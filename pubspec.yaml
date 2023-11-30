@@ -47,6 +47,8 @@ dependencies:
   syncfusion_flutter_datagrid:
   dropdown_search: ^5.0.6
   flutter_screenutil: ^5.9.0
+  introduction_screen: ^3.1.12
+ 
 
 dev_dependencies:
   flutter_test:
