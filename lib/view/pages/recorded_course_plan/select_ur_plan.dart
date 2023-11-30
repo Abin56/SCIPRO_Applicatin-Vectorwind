@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:scipro_application/view/pages/recorded_courses/select_ur_plan/select%20_urplan_clicking.dart';
+import 'package:scipro_application/view/pages/recorded_course_plan/select%20_urplan_clicking.dart';
 
 class SelectYourPlanPart extends StatelessWidget {
   const SelectYourPlanPart({super.key});

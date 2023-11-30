@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scipro_application/view/pages/homepage/drawer/drawer.dart';
-import 'package:scipro_application/view/pages/homepage/subscribed%20button/subscribed_button.dart';
+import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
+import 'package:scipro_application/view/pages/home/subscribed%20button/subscribed_button.dart';
+import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_courses/record_course_list.dart';
 
 import '../../colors/colors.dart';
 import '../../fonts/google_poppins.dart';
@@ -51,7 +52,13 @@ class SciproHomePage extends StatelessWidget {
                         top: 30.h,
                       ),
                       child: GestureDetector(
-                          // onTap:()=>Get.to(()=>RecordedCourseCater) ,
+                          onTap: () {
+                            print("object");
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return const RecordCourseCategoryList();
+                            }));
+                          },
                           child: SubscribedButton(text: 'SUBSCRIBED COURSES'))),
                   Padding(
                     padding: EdgeInsets.only(top: 20.h, bottom: 20),

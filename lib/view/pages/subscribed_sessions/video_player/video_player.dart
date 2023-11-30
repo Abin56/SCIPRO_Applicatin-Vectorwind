@@ -32,8 +32,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         middle: Text('Video player'),
       ),
       child: SafeArea(
-        child: CustomVideoPlayer(
-            customVideoPlayerController: _customVideoPlayerController),
+        child: Center(
+          child: CustomVideoPlayer(
+              customVideoPlayerController: _customVideoPlayerController),
+        ),
       ),
     );
   }

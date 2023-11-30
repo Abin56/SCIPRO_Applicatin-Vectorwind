@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
-import 'package:scipro_application/view/pages/homepage/drawer/menu.dart';
-import 'package:scipro_application/view/pages/homepage/drawer/rec_couses_list.dart';
+import 'package:scipro_application/view/pages/home/drawer/menu.dart';
+import 'package:scipro_application/view/pages/home/drawer/rec_couses_list.dart';
 
 
 class MyHeaderDrawer extends StatelessWidget {
