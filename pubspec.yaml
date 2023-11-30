@@ -46,6 +46,7 @@ dependencies:
   sidebar_drawer:
   syncfusion_flutter_datagrid:
   dropdown_search: ^5.0.6
+  carousel_slider: ^4.2.1
   flutter_screenutil: ^5.9.0
   introduction_screen: 
   razorpay_flutter:

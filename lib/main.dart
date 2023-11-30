@@ -2,7 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/firebase_options.dart';
-import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
+import 'package:scipro_application/view/pages/homepage/homepage.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,11 +25,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
-          theme: ThemeData(),
+        return  MaterialApp(
+          theme: ThemeData(
+          ),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          home: const GoogleSignindScreen(),
+          home: const SciproHomePage(),
         );
       },
     );
