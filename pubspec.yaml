@@ -51,6 +51,7 @@ dependencies:
   introduction_screen: 
   razorpay_flutter:
   cloud_functions:
+  appinio_video_player:  
   
 
 dev_dependencies:
