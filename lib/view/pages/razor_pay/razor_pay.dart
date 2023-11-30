@@ -1,6 +1,5 @@
 // ignore_for_file: sort_child_properties_last, must_be_immutable, unused_catch_clause, empty_catches
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
@@ -12,10 +11,8 @@ class CheckOutScreen extends StatefulWidget {
 }
 
 class _CheckOutScreenState extends State<CheckOutScreen> {
-  String listID = "";
   bool payment = false;
 
-  final userId = FirebaseAuth.instance.currentUser!.uid;
   final _razorpay = Razorpay();
   @override
   void initState() {
@@ -36,8 +33,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     // print("RezorSucess:" + response.paymentId! + "--" + response.orderId!);
   }
 
-  int selectValue = 1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +47,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           <String, dynamic>{
             'amount': paymentPrice,
             'currency': "INR",
-            'receipt': FirebaseAuth.instance.currentUser!.displayName,
-            'description': FirebaseAuth.instance.currentUser!.email,
+            'receipt': '',
+            'description': '',
           },
         );
         final responseData = result.data as Map<String, dynamic>;
@@ -71,8 +66,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           'timeout': 300, // in seconds
           'prefill': {
             'contact':
-                FirebaseAuth.instance.currentUser!.phoneNumber.toString(),
-            'email': FirebaseAuth.instance.currentUser!.email.toString()
+                '',
+            'email': ''
           }
         };
 
