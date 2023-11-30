@@ -1,50 +1,41 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:scipro_application/view/colors/colors.dart';
+import 'package:scipro_application/view/fonts/google_poppins.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-      
-      ),
-      body: Center(
+    // ignore: avoid_unnecessary_containers
+    return Container(
+      child: Center(
         child: CarouselSlider(
           items: [
-           Column(
-             children: [
-               Image.asset(
-                    imagesList[0],
-                    fit: BoxFit.fill,
-                  ),
-                  const Text('Item 1', style: TextStyle(color: Colors.black))
-             ],
-           ),
-            Column(
-             children: [
-               Image.asset(
-                    imagesList[3],
-                    fit: BoxFit.fill,
-                  ),
-                  const Text('Item 1', style: TextStyle(color: Colors.black))
-             ],
-           ),
-            Column(
-             children: [
-               Image.asset(
-                    imagesList[1],
-                    fit: BoxFit.fill,
-                  ),
-                  const Text('Item 1', style: TextStyle(color: Colors.black))
-             ],
-           ),
-           
-        
+            CaroselmageWidget(
+              sliderImagePath: imagesList[0],
+          
+              slidertext: 'Scipro Language Courses',
+            ),
+            CaroselmageWidget(
+              sliderImagePath: imagesList[1],
+              slidertext: 'Online Courses',
+            ),
+            CaroselmageWidget(
+              sliderImagePath: imagesList[2],
+              slidertext: 'Recorded Courses',
+            ),
+            CaroselmageWidget(
+              sliderImagePath: imagesList[3],
+              slidertext: 'Scipro Skill Technology',
+            ),
           ],
           options: CarouselOptions(
-            height: 400.0,
+            height: 290.w,
             enlargeCenterPage: true,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 2),
@@ -56,9 +47,40 @@ class CarouselSliderWidget extends StatelessWidget {
     );
   }
 }
- final List<String> imagesList = [
-    'assets/images/main6gopika.jpg',
-    'assets/images/mainsanush1.jpg',
-    'assets/images/main10vishnu.jpg',
-    'assets/images/main13archanaartist.jpg',
-  ];
+
+class CaroselmageWidget extends StatelessWidget {
+  String sliderImagePath;
+  String slidertext;
+  CaroselmageWidget({
+    required this.sliderImagePath,
+    required this.slidertext,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset(
+          sliderImagePath,
+          fit: BoxFit.fill,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10.h),
+          child: GooglePoppinsWidgets(
+            text:slidertext,
+            fontsize: 20.h,
+            color: cBlack,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+final List<String> imagesList = [
+  'assets/images/main6gopika.jpg',
+  'assets/images/mainsanush1.jpg',
+  'assets/images/main10vishnu.jpg',
+  'assets/images/main13archanaartist.jpg',
+];
