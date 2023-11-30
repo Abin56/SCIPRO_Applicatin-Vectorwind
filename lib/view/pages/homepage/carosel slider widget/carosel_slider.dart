@@ -35,7 +35,7 @@ class CarouselSliderWidget extends StatelessWidget {
             ),
           ],
           options: CarouselOptions(
-            height: 290.w,
+            height: 280.w,
             enlargeCenterPage: true,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 2),
@@ -61,16 +61,19 @@ class CaroselmageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          sliderImagePath,
-          fit: BoxFit.fill,
+        Expanded(
+          child: Image.asset(
+            sliderImagePath,
+            fit: BoxFit.fitWidth,
+          ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10.h),
+          padding: EdgeInsets.only(top: 8.h),
           child: GooglePoppinsWidgets(
             text:slidertext,
-            fontsize: 20.h,
+            fontsize: 21.h,
             color: cBlack,
+            fontWeight: FontWeight.w500,
           ),
         )
       ],

@@ -17,7 +17,7 @@ class SubscribedButton extends StatelessWidget {
     return Container(
       decoration:  BoxDecoration(
         border: Border.all(color: themeColorBlue,width: 2.h),
-        // color: themeColorBlue,
+       
         borderRadius: BorderRadius.circular(10),
       ),
       width: 400.w,
@@ -26,9 +26,9 @@ class SubscribedButton extends StatelessWidget {
         child: GooglePoppinsWidgets(
           textAlign: TextAlign.center,
           color: themeColorBlue,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w700,
           text: text,
-          fontsize: 19.sp,
+          fontsize: 20.sp,
         ),
       ),
     );

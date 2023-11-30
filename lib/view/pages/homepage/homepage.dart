@@ -40,10 +40,10 @@ class SciproHomePage extends StatelessWidget {
                  ),
                  Padding(
                    padding:  EdgeInsets.only(top: 30.h,),
-                   child:  SubscribedButton(text: 'Subscribed Courses')
+                   child:  SubscribedButton(text: 'SUBSCRIBED COURSES')
                  ),
                    Padding(
-                     padding:  EdgeInsets.only(top: 20.h),
+                     padding:  EdgeInsets.only(top: 20.h,bottom: 20),
                      child: const CarouselSliderWidget(),
                      
                    ),
@@ -54,9 +54,9 @@ class SciproHomePage extends StatelessWidget {
           
                 ),
                  
-                  const RecordedCourses(),
+                   const RecordedCourses(),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10,bottom: 10),
+                    padding:  EdgeInsets.only(top: 10.h,bottom: 10.h),
                     child: SubscribedButton(text: "Explore Courses"),
                   )
               ],),

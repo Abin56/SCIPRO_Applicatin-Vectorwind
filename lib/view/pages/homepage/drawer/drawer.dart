@@ -2,9 +2,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/pages/homepage/drawer/menu.dart';
-import 'package:scipro_application/view/pages/homepage/drawer/rec_courses_list.dart/rec_courses_list.dart';
+import 'package:scipro_application/view/pages/homepage/drawer/rec_couses_list.dart';
 
 
 class MyHeaderDrawer extends StatelessWidget {
@@ -48,7 +49,7 @@ class MyHeaderDrawer extends StatelessWidget {
   }
 }
 
-Widget MenuItem(int id, String title, IconData icon, bool selected, onTap) {
+Widget MenuItem(int id, String title, IconData? icon, bool selected, onTap) {
   return Material(
     color: cWhite,
     child: InkWell(
@@ -114,8 +115,9 @@ Widget MyDrawerList(context) {
 
   var currentPage = DrawerSections.dashboard;
   return Container(
-    padding: const EdgeInsets.only(top: 15),
+    padding: const EdgeInsets.only(top: 0),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       // show list  of menu drawer.........................
       children: [
         MenuItem(1, "Recorded Courses", Icons.fiber_smart_record_sharp,
@@ -158,86 +160,99 @@ Widget MyDrawerList(context) {
             currentPage == DrawerSections.dashboard ? true : false, () {
           signOut(context);
         }),
+  Container(
+    height: 20,
+    color: cWhite,
+  ),
 
-        const SizedBox(
-          height: 200,
-          width: 200,
-          child: Stack(children: [
-            Positioned(
-              left: 5,
-              top: 10,
-              child: Row(
-                children: [
-                  Text(
-                    "Developed by",
-                    style: TextStyle(
-                        color: themeColorBlue, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-                top: 40,
-                left: 0,
-                child: Row(
+         Padding(
+           padding: const EdgeInsets.only(top: 10,left: 10),
+           child: SizedBox(
+            height: 80.h,
+        
+            child: Stack(children: [
+              Positioned(
+                
+                top: 10.w,
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      backgroundColor: cWhite,
-                      backgroundImage: NetworkImage(
-                          'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Text(
-                      "Lepton Plus Communications",
+                      "Developed by",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                          fontSize: 11.5),
+                          color: themeColorBlue, fontWeight: FontWeight.w500),
                     ),
                   ],
-                ))
-          ]),
-        ),
-        const SizedBox(
-          height: 100,
-          width: 100,
-          child: Stack(children: [
-            Positioned(
-              left: 5,
-              top: 40,
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.adb_outlined,
-                    color: Colors.green,
-                  ),
-                  Text(
-                    " Version",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                ],
+                ),
               ),
-            ),
-            Positioned(
-                top: 64,
-                left: 44,
-                child: Column(
+              Positioned(
+                  top: 40.h,
+                  left:2.w,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const CircleAvatar(
+                        backgroundColor: cWhite,
+                        backgroundImage: NetworkImage(
+                            'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
+                      ),
+                     
+                      Padding(
+                        padding:  EdgeInsets.only(top: 5.w),
+                        child: Text(
+                          "  Lepton Plus Communications",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey,
+                              fontSize: 14.sp),
+                        ),
+                      ),
+                    ],
+                  ))
+            ]),
+                   ),
+         ),
+         Padding(
+           padding: const EdgeInsets.only(bottom: 300,left: 100),
+           child: SizedBox(
+            height: 80.h,
+                 
+            child: Stack(children: [
+               Positioned(
+                left: 5.w,
+                top: 25.h,
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Icon(
+                      Icons.adb_outlined,
+                      color: Colors.green,
+                    ),
                     Text(
-                      "1.0.5",
+                      " Version",
                       style: TextStyle(
-                          color: Color.fromARGB(156, 255, 255, 255),
-                          // color: cWhite,
-                          fontSize: 11.5),
+                          color: cGrey, fontWeight: FontWeight.bold),
                     ),
                   ],
-                ))
-          ]),
-        ),
+                ),
+              ),
+              Positioned(
+                  top: 58.h,
+                  left: 44.w,
+                  child:  Column(
+                    children: [
+                      Text(
+                        "1.0.5",
+                        style: TextStyle(
+                            color: cGrey,
+                            // color: cWhite,
+                            fontSize: 10.sp),
+                      ),
+                    ],
+                  ))
+            ]),
+                   ),
+         ),
       ],
     ),
   );
@@ -250,9 +265,9 @@ Widget emptyDisplay(String section) {
       children: [
         Text(
           "No $section Found",
-          style: const TextStyle(
+          style:  TextStyle(
             color: Colors.white,
-            fontSize: 25,
+            fontSize: 25.sp,
             fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,
