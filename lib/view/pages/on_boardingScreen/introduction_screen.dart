@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:scipro_application/view/colors/colors.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomePage()),
+      MaterialPageRoute(builder: (_) => const SciproHomePage()),
     );
   }
 
@@ -94,16 +95,6 @@ class OnBoardingPageState extends State<OnBoardingPage> {
             child: SizedBox(
               height: 80.h,
               width: double.infinity,
-              // decoration: const BoxDecoration(
-              //     borderRadius: BorderRadius.all(Radius.circular(20)),
-              //     gradient: LinearGradient(
-              //       begin: Alignment.topRight,
-              //       end: Alignment.bottomLeft,
-              //       colors: [
-              //         Color.fromARGB(251, 235, 111, 152),
-              //         Color.fromARGB(255, 255, 103, 92),
-              //       ],
-              //     )),
               child: ElevatedButton(
                 onPressed: () {
                   introKey.currentState?.animateScroll(0);
@@ -123,63 +114,6 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           ),
           decoration: pageDecoration,
         ),
-        // PageViewModel(
-        //   image: Image.asset('assets/images/SCIPRO.png'),
-        //   title: "Full Screen Page",
-        //   body:
-        //       "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-        //   decoration: pageDecoration.copyWith(
-        //     contentMargin: const EdgeInsets.symmetric(horizontal: 16),
-        //     fullScreen: true,
-        //     bodyFlex: 2,
-        //     imageFlex: 3,
-        //     safeArea: 100,
-        //   ),
-        // ),
-        // PageViewModel(
-        //   title: "Another title page",
-        //   body: "Another beautiful body text for this example onboarding",
-        //   image: _buildImage('img2.jpg'),
-        //   footer: ElevatedButton(
-        //     onPressed: () {
-        //       introKey.currentState?.animateScroll(0);
-        //     },
-        //     style: ElevatedButton.styleFrom(
-        //       backgroundColor: Colors.lightBlue,
-        //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(8.0),
-        //       ),
-        //     ),
-        //     child: const Text(
-        //       'FooButton',
-        //       style: TextStyle(color: Colors.white),
-        //     ),
-        //   ),
-        //   decoration: pageDecoration.copyWith(
-        //     bodyFlex: 6,
-        //     imageFlex: 6,
-        //     safeArea: 80,
-        //   ),
-        // ),
-        // PageViewModel(
-        //   title: "Title of last page - reversed",
-        //   bodyWidget: const Row(
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: [
-        //       Text("Click on ", style: bodyStyle),
-        //       Icon(Icons.edit),
-        //       Text(" to edit a post", style: bodyStyle),
-        //     ],
-        //   ),
-        //   decoration: pageDecoration.copyWith(
-        //     bodyFlex: 2,
-        //     imageFlex: 4,
-        //     bodyAlignment: Alignment.bottomCenter,
-        //     imageAlignment: Alignment.topCenter,
-        //   ),
-        //   image: _buildImage('img1.jpg'),
-        //   reverse: true,
-        // ),
       ],
       onDone: () => _onIntroEnd(context),
       onSkip: () => _onIntroEnd(context), // You can override onSkip callback
@@ -211,18 +145,6 @@ class OnBoardingPageState extends State<OnBoardingPage> {
           borderRadius: BorderRadius.all(Radius.circular(8.0.sp)),
         ),
       ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text("This is the screen after Introduction")),
     );
   }
 }

@@ -49,8 +49,6 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_screenutil: ^5.9.0
   introduction_screen: ^3.1.12
-
-  introduction_screen:
   razorpay_flutter:
   cloud_functions:
   appinio_video_player:
