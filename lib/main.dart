@@ -2,6 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:scipro_application/firebase_options.dart';
 
+import 'view/pages/homepage/carosel slider widget/carosel_slider.dart';
+import 'view/pages/homepage/homepage.dart';
+
+
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +21,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return const MaterialApp(
+      home:SciproHomePage() ,
+    );
   }
 }
