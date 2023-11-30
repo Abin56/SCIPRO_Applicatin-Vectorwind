@@ -21,12 +21,12 @@ termsAndConditions(BuildContext context) {
       "Privacy Policy",
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
-    content: SizedBox(
+    content: const SizedBox(
       // width: 300,
       height: 300,
       child: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             Text(
               _termAndCondition,
               style: TextStyle(color: Colors.white),
@@ -93,12 +93,12 @@ contactus(BuildContext context) {
       "Contact us",
       style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
     ),
-    content: SizedBox(
+    content: const SizedBox(
       // width: 300,
       height: 300,
       child: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             Text(
               _contactus,
               style: TextStyle(color: Colors.white),

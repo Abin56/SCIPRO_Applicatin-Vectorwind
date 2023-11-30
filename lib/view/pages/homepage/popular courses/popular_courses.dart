@@ -63,20 +63,23 @@ class PopularCourses extends StatelessWidget {
                             )
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                child: GooglePoppinsWidgets(
-                              text: popularText[index],
-                              fontsize: 14.h,
-                              color: cBlack,
-                              textAlign: TextAlign.center,
-                              fontWeight: FontWeight.w700
-                              
-                              ,
-                            ))
-                          ],
+                        Padding(
+                          padding:  EdgeInsets.only(top: 6.h),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                  child: GooglePoppinsWidgets(
+                                text: popularText[index],
+                                fontsize: 14.h,
+                                color: cBlack,
+                                textAlign: TextAlign.center,
+                                fontWeight: FontWeight.w500
+                                
+                                ,
+                              ))
+                            ],
+                          ),
                         )
                       ]),
                 ),
