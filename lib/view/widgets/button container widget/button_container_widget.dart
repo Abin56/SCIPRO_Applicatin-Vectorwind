@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/widgets.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 
@@ -14,7 +16,6 @@ class ButtonContainerWidget extends StatelessWidget {
 
 
    ButtonContainerWidget({super.key,required this.text ,required this.width,required this.height,required this. fontSize,required this.onTap});
-  const ButtonContainerWidget({super.key, required this.text,});
 
   @override
   Widget build(BuildContext context) {

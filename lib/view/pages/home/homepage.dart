@@ -71,7 +71,7 @@ class SciproHomePage extends StatelessWidget {
                   const RecordedCourses(),
                   Padding(
                     padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                    child: SubscribedButton(text: "Explore Courses"),
+                    child: SubscribedButton(text: "EXPLORE COURSES"),
                   )
                 ],
               ),

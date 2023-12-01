@@ -52,6 +52,7 @@ dependencies:
   razorpay_flutter:
   cloud_functions:
   appinio_video_player:
+  image_picker: ^1.0.4
 
 
 dev_dependencies:
