@@ -19,23 +19,23 @@ class CarouselSliderWidget extends StatelessWidget {
             CaroselmageWidget(
               sliderImagePath: imagesList[0],
           
-              slidertext: 'Scipro Language Courses',
+              slidertext: 'SCIPRO LANGUAGE COURSES',
             ),
             CaroselmageWidget(
               sliderImagePath: imagesList[1],
-              slidertext: 'Online Courses',
+              slidertext: 'ONLINE COURSES',
             ),
             CaroselmageWidget(
               sliderImagePath: imagesList[2],
-              slidertext: 'Recorded Courses',
+              slidertext: 'RECORDED COURSES',
             ),
             CaroselmageWidget(
               sliderImagePath: imagesList[3],
-              slidertext: 'Scipro Skill Technology',
+              slidertext: 'SCIPRO SKILLS',
             ),
           ],
           options: CarouselOptions(
-            height: 280.w,
+            height: 270.w,
             enlargeCenterPage: true,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 2),
@@ -68,12 +68,12 @@ class CaroselmageWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 8.h),
+          padding:  EdgeInsets.only(bottom: 20.h),
           child: GooglePoppinsWidgets(
             text:slidertext,
-            fontsize: 21.h,
+            fontsize: 19.h,
             color: cBlack,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         )
       ],

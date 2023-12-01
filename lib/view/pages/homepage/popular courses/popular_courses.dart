@@ -48,7 +48,7 @@ class PopularCourses extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: 169.w,
-                              height: 140.h,
+                              height: 120.h,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10.h),
@@ -71,7 +71,7 @@ class PopularCourses extends StatelessWidget {
                               Expanded(
                                   child: GooglePoppinsWidgets(
                                 text: popularText[index],
-                                fontsize: 14.h,
+                                fontsize: 13.h,
                                 color: cBlack,
                                 textAlign: TextAlign.center,
                                 fontWeight: FontWeight.w500
@@ -100,32 +100,23 @@ List<String> popularCourseImages = [
   'assets/images/main8sara.jpg',
   'assets/images/main10vishnu.jpg',
   'assets/images/main12nandhana.jpg',
-  'assets/images/main15archana.jpg',
   'assets/images/mainsanush1.jpg',
-  'assets/images/main13archanaartist.jpg',
-  'assets/images/main8sara.jpg',
+  'assets/images/main15archana.jpg',
   'assets/images/main2ancy.jpg',
-  'assets/images/main6akhilmon.jpg',
-  'assets/images/main8sara.jpg',
-  'assets/images/main8sara.jpg',
-  'assets/images/main10vishnu.jpg',
+  
+
 ];
 
 List<String> popularText = [
-  'CSIR',
-  'UGC',
-  'LIFE SCIENCE',
-  'ICAR',
-  'NET',
-  'CUET',
-  'PG LIFE SCIENCE',
-  'GATE EXAMS',
-  'ICMR',
-  'JRF EXAMS',
-  'SCIPRO SKILLS',
-  'SET EXAMS',
   'KPSC EXAMS',
-  'PCB',
-  'JSA',
-  'JLA JUNIOR',
+  'CSIR-NET LIFESCIENCES',
+  'UGC-NET ENVIRONMENTAL SCIENCE',
+  'GATE EXAMS',
+  'ICAR-NET',
+  'ICMR-JRF',
+  'DBT-JRF',
+  'SET EXAMS',
+  'CUET-PG',
+  'SCIPRO SKILLS',
+  
 ];

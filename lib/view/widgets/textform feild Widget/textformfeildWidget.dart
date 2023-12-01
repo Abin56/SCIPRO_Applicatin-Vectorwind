@@ -9,15 +9,20 @@ class TextFormFiledContainerWidget extends StatelessWidget {
   final String title;
   final String hintText;
   final double width;
+  
+  
+ 
   Function(String)? onChanged;
   Iterable<String>? autofillHints;
   String? Function(String?)? validator;
   Function()? onTap;
   TextInputType? keyboardType;
   TextFormFiledContainerWidget({
+
     required this.hintText,
     required this.title,
     required this.width,
+    
     this.keyboardType,
     this.controller,
     this.autofillHints,
@@ -30,7 +35,7 @@ class TextFormFiledContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 70,
       width: width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +43,7 @@ class TextFormFiledContainerWidget extends StatelessWidget {
         children: [
           GooglePoppinsWidgets(text: title, fontsize: 12),
           SizedBox(
-            height: 35,
+            height: 45,
             width: width,
             child: TextFormField(
               style: GoogleFonts.poppins(fontSize: 12),

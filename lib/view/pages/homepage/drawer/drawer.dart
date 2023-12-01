@@ -164,6 +164,71 @@ Widget MyDrawerList(context) {
     height: 20,
     color: cWhite,
   ),
+  Padding(
+           padding: const EdgeInsets.only(top: 10,left: 10),
+           child: SizedBox(
+            height: 80.h,
+        
+            child: Stack(children: [
+              Positioned(
+                
+                top: 10.w,
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Owned by",
+                      style: TextStyle(
+                          color: themeColorBlue, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                  top: 40.h,
+                  left:2.w,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      // CircleAvatar(
+                      //   child: Container(width: 20.w,
+                      //     decoration: const BoxDecoration(color: cWhite,
+                      //     image: DecorationImage(fit: BoxFit.fitHeight,
+                      //       image:AssetImage(
+                              
+                      //           'assets/images/vector.png'),)
+                      //   ),
+                        
+                      //   ),
+                      // ),
+                      ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10.h),
+                                    topRight:
+                                        Radius.circular(10.h)), // Image border
+                                child: SizedBox.fromSize(
+                                  size: Size.fromRadius(18.r), // Image radius
+                                  child: Image.asset('assets/images/vector.png',
+                                      fit: BoxFit.fill),
+                                ),
+                              ),
+
+                     
+                      Padding(
+                        padding:  EdgeInsets.only(top: 5.w,left: 8.w),
+                        child: Text(
+                          "VECTOEWIND-TECH SYSTEM PVT LIMITED",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey,
+                              fontSize: 13.sp),
+                        ),
+                      ),
+                    ],
+                  ))
+            ]),
+                   ),
+         ),
 
          Padding(
            padding: const EdgeInsets.only(top: 10,left: 10),
