@@ -27,6 +27,7 @@ class RecordCourseCategoryList extends StatelessWidget {
         ],
       ),),
       body: const SingleChildScrollView(
+        
         child: Column(
           children: [
             SelectedCourseListingContainer(text:  "Selected Course",),
