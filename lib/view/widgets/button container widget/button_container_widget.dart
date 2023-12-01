@@ -12,7 +12,9 @@ class ButtonContainerWidget extends StatelessWidget {
 
 
 
+
    ButtonContainerWidget({super.key,required this.text ,required this.width,required this.height,required this. fontSize,required this.onTap});
+  const ButtonContainerWidget({super.key, required this.text,});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,35 @@ class ButtonContainerWidget extends StatelessWidget {
             text: text,
             fontsize: fontSize,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class ColorButtonContainerWidget extends StatelessWidget {
+  final String text;
+  final Color color;
+
+  const ColorButtonContainerWidget({super.key, required this.text,required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration:  BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.horizontal(),
+      ),
+      width: 180,
+      height: 40,
+      child: Center(
+        child: GooglePoppinsWidgets(
+          textAlign: TextAlign.center,
+          color: cWhite,
+          fontWeight: FontWeight.bold,
+          text: text,
+          fontsize: 14,
         ),
       ),
     );

@@ -48,7 +48,11 @@ dependencies:
   dropdown_search: ^5.0.6
   carousel_slider: ^4.2.1
   flutter_screenutil: ^5.9.0
-  image_picker: ^1.0.4
+  introduction_screen: ^3.1.12
+  razorpay_flutter:
+  cloud_functions:
+  appinio_video_player:
+
 
 dev_dependencies:
   flutter_test:

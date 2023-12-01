@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
+import 'package:scipro_application/view/pages/on_boardingScreen/introduction_screen.dart';
 
-class GoogleSignindScreen extends StatelessWidget {
-  const GoogleSignindScreen({super.key});
+class GoogleSigninScreen extends StatelessWidget {
+  const GoogleSigninScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,9 @@ class GoogleSignindScreen extends StatelessWidget {
                   child: ElevatedButton(
                       style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(cWhite)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const OnBoardingPage());
+                      },
                       child: Padding(
                         padding: EdgeInsets.all(10.r),
                         child: Row(
