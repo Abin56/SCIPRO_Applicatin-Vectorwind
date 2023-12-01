@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
 import 'package:scipro_application/view/pages/home/subscribed%20button/subscribed_button.dart';
+import 'package:scipro_application/view/pages/recorded_courses/category/record_category.dart';
 import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_courses/record_course_list.dart';
 
 import '../../colors/colors.dart';
@@ -71,7 +72,14 @@ class SciproHomePage extends StatelessWidget {
                   const RecordedCourses(),
                   Padding(
                     padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                    child: SubscribedButton(text: "Explore Courses"),
+                    child: GestureDetector(
+                      onTap: (){
+                        
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const RecordCategory();
+        }));
+                      },
+                      child: SubscribedButton(text: "Explore Courses")),
                   )
                 ],
               ),

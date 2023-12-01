@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/pages/home/drawer/menu.dart';
-import 'package:scipro_application/view/pages/home/drawer/rec_couses_list.dart';
+import 'package:scipro_application/view/pages/recorded_courses/category/record_category.dart';
 
 
 class MyHeaderDrawer extends StatelessWidget {
@@ -123,7 +123,7 @@ Widget MyDrawerList(context) {
         MenuItem(1, "Recorded Courses", Icons.fiber_smart_record_sharp,
             currentPage == DrawerSections.dashboard ? true : false, () {
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (ctx) => RecordedCoursesListScreen())
+              MaterialPageRoute(builder: (ctx) => const RecordCategory())
              );
        }
        ),

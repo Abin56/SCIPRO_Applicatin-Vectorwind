@@ -12,12 +12,11 @@ class SelectYourPlanPart extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(backgroundColor: const Color.fromARGB(255, 71, 40, 247),
       toolbarHeight: 50.h,
-      title:  Row(crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      leading: 
                IconButton(onPressed: (){
         Navigator.pop(context);
       }, icon:  Icon(Icons.arrow_back,size: 32.sp,color: cWhite,),),
-              Padding(
+            title:   Padding(
                 padding: EdgeInsets.only(left: 10.r),
                 child: GooglePoppinsWidgets(
                   text: "Select Your Plan",
@@ -25,7 +24,8 @@ class SelectYourPlanPart extends StatelessWidget {
                    fontWeight: FontWeight.w400,
                    color: cWhite,),
               )
-            ],),),
+           
+            ),
       backgroundColor: const Color.fromARGB(255, 176, 221, 235),
       body:  SingleChildScrollView(
         child: Stack(
