@@ -2,8 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/firebase_options.dart';
-
-import 'view/pages/on_boardingScreen/introduction_screen.dart';
+import 'package:scipro_application/view/pages/splash_screen/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          home: const OnBoardingPage(),
+          home: const SplashScreen(),
         );
       },
     );
