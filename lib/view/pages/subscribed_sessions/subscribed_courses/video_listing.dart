@@ -142,7 +142,8 @@ class VideoListingContainerWidget extends StatelessWidget {
                     offset: Offset(0.r, 4.r),
                     blurRadius: 8.r,
                     spreadRadius: 2.r),
-              ]),
+              ]
+              ),
           child: Row(children: [
             Container(
               width: 100.w,
