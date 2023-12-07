@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/pages/home/drawer/menu.dart';
-import 'package:scipro_application/view/pages/recorded_courses/category/record_category.dart';
+
+import '../../../fonts/google_poppins.dart';
+import '../../recorded_course_plan/recorded couse or category/record_category.dart';
 
 
 class MyHeaderDrawer extends StatelessWidget {
@@ -16,15 +18,15 @@ class MyHeaderDrawer extends StatelessWidget {
     return Container(
       color: themeColorBlue,
       width: double.infinity,
-      height: 250.h,
-      padding:  EdgeInsets.only(bottom: 20.r),
+      height: 250,
+      padding: const EdgeInsets.only(bottom: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin:  EdgeInsets.only(bottom: 0.r),
-            height: 150.h,
-            width: 150.w,
+            margin: const EdgeInsets.only(bottom: 0),
+            height: 150,
+            width: 150,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -32,16 +34,16 @@ class MyHeaderDrawer extends StatelessWidget {
               ),
             ),
           ),
-          Text(
+          const Text(
             "SCI PRO",
-            style: TextStyle(color: Colors.white, fontSize: 20.sp),
+            style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-           SizedBox(
-            height: 5.h,
+          const SizedBox(
+            height: 5,
           ),
           Text(
             "info@scipro.in",
-            style: TextStyle(color: Colors.amber[200], fontSize: 12.sp),
+            style: TextStyle(color: Colors.amber[200], fontSize: 12),
           )
         ],
       ),
@@ -55,13 +57,13 @@ Widget MenuItem(int id, String title, IconData? icon, bool selected, onTap) {
     child: InkWell(
       onTap: onTap,
       child: Padding(
-        padding:  EdgeInsets.all(15.0.r),
+        padding: const EdgeInsets.all(15.0),
         child: Row(
           children: [
             Expanded(
               child: Icon(
                 icon,
-                size: 20.sp,
+                size: 20,
                 color: themeColorBlue,
               ),
             ),
@@ -69,7 +71,7 @@ Widget MenuItem(int id, String title, IconData? icon, bool selected, onTap) {
                 flex: 3,
                 child: Text(
                   title,
-                  style:  TextStyle(color: themeColorBlue, fontSize: 16.sp),
+                  style: const TextStyle(color: themeColorBlue, fontSize: 16),
                 ))
           ],
         ),
@@ -115,7 +117,7 @@ Widget MyDrawerList(context) {
 
   var currentPage = DrawerSections.dashboard;
   return Container(
-    padding:  EdgeInsets.only(top: 0.r),
+    padding: const EdgeInsets.only(top: 0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       // show list  of menu drawer.........................
@@ -123,7 +125,10 @@ Widget MyDrawerList(context) {
         MenuItem(1, "Recorded Courses", Icons.fiber_smart_record_sharp,
             currentPage == DrawerSections.dashboard ? true : false, () {
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (ctx) => const RecordCategory())
+              MaterialPageRoute(builder: (ctx) => 
+              //RecordedCoursesListScreen()
+              const RecordCategory()
+              )
              );
        }
        ),
@@ -144,16 +149,40 @@ Widget MyDrawerList(context) {
             currentPage == DrawerSections.about ? true : false, () {
           showAboutDialog(
               context: context,
-              applicationIcon:  Image(
-                image: const AssetImage('assets/images/SCIPRO.png'),
-                height: 100.h,
-                width: 100.h,
+              applicationIcon: const Image(
+                image: AssetImage('assets/images/SCIPRO.png'),
+                height: 100,
+                width: 100,
               ),
               applicationName: "SCI PRO",
               applicationVersion: '1.0.2',
               children: [
-                const Text(
-                    'SCI PRO is a Education App created by VECTORWIND-TECHSYSTEMS PRIVATE LIMITED.')
+                Row(
+                children: [
+                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      GooglePoppinsWidgets(text: 'Developed by', fontsize: 14.h),
+                   Row(
+                     children: [
+                       const CircleAvatar(
+                      
+                        backgroundImage: NetworkImage(
+                            'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
+                      ),
+                       Padding(
+                         padding:  EdgeInsets.only(left: 10.h),
+                         child: GooglePoppinsWidgets(text: 'Lepton Plus Communications', fontsize: 14.h,color: cBlack,fontWeight: FontWeight.w600,),
+                       ),
+                     ],
+                   ),
+                
+                    ],
+                  ),
+                
+                  // const Text(
+                  //     'SCI PRO is a Education App created by Lepton Plus Communications.'),
+                ],
+                                )
               ]);
         }),
         MenuItem(6, "Logout", Icons.logout,
@@ -161,12 +190,11 @@ Widget MyDrawerList(context) {
           signOut(context);
         }),
   Container(
-    height: 20.h,
+    height: 20,
     color: cWhite,
   ),
-
-         Padding(
-           padding:  EdgeInsets.only(top: 10.r,left: 10.r),
+  Padding(
+           padding: const EdgeInsets.only(top: 10,left: 10),
            child: SizedBox(
             height: 80.h,
         
@@ -178,7 +206,7 @@ Widget MyDrawerList(context) {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Developed by",
+                      "Owned by",
                       style: TextStyle(
                           color: themeColorBlue, fontWeight: FontWeight.w500),
                     ),
@@ -191,20 +219,38 @@ Widget MyDrawerList(context) {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const CircleAvatar(
-                        backgroundColor: cWhite,
-                        backgroundImage: NetworkImage(
-                            'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
-                      ),
+                      // CircleAvatar(
+                      //   child: Container(width: 20.w,
+                      //     decoration: const BoxDecoration(color: cWhite,
+                      //     image: DecorationImage(fit: BoxFit.fitHeight,
+                      //       image:AssetImage(
+                              
+                      //           'assets/images/vector.png'),)
+                      //   ),
+                        
+                      //   ),
+                      // ),
+                      ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10.h),
+                                    topRight:
+                                        Radius.circular(10.h)), // Image border
+                                child: SizedBox.fromSize(
+                                  size: Size.fromRadius(18.r), // Image radius
+                                  child: Image.asset('assets/images/vector.png',
+                                      fit: BoxFit.fill),
+                                ),
+                              ),
+
                      
                       Padding(
-                        padding:  EdgeInsets.only(top: 5.r),
+                        padding:  EdgeInsets.only(top: 5.w,left: 8.w),
                         child: Text(
-                          "  Lepton Plus Communications",
+                          "VECTORWIND-TECH SYSTEM PVT LIMITED",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.blueGrey,
-                              fontSize: 14.sp),
+                              fontSize: 13.sp),
                         ),
                       ),
                     ],
@@ -212,8 +258,10 @@ Widget MyDrawerList(context) {
             ]),
                    ),
          ),
+
+       
          Padding(
-           padding:  EdgeInsets.only(bottom: 300.r,left: 100.r),
+           padding: const EdgeInsets.only(bottom: 300,left: 100),
            child: SizedBox(
             height: 80.h,
                  

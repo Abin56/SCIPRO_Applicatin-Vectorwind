@@ -17,7 +17,7 @@ class RecordedCoursesListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 36, 44, 59),
-      appBar: AppBar(
+      appBar: AppBar(automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         title: const Text('Select your plan'),
       ),
