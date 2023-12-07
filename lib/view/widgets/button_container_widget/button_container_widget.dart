@@ -1,31 +1,41 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 
 import '../../fonts/google_poppins.dart';
 
 class ButtonContainerWidget extends StatelessWidget {
+  void Function() onTap;
   final String text;
- 
+  final double width;
+    final double height;
+    final double fontSize;
 
-  const ButtonContainerWidget({super.key, required this.text,});
+
+
+
+   ButtonContainerWidget({super.key,required this.text ,required this.width,required this.height,required this. fontSize,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: themeColorBlue,
-        borderRadius: BorderRadius.horizontal(),
-      ),
-      width: 200.w,
-      height: 30.h,
-      child: Center(
-        child: GooglePoppinsWidgets(
-          textAlign: TextAlign.center,
-          color: cWhite,
-          fontWeight: FontWeight.w500,
-          text: text,
-          fontsize: 12.sp,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: const BoxDecoration(
+          color: themeColorBlue,
+          borderRadius: BorderRadius.horizontal(),
+        ),
+        width: width,
+        height: height,
+        child: Center(
+          child: GooglePoppinsWidgets(
+            textAlign: TextAlign.center,
+            color: cWhite,
+            fontWeight: FontWeight.w500,
+            text: text,
+            fontsize: fontSize,
+          ),
         ),
       ),
     );
@@ -46,15 +56,15 @@ class ColorButtonContainerWidget extends StatelessWidget {
         color: color,
         borderRadius: const BorderRadius.horizontal(),
       ),
-      width: 180.w,
-      height: 40.h,
+      width: 180,
+      height: 40,
       child: Center(
         child: GooglePoppinsWidgets(
           textAlign: TextAlign.center,
           color: cWhite,
           fontWeight: FontWeight.bold,
           text: text,
-          fontsize: 14.sp,
+          fontsize: 14,
         ),
       ),
     );

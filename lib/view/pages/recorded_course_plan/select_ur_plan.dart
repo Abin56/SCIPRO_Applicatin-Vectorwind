@@ -11,22 +11,23 @@ class SelectYourPlanPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: const Color.fromARGB(255, 71, 40, 247),
+      appBar: AppBar(automaticallyImplyLeading: false,
+        backgroundColor: const Color.fromARGB(255, 71, 40, 247),
       toolbarHeight: 50.h,
-      leading:  IconButton(onPressed: (){
+      title:  Row(crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+               IconButton(onPressed: (){
         Navigator.pop(context);
-      }, 
-      icon:  Icon(Icons.arrow_back,size: 32.sp,color: cWhite,),),
-            title:   Padding(
-                padding: EdgeInsets.only(left: 10.r),
+      }, icon:  Icon(Icons.arrow_back,size: 32.sp,color: cWhite,),),
+              Padding(
+                padding: EdgeInsets.only(left: 10.h,top: 12.h),
                 child: GooglePoppinsWidgets(
                   text: "Select Your Plan",
-                   fontsize: 18.sp,
+                   fontsize: 19.sp,
                    fontWeight: FontWeight.w400,
                    color: cWhite,),
               )
-           
-            ),
+            ],),),
       backgroundColor: const Color.fromARGB(255, 176, 221, 235),
       body:  SingleChildScrollView(
         child: Stack(
@@ -45,7 +46,7 @@ class SelectYourPlanPart extends StatelessWidget {
                 children: [
                  Padding(
                    padding: EdgeInsets.only(top:15.r,bottom: 15.r),
-                   child: GooglePoppinsWidgets(text: "Category Name", fontsize: 28.sp,fontWeight: FontWeight.bold,color: cWhite,),
+                   child: GooglePoppinsWidgets(text: "Category Name", fontsize: 24.sp,fontWeight: FontWeight.bold,color: cWhite,),
                  ),
                   const SeletPlanContanierWidget(text: "Course Name",text1: "16 Days",text2: "4000",),
                   const SeletPlanContanierWidget(text: "Course Name",text1: "16 Days",text2: "4000",),
@@ -81,9 +82,11 @@ class SeletPlanContanierWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.push(context,MaterialPageRoute(builder: (context){
-          return const CartSectionDesign();
-        }));
+        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                        return const CartSectionDesign();
+                         }
+                         ));
       },
       child: Padding(
         padding:  EdgeInsets.only(top: 15.r),
@@ -118,7 +121,7 @@ class SeletPlanContanierWidget extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(top: 8.r),
+                  padding:  EdgeInsets.only(top: 8.h),
                   child: Row(
                     children: [
                       GooglePoppinsWidgets(text: "Duration : ", fontsize: 14.sp,fontWeight: FontWeight.w500,),
@@ -126,12 +129,15 @@ class SeletPlanContanierWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                 Row(
-                    children: [GooglePoppinsWidgets(text: "Fee : ", fontsize: 14.sp,fontWeight: FontWeight.w500),
-                      GooglePoppinsWidgets(text: text2, fontsize: 14.sp,fontWeight: FontWeight.w500),
-                       GooglePoppinsWidgets(text: "(including all taxes)", fontsize: 14.sp,),
-                    ],
-                  ),
+                 Padding(
+                   padding:  EdgeInsets.only(top: 8.h),
+                   child: Row(
+                      children: [GooglePoppinsWidgets(text: "Fee : ", fontsize: 14.sp,fontWeight: FontWeight.w500),
+                        GooglePoppinsWidgets(text: text2, fontsize: 14.sp,fontWeight: FontWeight.w500),
+                         GooglePoppinsWidgets(text: "(including all taxes)", fontsize: 14.sp,),
+                      ],
+                    ),
+                 ),
               ],
             ),
           ),
