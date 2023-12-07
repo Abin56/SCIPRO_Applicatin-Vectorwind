@@ -142,14 +142,15 @@ class VideoListingContainerWidget extends StatelessWidget {
                     offset: Offset(0.r, 4.r),
                     blurRadius: 8.r,
                     spreadRadius: 2.r),
-              ]),
+              ]
+              ),
           child: Row(children: [
             Container(
               width: 100.w,
               color: cBlue,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 8.0.r, left: 25),
+              padding: EdgeInsets.only(top: 8.0.r, left: 25.r),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

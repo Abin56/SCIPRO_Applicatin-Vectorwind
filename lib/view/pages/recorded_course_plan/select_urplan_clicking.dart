@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/widgets/back_container/back_container.dart';
-import 'package:scipro_application/view/widgets/button%20container%20widget/button_container_widget.dart';
+import 'package:scipro_application/view/widgets/button_container_widget/button_container_widget.dart';
 
 detailsShowDialogBox(
     {required BuildContext context,

@@ -27,7 +27,7 @@ class RecordedCourses extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
+            padding: EdgeInsets.only(left: 10.r, right: 10.r, top: 10.r),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.r), // Image border
               child: Container(
@@ -43,7 +43,7 @@ class RecordedCourses extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10.h),
+            padding: EdgeInsets.only(top: 10.r),
             child: GooglePoppinsWidgets(
               text: 'Features',
               fontsize: 20.sp,

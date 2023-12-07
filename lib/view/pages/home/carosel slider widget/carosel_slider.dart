@@ -68,10 +68,10 @@ class CaroselmageWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 8.h),
+          padding: EdgeInsets.only(top: 8.r),
           child: GooglePoppinsWidgets(
             text:slidertext,
-            fontsize: 21.h,
+            fontsize: 21.sp,
             color: cBlack,
             fontWeight: FontWeight.w500,
           ),

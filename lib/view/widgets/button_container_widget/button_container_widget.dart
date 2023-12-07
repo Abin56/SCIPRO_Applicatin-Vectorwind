@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 
 import '../../fonts/google_poppins.dart';
@@ -16,15 +17,15 @@ class ButtonContainerWidget extends StatelessWidget {
         color: themeColorBlue,
         borderRadius: BorderRadius.horizontal(),
       ),
-      width: 200,
-      height: 30,
+      width: 200.w,
+      height: 30.h,
       child: Center(
         child: GooglePoppinsWidgets(
           textAlign: TextAlign.center,
           color: cWhite,
           fontWeight: FontWeight.w500,
           text: text,
-          fontsize: 12,
+          fontsize: 12.sp,
         ),
       ),
     );
@@ -45,15 +46,15 @@ class ColorButtonContainerWidget extends StatelessWidget {
         color: color,
         borderRadius: const BorderRadius.horizontal(),
       ),
-      width: 180,
-      height: 40,
+      width: 180.w,
+      height: 40.h,
       child: Center(
         child: GooglePoppinsWidgets(
           textAlign: TextAlign.center,
           color: cWhite,
           fontWeight: FontWeight.bold,
           text: text,
-          fontsize: 14,
+          fontsize: 14.sp,
         ),
       ),
     );

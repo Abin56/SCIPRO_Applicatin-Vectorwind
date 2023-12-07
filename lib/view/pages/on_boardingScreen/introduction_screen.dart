@@ -57,14 +57,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       infiniteAutoScroll: false,
       globalHeader: const Align(
         alignment: Alignment.topRight,
-        // child: SafeArea(
-        //   child:
-        //   Padding(
-        //     padding: const EdgeInsets.only(top: 16, right: 16),
-        //     child: _buildImage('flutter.png', 100),
-        //   ),
-        // ),
-      ),
+         ),
 
       // ),
       pages: [

@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 termsAndConditions(BuildContext context) {
   // set up the button
   Widget okButton = TextButton(
-    child: const Text(
+    child:  Text(
       "I Accept",
       style: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 18, color: Colors.amber),
+          fontWeight: FontWeight.bold, fontSize: 18.sp, color: Colors.amber),
     ),
     onPressed: () {
       Navigator.pop(context);
@@ -21,10 +22,10 @@ termsAndConditions(BuildContext context) {
       "Privacy Policy",
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
-    content: const SizedBox(
+    content:  SizedBox(
       // width: 300,
-      height: 300,
-      child: SingleChildScrollView(
+      height: 300.h,
+      child: const SingleChildScrollView(
         child: Column(
           children: [
             Text(
@@ -76,10 +77,10 @@ be subject to the Terms of Service.
 contactus(BuildContext context) {
   // set up the button
   Widget okButton = TextButton(
-    child: const Text(
+    child:  Text(
       "Ok",
       style: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 18, color: Colors.amber),
+          fontWeight: FontWeight.bold, fontSize: 18.sp, color: Colors.amber),
     ),
     onPressed: () {
       Navigator.pop(context);
@@ -93,10 +94,10 @@ contactus(BuildContext context) {
       "Contact us",
       style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
     ),
-    content: const SizedBox(
+    content: SizedBox(
       // width: 300,
-      height: 300,
-      child: SingleChildScrollView(
+      height: 300.h,
+      child: const SingleChildScrollView(
         child: Column(
           children: [
             Text(

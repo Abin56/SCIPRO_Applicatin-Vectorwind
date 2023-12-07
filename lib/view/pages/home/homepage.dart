@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
-import 'package:scipro_application/view/pages/home/subscribed%20button/subscribed_button.dart';
+import 'package:scipro_application/view/pages/home/subscribed_button/subscribed_button.dart';
+import 'package:scipro_application/view/pages/recorded_courses/category/record_category.dart';
 import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_courses/record_course_list.dart';
 
 import '../../colors/colors.dart';
@@ -24,13 +25,13 @@ class SciproHomePage extends StatelessWidget {
             width: double.infinity,
             color: cWhite,
             child: Padding(
-              padding: EdgeInsets.only(left: 20.w, top: 10.h, right: 20.h),
+              padding: EdgeInsets.only(left: 20.r, top: 10.r, right: 20.r),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 10.h),
+                    padding: EdgeInsets.only(top: 10.r),
                     child: GooglePoppinsWidgets(
                       text: 'Hello...',
                       fontsize: 19.sp,
@@ -39,7 +40,7 @@ class SciproHomePage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 10.h),
+                    padding: EdgeInsets.only(top: 10.r),
                     child: GooglePoppinsWidgets(
                       text: 'Nainika v',
                       fontsize: 20.sp,
@@ -49,11 +50,11 @@ class SciproHomePage extends StatelessWidget {
                   ),
                   Padding(
                       padding: EdgeInsets.only(
-                        top: 30.h,
+                        top: 30.r,
                       ),
                       child: GestureDetector(
                           onTap: () {
-                            print("object");
+                           // print("object");
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return const RecordCourseCategoryList();
@@ -61,17 +62,25 @@ class SciproHomePage extends StatelessWidget {
                           },
                           child: SubscribedButton(text: 'SUBSCRIBED COURSES'))),
                   Padding(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 20),
+                    padding: EdgeInsets.only(top: 20.r, bottom: 20.r),
                     child: const CarouselSliderWidget(),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10),
-                    child: PopularCourses(),
+                   Padding(
+                    padding: EdgeInsets.only(top: 10.r),
+                    child: const PopularCourses(),
                   ),
                   const RecordedCourses(),
                   Padding(
-                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                    child: SubscribedButton(text: "Explore Courses"),
+                    padding: EdgeInsets.only(top: 10.r, bottom: 10.r),
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                        return const RecordCategory();
+                         }
+                         ));
+                      },
+                      child: SubscribedButton(text: "Explore Courses")),
                   )
                 ],
               ),
