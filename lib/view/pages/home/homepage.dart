@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
-import 'package:scipro_application/view/pages/home/subscribed%20button/subscribed_button.dart';
+import 'package:scipro_application/view/pages/home/subscribed_button/subscribed_button.dart';
 import 'package:scipro_application/view/pages/recorded_course_plan/recorded%20couse%20or%20category/record_category.dart';
 import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_courses/record_course_list.dart';
 

@@ -4,9 +4,8 @@ import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
+import 'package:scipro_application/view/widgets/button_container_widget/button_container_widget.dart';
 import 'package:scipro_application/view/widgets/textform%20feild%20Widget/textformfeildWidget.dart';
-
-import '../../widgets/button container widget/button_container_widget.dart';
 import '../../widgets/icon back button/icon_back_button.dart';
 import 'circle_avathar_widget/circleavathar_widget.dart';
 
