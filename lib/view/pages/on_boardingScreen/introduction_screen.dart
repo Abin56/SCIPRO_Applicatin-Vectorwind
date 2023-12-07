@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:scipro_application/view/colors/colors.dart';
+import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -105,9 +107,14 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                       // borderRadius: BorderRadius.circular(20.0),
                       ),
                 ),
-                child: Text(
-                  'Launch App',
-                  style: TextStyle(color: Colors.white, fontSize: 22.sp),
+                child: GestureDetector(
+                  onTap: (){
+                     Get.to(const CreateProfile());
+                  },
+                  child: Text(
+                    'Launch App',
+                    style: TextStyle(color: Colors.white, fontSize: 22.sp),
+                  ),
                 ),
               ),
             ),

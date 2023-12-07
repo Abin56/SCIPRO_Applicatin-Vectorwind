@@ -16,9 +16,9 @@ class SubscribedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration:  BoxDecoration(
-        border: Border.all(color: themeColorBlue,width: 2.h),
+        border: Border.all(color: themeColorBlue,width: 2.r),
        
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       width: 400.w,
       height: 50.h,

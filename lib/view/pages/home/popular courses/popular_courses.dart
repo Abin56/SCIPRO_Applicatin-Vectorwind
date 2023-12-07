@@ -24,7 +24,7 @@ class PopularCourses extends StatelessWidget {
           height: 400.h,
           width: 400.w,
           child: GridView.count(
-            padding: EdgeInsets.all(8.h),
+            padding: EdgeInsets.all(8.r),
             crossAxisCount: 2,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
@@ -51,9 +51,9 @@ class PopularCourses extends StatelessWidget {
                               height: 120.h,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10.h),
+                                    topLeft: Radius.circular(10.r),
                                     topRight:
-                                        Radius.circular(10.h)), // Image border
+                                        Radius.circular(10.r)), // Image border
                                 child: SizedBox.fromSize(
                                   size: Size.fromRadius(48.r), // Image radius
                                   child: Image.asset(popularCourseImages[index],
@@ -64,14 +64,14 @@ class PopularCourses extends StatelessWidget {
                           ],
                         ),
                         Padding(
-                          padding:  EdgeInsets.only(top: 6.h),
+                          padding:  EdgeInsets.only(top: 6.r),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
                                   child: GooglePoppinsWidgets(
                                 text: popularText[index],
-                                fontsize: 13.h,
+                                fontsize: 13.sp,
                                 color: cBlack,
                                 textAlign: TextAlign.center,
                                 fontWeight: FontWeight.w500

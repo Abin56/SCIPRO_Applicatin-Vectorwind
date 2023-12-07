@@ -52,7 +52,10 @@ dependencies:
   razorpay_flutter:
   cloud_functions:
   appinio_video_player:
+  animated_text_kit: ^4.2.2
   image_picker: ^1.0.4
+  action_slider: ^0.7.0
+  
 
 
 dev_dependencies:
