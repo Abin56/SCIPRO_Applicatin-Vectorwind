@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/firebase_options.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
-import 'package:scipro_application/view/pages/home/cart_section/cart.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,9 +29,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          home: CartSectionDesign(),
-         // home: const GoogleSigninScreen(),
-          // home: const SciproHomePage(),
+         // home: CartSectionDesign(),
+        home: const GoogleSigninScreen(),
+         //home: const SciproHomePage(),
         );
       },
     );

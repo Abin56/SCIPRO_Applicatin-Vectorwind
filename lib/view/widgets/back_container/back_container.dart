@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 
@@ -14,8 +15,8 @@ class BackButtonContainerWidget extends StatelessWidget {
         Navigator.pop(context);
       },
       child: Container(
-        height: 30,
-        width: 80,
+        height: 30.h,
+        width: 80.w,
         decoration: const BoxDecoration(
           color: themeColorBlue,
         ),
@@ -23,7 +24,7 @@ class BackButtonContainerWidget extends StatelessWidget {
           child: GooglePoppinsWidgets(
               text: 'BACK',
               color: cWhite,
-              fontsize: 12,
+              fontsize: 12.sp,
               fontWeight: FontWeight.bold),
         ),
       ),

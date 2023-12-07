@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/widgets/back_container/back_container.dart';
@@ -19,10 +20,10 @@ customShowDilogBox(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GooglePoppinsWidgets(
-                  text: title, fontsize: 13, fontWeight: FontWeight.w600),
-              const Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: BackButtonContainerWidget(),
+                  text: title, fontsize: 13.sp, fontWeight: FontWeight.w600),
+               Padding(
+                padding: EdgeInsets.only(top: 10.r),
+                child: const BackButtonContainerWidget(),
               ),
             ],
           ),
@@ -36,16 +37,16 @@ customShowDilogBox(
                   GestureDetector(
                     onTap: actiononTapfuction,
                     child: Container(
-                      height: 40,
-                      width: 250,
+                      height: 40.h,
+                      width: 250.w,
                       decoration: const BoxDecoration(
                         color: themeColorBlue,
                       ),
                       child: Center(
                         child: GooglePoppinsWidgets(
-                            text: actiontext ?? 'ok',
+                            text: actiontext ?? 'Ok',
                             color: cWhite,
-                            fontsize: 12,
+                            fontsize: 12.sp,
                             fontWeight: FontWeight.w500),
                       ),
                     ),

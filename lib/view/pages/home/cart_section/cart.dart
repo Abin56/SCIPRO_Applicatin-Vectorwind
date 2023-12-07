@@ -35,7 +35,6 @@ class CartSectionDesign extends StatelessWidget {
             child: GooglePoppinsWidgets(
               text: "Cart",
               fontsize: 18.sp,
-              //fontWeight: FontWeight.w400,
               color: cWhite,
             ),
           )),
@@ -44,7 +43,6 @@ class CartSectionDesign extends StatelessWidget {
           height: 800.h,
           width: double.infinity,
           color: const Color.fromARGB(255, 178, 205, 250),
-          
           child: Column(
             children: [
               CartWidgetContainer(
@@ -81,8 +79,7 @@ class CartSectionDesign extends StatelessWidget {
                             left: 16.r,
                             top: 8.r,
                           ),
-                          child:
-                              GooglePoppinsWidgets(text: "Physics", fontsize: 14.sp),
+                          child:GooglePoppinsWidgets(text: "Physics", fontsize: 14.sp),
                         )
                       ],
                     ),
@@ -97,7 +94,8 @@ class CartSectionDesign extends StatelessWidget {
                   ],
                 ),
               ),//////////////////////////////
-              CartWidgetContainer(height: 140.h,
+              CartWidgetContainer(
+                height: 140.h,
               text: "APPLY COUPENS",
               children:Padding(
                 padding: EdgeInsets.only(left: 12.r,top: 0.r),
@@ -118,15 +116,16 @@ class CartSectionDesign extends StatelessWidget {
                       child: GooglePoppinsWidgets(
                         text: "Apply",
                         fontsize: 18.sp,
-                       // fontWeight: FontWeight.w500,
                         color: cWhite,
                       ),
                     ),
-                                   ),
+                   ),
                  ),
                 ]),
-              ) ,),//////////////////////////////////////
-              CartWidgetContainer(height: 306.h, 
+               ) ,
+              ),//////////////////////////////////////
+              CartWidgetContainer(
+                height: 306.h, 
               text: "CHECKOUT",
                children: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,14 +197,13 @@ class CartSectionDesign extends StatelessWidget {
                         child: GooglePoppinsWidgets(
                           text: "Checkout",
                           fontsize: 18.sp,
-                         // fontWeight: FontWeight.w500,
                           color: cWhite,
                         ),
                       ),
-                                     ),
-                                         ],),
                      ),
-                   )
+                   ],),
+                  ),
+                  )
                 ],
               ))
             ],
@@ -231,7 +229,7 @@ class CartWidgetContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding:  EdgeInsets.all(8.0.r),
       child: Column(
         children: [
           Container(
@@ -255,7 +253,6 @@ class CartWidgetContainer extends StatelessWidget {
                     child: GooglePoppinsWidgets(
                       text: text,
                       fontsize: 19.sp,
-                      //fontWeight: FontWeight.w500,
                       color: cWhite,
                     ),
                   ),

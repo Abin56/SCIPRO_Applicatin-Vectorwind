@@ -16,15 +16,15 @@ class MyHeaderDrawer extends StatelessWidget {
     return Container(
       color: themeColorBlue,
       width: double.infinity,
-      height: 250,
-      padding: const EdgeInsets.only(bottom: 20),
+      height: 250.h,
+      padding:  EdgeInsets.only(bottom: 20.r),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: const EdgeInsets.only(bottom: 0),
-            height: 150,
-            width: 150,
+            margin:  EdgeInsets.only(bottom: 0.r),
+            height: 150.h,
+            width: 150.w,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
@@ -32,16 +32,16 @@ class MyHeaderDrawer extends StatelessWidget {
               ),
             ),
           ),
-          const Text(
+          Text(
             "SCI PRO",
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: TextStyle(color: Colors.white, fontSize: 20.sp),
           ),
-          const SizedBox(
-            height: 5,
+           SizedBox(
+            height: 5.h,
           ),
           Text(
             "info@scipro.in",
-            style: TextStyle(color: Colors.amber[200], fontSize: 12),
+            style: TextStyle(color: Colors.amber[200], fontSize: 12.sp),
           )
         ],
       ),
@@ -55,13 +55,13 @@ Widget MenuItem(int id, String title, IconData? icon, bool selected, onTap) {
     child: InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding:  EdgeInsets.all(15.0.r),
         child: Row(
           children: [
             Expanded(
               child: Icon(
                 icon,
-                size: 20,
+                size: 20.sp,
                 color: themeColorBlue,
               ),
             ),
@@ -69,7 +69,7 @@ Widget MenuItem(int id, String title, IconData? icon, bool selected, onTap) {
                 flex: 3,
                 child: Text(
                   title,
-                  style: const TextStyle(color: themeColorBlue, fontSize: 16),
+                  style:  TextStyle(color: themeColorBlue, fontSize: 16.sp),
                 ))
           ],
         ),
@@ -115,7 +115,7 @@ Widget MyDrawerList(context) {
 
   var currentPage = DrawerSections.dashboard;
   return Container(
-    padding: const EdgeInsets.only(top: 0),
+    padding:  EdgeInsets.only(top: 0.r),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       // show list  of menu drawer.........................
@@ -144,10 +144,10 @@ Widget MyDrawerList(context) {
             currentPage == DrawerSections.about ? true : false, () {
           showAboutDialog(
               context: context,
-              applicationIcon: const Image(
-                image: AssetImage('assets/images/SCIPRO.png'),
-                height: 100,
-                width: 100,
+              applicationIcon:  Image(
+                image: const AssetImage('assets/images/SCIPRO.png'),
+                height: 100.h,
+                width: 100.h,
               ),
               applicationName: "SCI PRO",
               applicationVersion: '1.0.2',
@@ -161,12 +161,12 @@ Widget MyDrawerList(context) {
           signOut(context);
         }),
   Container(
-    height: 20,
+    height: 20.h,
     color: cWhite,
   ),
 
          Padding(
-           padding: const EdgeInsets.only(top: 10,left: 10),
+           padding:  EdgeInsets.only(top: 10.r,left: 10.r),
            child: SizedBox(
             height: 80.h,
         
@@ -198,7 +198,7 @@ Widget MyDrawerList(context) {
                       ),
                      
                       Padding(
-                        padding:  EdgeInsets.only(top: 5.w),
+                        padding:  EdgeInsets.only(top: 5.r),
                         child: Text(
                           "  Lepton Plus Communications",
                           style: TextStyle(
@@ -213,7 +213,7 @@ Widget MyDrawerList(context) {
                    ),
          ),
          Padding(
-           padding: const EdgeInsets.only(bottom: 300,left: 100),
+           padding:  EdgeInsets.only(bottom: 300.r,left: 100.r),
            child: SizedBox(
             height: 80.h,
                  

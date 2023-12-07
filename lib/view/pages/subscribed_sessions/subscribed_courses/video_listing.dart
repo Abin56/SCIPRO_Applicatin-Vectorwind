@@ -150,7 +150,7 @@ class VideoListingContainerWidget extends StatelessWidget {
               color: cBlue,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 8.0.r, left: 25),
+              padding: EdgeInsets.only(top: 8.0.r, left: 25.r),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
