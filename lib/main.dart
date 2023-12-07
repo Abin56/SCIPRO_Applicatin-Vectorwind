@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-         // home: CartSectionDesign(),
-        home: const GoogleSigninScreen(),
-         //home: const SciproHomePage(),
+          // home: CartSectionDesign(),
+          home: const GoogleSigninScreen(),
+          //home: const SciproHomePage(),
         );
       },
     );
