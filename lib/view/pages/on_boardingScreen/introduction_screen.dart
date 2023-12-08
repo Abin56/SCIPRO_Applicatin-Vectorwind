@@ -59,7 +59,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       infiniteAutoScroll: false,
       globalHeader: const Align(
         alignment: Alignment.topRight,
-         ),
+      ),
 
       // ),
       pages: [
@@ -101,8 +101,8 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                       ),
                 ),
                 child: GestureDetector(
-                  onTap: (){
-                     Get.to(const CreateProfile());
+                  onTap: () {
+                    Get.to(CreateProfile());
                   },
                   child: Text(
                     'Launch App',
