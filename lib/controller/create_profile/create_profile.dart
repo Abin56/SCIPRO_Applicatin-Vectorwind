@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/model/create_profile_student/create_profile_model.dart';
 import 'package:scipro_application/view/constant/const.dart';
+import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/core/core.dart';
 
 class CreateProfileController extends GetxController {
+  RxBool pageLoading = false.obs;
   RxString imagePATH = ''.obs;
   Rxn<File> studentImagePath = Rxn();
+  String downloadURL = '';
 
   TextEditingController studentNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -22,7 +25,6 @@ class CreateProfileController extends GetxController {
   Future uploadImageFirebaseStore(File imageFile) async {
     final imageName = 'image_${DateTime.now()}.jpg';
 
-    String downloadURL = '';
     Reference storageRef =
         dataserverStorage.ref().child('StudentImageCollection/$imageName');
     try {
@@ -30,7 +32,9 @@ class CreateProfileController extends GetxController {
       await storageRef.putData(imageBytes).whenComplete(() async {
         String url = await storageRef.getDownloadURL();
         downloadURL = url;
-        print("URL  :: $downloadURL");
+        if (kDebugMode) {
+          print("URL  :: $downloadURL");
+        }
       });
     } catch (e) {
       if (kDebugMode) {
@@ -39,32 +43,23 @@ class CreateProfileController extends GetxController {
     }
   }
 
-  Future getUserImage() async {
-    String imageURl = imagePATH.value;
-    return imageURl;
-  }
-
-  addStudentDetailsToServer(
-      Future<R> Function<R>(FutureOr<R> Function(void) onValue,
-              {Function? onError})
-          then) async {
+  Future<void> addStudentDetailsToServer() async {
+    final studentID = getRandomString(10).toString();
     final server = dataserver.collection("StudentProfileCollection");
     final studentDetail = StudentProfileCreationModel(
-        uid: dataserverUserAuth!.uid,
+        studentid: studentID,
+        uid: studentID,
         name: studentNameController.text.trim(),
-        imageUrl: await getUserImage(),
-        email: dataserverUserAuth!.email!,
+        imageUrl: downloadURL,
+        email: 'abinjohn8089@gmail.com',
         address: addressController.text.trim(),
         phoneno: phonenoController.text.trim(),
         district: districtController.text.trim(),
         state: stateController.text.trim(),
         pincode: pincodeController.text.trim());
     try {
-      server
-          .doc(dataserverUserAuth!.uid)
-          .set(studentDetail.toMap())
-          .then((value) {
-        return then;
+      server.doc(studentID).set(studentDetail.toMap()).then((value) {
+        return showToast(msg: 'Profile Created Sucessfully');
       });
     } catch (e) {
       return showToast(msg: e.toString());

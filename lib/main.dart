@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/firebase_options.dart';
-
-import 'view/pages/splash screen/splashscreen.dart';
+import 'package:scipro_application/view/pages/splash%20screen/splashscreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

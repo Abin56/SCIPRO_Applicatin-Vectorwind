@@ -16,12 +16,13 @@ customShowDilogBox(
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GooglePoppinsWidgets(
                   text: title, fontsize: 13.sp, fontWeight: FontWeight.w600),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(top: 10.r),
                 child: const BackButtonContainerWidget(),
               ),

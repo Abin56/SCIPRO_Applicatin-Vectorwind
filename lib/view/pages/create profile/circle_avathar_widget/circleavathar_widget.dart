@@ -111,9 +111,7 @@ class CircleAvatharImageSelectionWidget extends StatelessWidget {
                   padding: EdgeInsets.only(top: 10.r),
                   child: GestureDetector(
                     onTap: () {
-                      createProfileController.uploadImageFirebaseStore(
-                          createProfileController.studentImagePath.value!);
-                      // createProfileController.studentImagePath.value = null;
+                      createProfileController.studentImagePath.value = null;
                     },
                     child: Container(
                       color: themeColorBlue,

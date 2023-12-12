@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -117,12 +120,43 @@ String? checkFieldDateIsValid(String? fieldContent) {
 
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+String timestampToDate(int timestamp) {
+  var date = DateTime.fromMillisecondsSinceEpoch(timestamp);
+  var formattedDate =
+      "${_twoDigits(date.day)}-${_twoDigits(date.month)}-${date.year}";
+  return formattedDate;
+}
 
-// class  {
-//   static String id = '';
-// }
-// class UserEmailandPasswordSaver{
-//   static String userEmail='';
-//   static String userPassword='';
-// }
-// const uuid = Uuid();
+String _twoDigits(int n) {
+  if (n >= 10) return "$n";
+  return "0$n";
+}
+
+const _chars = '1234567890';
+Random _rnd = Random();
+
+String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+    length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
+Future<String?> getUidFromEmail(String email) async {
+  try {
+    User? user =
+        (await FirebaseAuth.instance.fetchSignInMethodsForEmail(email)).isEmpty
+            ? null
+            : FirebaseAuth.instance.currentUser;
+
+    return user?.uid;
+  } catch (e) {
+    print('Error: $e');
+    return null;
+  }
+}
+
+String? uid;
+
+// Call this function when the user enters their email
+void getUserUid() async {
+  String email = '12@gmail.com'; // Replace with the entered email
+  uid = await getUidFromEmail(email);
+  print('UID: $uid');
+}

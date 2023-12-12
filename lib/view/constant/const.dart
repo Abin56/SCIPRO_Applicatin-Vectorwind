@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -14,4 +16,9 @@ void showToast({required String msg}) {
     textColor: Colors.white,
     fontSize: 16.0,
   );
+}
+
+printLog(String msg) {
+  return
+  log(msg);
 }

@@ -14,9 +14,11 @@ class TextFormFiledContainerWidget extends StatelessWidget {
  
   Function(String)? onChanged;
   Iterable<String>? autofillHints;
+  FocusNode? focusNode;
   String? Function(String?)? validator;
   Function()? onTap;
   TextInputType? keyboardType;
+  bool? enabled;
   TextFormFiledContainerWidget({
 
     required this.hintText,
@@ -29,6 +31,8 @@ class TextFormFiledContainerWidget extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.onTap,
+    this.focusNode,
+    this.enabled,
     super.key,
   });
 
@@ -46,6 +50,8 @@ class TextFormFiledContainerWidget extends StatelessWidget {
             height: 45,
             width: width,
             child: TextFormField(
+              enabled: enabled,
+            focusNode: focusNode,
               style: GoogleFonts.poppins(fontSize: 12),
               onChanged: onChanged,
               autofillHints: autofillHints,

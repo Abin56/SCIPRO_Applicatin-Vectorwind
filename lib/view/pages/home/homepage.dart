@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
 import 'package:scipro_application/view/pages/home/subscribed_button/subscribed_button.dart';
 import 'package:scipro_application/view/pages/recorded_course_plan/recorded%20couse%20or%20category/record_category.dart';
-import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_courses/record_course_list.dart';
 
 import '../../colors/colors.dart';
 import '../../fonts/google_poppins.dart';
@@ -53,29 +53,35 @@ class SciproHomePage extends StatelessWidget {
                         top: 30.h,
                       ),
                       child: GestureDetector(
-                          onTap: () {
-                            print("object");
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const RecordCourseCategoryList();
-                            }));
+                          onTap: () async {
+                            getUserUid();
+                            // String? uuid =
+                            //     await getUidFromEmail('abinjohn8089@gmail.com');
+                            // print("Getted UUID : ${uuid.toString()}");
+                            // print("object");
+                            // Navigator.push(context,
+                            //     MaterialPageRoute(builder: (context) {
+                            //   return const RecordCourseCategoryList();
+                            // }));
                           },
                           child: SubscribedButton(text: 'SUBSCRIBED COURSES'))),
                   Padding(
                     padding: EdgeInsets.only(top: 20.r, bottom: 20.r),
                     child: const CarouselSliderWidget(),
                   ),
-                   Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 10.r),
-                    child: PopularCourses(),
+                    child: const PopularCourses(),
                   ),
                   const RecordedCourses(),
-                  GestureDetector(onTap: (){
-                    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const RecordCategory()),
-  );
-                  },
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RecordCategory()),
+                      );
+                    },
                     child: Padding(
                       padding: EdgeInsets.only(top: 10.r, bottom: 10.r),
                       child: SubscribedButton(text: "EXPLORE COURSES"),

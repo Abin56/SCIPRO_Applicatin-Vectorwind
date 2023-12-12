@@ -3,6 +3,7 @@ import 'dart:convert';
 
 class StudentProfileCreationModel {
   final String uid;
+  final String studentid;
   final String name;
   final String email;
   final String imageUrl;
@@ -14,6 +15,7 @@ class StudentProfileCreationModel {
 
   StudentProfileCreationModel({
     required this.uid,
+    required this.studentid,
     required this.name,
     required this.email,
     required this.imageUrl,
@@ -26,6 +28,7 @@ class StudentProfileCreationModel {
 
   StudentProfileCreationModel copyWith({
     String? uid,
+    String? studentid,
     String? name,
     String? email,
     String? imageUrl,
@@ -37,6 +40,7 @@ class StudentProfileCreationModel {
   }) {
     return StudentProfileCreationModel(
       uid: uid ?? this.uid,
+      studentid: studentid ?? this.studentid,
       name: name ?? this.name,
       email: email ?? this.email,
       imageUrl: imageUrl ?? this.imageUrl,
@@ -51,6 +55,7 @@ class StudentProfileCreationModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uid': uid,
+      'studentid': studentid,
       'name': name,
       'email': email,
       'imageUrl': imageUrl,
@@ -65,6 +70,7 @@ class StudentProfileCreationModel {
   factory StudentProfileCreationModel.fromMap(Map<String, dynamic> map) {
     return StudentProfileCreationModel(
       uid: map['uid'] as String,
+      studentid: map['studentid'] as String,
       name: map['name'] as String,
       email: map['email'] as String,
       imageUrl: map['imageUrl'] as String,
@@ -84,34 +90,37 @@ class StudentProfileCreationModel {
 
   @override
   String toString() {
-    return 'StudentProfileCreationModel(uid: $uid, name: $name, email: $email, imageUrl: $imageUrl, address: $address, phoneno: $phoneno, district: $district, state: $state, pincode: $pincode)';
+    return 'StudentProfileCreationModel(uid: $uid, studentid: $studentid, name: $name, email: $email, imageUrl: $imageUrl, address: $address, phoneno: $phoneno, district: $district, state: $state, pincode: $pincode)';
   }
 
   @override
   bool operator ==(covariant StudentProfileCreationModel other) {
     if (identical(this, other)) return true;
-
-    return other.uid == uid &&
-        other.name == name &&
-        other.email == email &&
-        other.imageUrl == imageUrl &&
-        other.address == address &&
-        other.phoneno == phoneno &&
-        other.district == district &&
-        other.state == state &&
-        other.pincode == pincode;
+  
+    return 
+      other.uid == uid &&
+      other.studentid == studentid &&
+      other.name == name &&
+      other.email == email &&
+      other.imageUrl == imageUrl &&
+      other.address == address &&
+      other.phoneno == phoneno &&
+      other.district == district &&
+      other.state == state &&
+      other.pincode == pincode;
   }
 
   @override
   int get hashCode {
     return uid.hashCode ^
-        name.hashCode ^
-        email.hashCode ^
-        imageUrl.hashCode ^
-        address.hashCode ^
-        phoneno.hashCode ^
-        district.hashCode ^
-        state.hashCode ^
-        pincode.hashCode;
+      studentid.hashCode ^
+      name.hashCode ^
+      email.hashCode ^
+      imageUrl.hashCode ^
+      address.hashCode ^
+      phoneno.hashCode ^
+      district.hashCode ^
+      state.hashCode ^
+      pincode.hashCode;
   }
 }
