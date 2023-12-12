@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>744404648297-a3po5dfj43l75odd8kovkrec9464491l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.744404648297-a3po5dfj43l75odd8kovkrec9464491l</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCQWXHvsiNqrgg8noZcSrqaSHmVC_6Yh6Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>744404648297</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.sciproApplication.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>scipro-vectorwind-97415</string>
+	<key>STORAGE_BUCKET</key>
+	<string>scipro-vectorwind-97415.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:744404648297:ios:3d4370d32b07938c9b7df8</string>
+</dict>
+</plist>

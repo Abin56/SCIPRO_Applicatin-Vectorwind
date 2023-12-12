@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:744404648297:android:a7c1f784c4306dc19b7df8",
+        "mobilesdk_app_id": "1:744404648297:android:20a5c320e7c8cb729b7df8",
         "android_client_info": {
-          "package_name": "com.scipro.in"
+          "package_name": "com.vectorwind.in"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "744404648297-bkjd7ajmnjt8tvi3nl3di7143sn2rmgj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA-yvkPhq0Jx2WH8657S7n_efC13Oxhvbo"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744404648297-bkjd7ajmnjt8tvi3nl3di7143sn2rmgj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
