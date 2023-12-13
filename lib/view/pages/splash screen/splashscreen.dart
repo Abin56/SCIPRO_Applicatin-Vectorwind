@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -25,6 +28,10 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+    final authController = Get.put(AuthController());
+    if (authController.user.value != null) {
+      Get.to(const SciproHomePage());
+    }
 
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));

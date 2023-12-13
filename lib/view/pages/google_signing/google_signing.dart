@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:scipro_application/view/pages/on_boardingScreen/introduction_screen.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
 
 class GoogleSigninScreen extends StatelessWidget {
   const GoogleSigninScreen({super.key});
@@ -50,8 +51,13 @@ class GoogleSigninScreen extends StatelessWidget {
                   child: ElevatedButton(
                       style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(cWhite)),
-                      onPressed: () {
-                        Get.to(const OnBoardingPage());
+                      onPressed: () async {
+                        await Get.find<AuthController>()
+                            .signInWithGoogle()
+                            .then((value) {
+                          Get.to(const SciproHomePage());
+                        });
+                        //Get.to(const OnBoardingPage());
                       },
                       child: Padding(
                         padding: EdgeInsets.all(10.r),
