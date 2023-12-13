@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:scipro_application/view/colors/colors.dart';
-import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
-import 'package:scipro_application/view/pages/home/homepage.dart';
+import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -18,9 +17,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const SciproHomePage()),
-    );
+    Get.offAll(const GoogleSigninScreen());
   }
 
   Widget _buildFullscreenImage() {
@@ -102,7 +99,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(CreateProfile());
+                    Get.offAll(const GoogleSigninScreen());
                   },
                   child: Text(
                     'Launch App',

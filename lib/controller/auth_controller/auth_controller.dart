@@ -11,9 +11,9 @@ class AuthController extends GetxController {
   Rx<User?> user = Rx<User?>(null);
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    user.bindStream(_auth.authStateChanges());
+    await checkSignIn();
   }
 
   Future<User?> signInWithGoogle() async {
@@ -31,11 +31,16 @@ class AuthController extends GetxController {
       );
 
       await _auth.signInWithCredential(credential);
+
       return _auth.currentUser;
     } catch (e) {
       log("Error during Google Sign In: $e");
       return null;
     }
+  }
+
+  Future<void> checkSignIn() async {
+    user.value = FirebaseAuth.instance.currentUser;
   }
 
   Future<void> signOut() async {

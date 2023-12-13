@@ -7,6 +7,9 @@ import 'package:scipro_application/controller/auth_controller/auth_controller.da
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
+import 'package:scipro_application/view/pages/on_boardingScreen/introduction_screen.dart';
+
+import '../../../utils/shared_preference_class.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,10 +31,6 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    final authController = Get.put(AuthController());
-    if (authController.user.value != null) {
-      Get.to(const SciproHomePage());
-    }
 
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));
@@ -58,13 +57,6 @@ class _SplashScreenState extends State<SplashScreen>
         _containerOpacity = 1;
       });
     });
-
-    Timer(const Duration(seconds: 4), () {
-      setState(() {
-        Navigator.pushReplacement(
-            context, PageTransition(const GoogleSigninScreen()));
-      });
-    });
   }
 
   @override
@@ -77,6 +69,21 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      final authController = Get.put(AuthController());
+      await SharedPreferenceClass.initSp();
+      if (SharedPreferenceClass.getBool(
+              SharedPreferenceClass.isOnBoardingScreenViewed) &&
+          authController.user.value != null) {
+        Get.offAll(const SciproHomePage());
+      } else if (!SharedPreferenceClass.getBool(
+          SharedPreferenceClass.isOnBoardingScreenViewed)) {
+        Get.offAll(const OnBoardingPage());
+      } else {
+        Get.offAll(const GoogleSigninScreen());
+      }
+    });
 
     return Scaffold(
       backgroundColor: cWhite,

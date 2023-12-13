@@ -52,11 +52,13 @@ class GoogleSigninScreen extends StatelessWidget {
                       style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(cWhite)),
                       onPressed: () async {
-                        await Get.find<AuthController>()
-                            .signInWithGoogle()
-                            .then((value) {
+                        await Get.find<AuthController>().signInWithGoogle();
+                        if (Get.find<AuthController>().user.value != null) {
                           Get.to(const SciproHomePage());
-                        });
+                        } else {
+                          Get.to(const GoogleSigninScreen());
+                        }
+
                         //Get.to(const OnBoardingPage());
                       },
                       child: Padding(
