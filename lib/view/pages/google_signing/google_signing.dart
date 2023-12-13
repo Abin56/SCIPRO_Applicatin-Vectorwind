@@ -53,6 +53,7 @@ class GoogleSigninScreen extends StatelessWidget {
                           backgroundColor: MaterialStatePropertyAll(cWhite)),
                       onPressed: () async {
                         await Get.find<AuthController>().signInWithGoogle();
+                        await Get.find<AuthController>().checkSignIn();
                         if (Get.find<AuthController>().user.value != null) {
                           Get.to(const SciproHomePage());
                         } else {
