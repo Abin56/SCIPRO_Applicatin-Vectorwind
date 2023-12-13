@@ -55,9 +55,9 @@ class GoogleSigninScreen extends StatelessWidget {
                         await Get.find<AuthController>().signInWithGoogle();
                         await Get.find<AuthController>().checkSignIn();
                         if (Get.find<AuthController>().user.value != null) {
-                          Get.to(const SciproHomePage());
+                          Get.offAll(() => const SciproHomePage());
                         } else {
-                          Get.to(const GoogleSigninScreen());
+                          Get.offAll(() => const GoogleSigninScreen());
                         }
 
                         //Get.to(const OnBoardingPage());

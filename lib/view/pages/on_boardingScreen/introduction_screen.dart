@@ -17,7 +17,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Get.offAll(const GoogleSigninScreen());
+    Get.offAll(()=>const GoogleSigninScreen());
   }
 
   Widget _buildFullscreenImage() {
@@ -99,7 +99,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    Get.offAll(const GoogleSigninScreen());
+                    Get.offAll(()=>const GoogleSigninScreen());
                   },
                   child: Text(
                     'Launch App',

@@ -76,12 +76,12 @@ class _SplashScreenState extends State<SplashScreen>
       if (SharedPreferenceClass.getBool(
               SharedPreferenceClass.isOnBoardingScreenViewed) &&
           authController.user.value != null) {
-        Get.offAll(const SciproHomePage());
+        Get.offAll(() => const SciproHomePage());
       } else if (!SharedPreferenceClass.getBool(
           SharedPreferenceClass.isOnBoardingScreenViewed)) {
-        Get.offAll(const OnBoardingPage());
+        Get.offAll(() => const OnBoardingPage());
       } else {
-        Get.offAll(const GoogleSigninScreen());
+        Get.offAll(() => const GoogleSigninScreen());
       }
     });
 
