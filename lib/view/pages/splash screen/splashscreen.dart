@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
+import 'package:scipro_application/controller/push_notification/push_notification.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
 import 'package:scipro_application/view/pages/on_boardingScreen/introduction_screen.dart';
@@ -8,10 +9,14 @@ import 'package:scipro_application/view/pages/on_boardingScreen/introduction_scr
 import '../../../utils/shared_preference_class.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  final PushNotificationController pushNotificationController =
+      Get.put(PushNotificationController());
+  SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+ 
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final authController = Get.put(AuthController());
       await SharedPreferenceClass.initSp();
@@ -26,7 +31,6 @@ class SplashScreen extends StatelessWidget {
         Get.offAll(() => const GoogleSigninScreen());
       }
     });
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
