@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,11 +43,41 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAQE4bX4D7BDXlbLmkGH8ud-vZVugyqqzo',
+    appId: '1:744404648297:web:ce408dc2c5342e239b7df8',
+    messagingSenderId: '744404648297',
+    projectId: 'scipro-vectorwind-97415',
+    authDomain: 'scipro-vectorwind-97415.firebaseapp.com',
+    storageBucket: 'scipro-vectorwind-97415.appspot.com',
+    measurementId: 'G-R59M6G420S',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA-yvkPhq0Jx2WH8657S7n_efC13Oxhvbo',
-    appId: '1:744404648297:android:a7c1f784c4306dc19b7df8',
+    appId: '1:744404648297:android:20a5c320e7c8cb729b7df8',
     messagingSenderId: '744404648297',
     projectId: 'scipro-vectorwind-97415',
     storageBucket: 'scipro-vectorwind-97415.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCQWXHvsiNqrgg8noZcSrqaSHmVC_6Yh6Q',
+    appId: '1:744404648297:ios:f9f2e23e94ba09ff9b7df8',
+    messagingSenderId: '744404648297',
+    projectId: 'scipro-vectorwind-97415',
+    storageBucket: 'scipro-vectorwind-97415.appspot.com',
+    iosClientId: '744404648297-ljhekqahrq8i5o55bvnj6cfsc0q3fst1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.sciproApplication',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCQWXHvsiNqrgg8noZcSrqaSHmVC_6Yh6Q',
+    appId: '1:744404648297:ios:3d4370d32b07938c9b7df8',
+    messagingSenderId: '744404648297',
+    projectId: 'scipro-vectorwind-97415',
+    storageBucket: 'scipro-vectorwind-97415.appspot.com',
+    iosClientId: '744404648297-a3po5dfj43l75odd8kovkrec9464491l.apps.googleusercontent.com',
+    iosBundleId: 'com.example.sciproApplication.RunnerTests',
   );
 }

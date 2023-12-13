@@ -14,14 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "744404648297-3f2qp0ciq8bfut9lg0ojc4et6umra1s3.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.vectorwind.in",
-            "certificate_hash": "d0c81238dbf635bbec856572c062f32204b5e635"
-          }
-        },
-        {
           "client_id": "744404648297-bkjd7ajmnjt8tvi3nl3di7143sn2rmgj.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -37,13 +29,6 @@
             {
               "client_id": "744404648297-bkjd7ajmnjt8tvi3nl3di7143sn2rmgj.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "744404648297-a3po5dfj43l75odd8kovkrec9464491l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.sciproApplication.RunnerTests"
-              }
             }
           ]
         }

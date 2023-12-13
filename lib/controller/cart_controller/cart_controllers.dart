@@ -1,5 +1,4 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -90,7 +89,7 @@ class CartController extends GetxController {
   Future<void> openRazorPay(Razorpay razorpay) async {
     //
     try {
-      double paymentPrice = totalPrice.toInt() * 100;
+      double paymentPrice = 1 * 100;
       //
       final functions = FirebaseFunctions.instance;
 
@@ -109,10 +108,10 @@ class CartController extends GetxController {
       }
 
       var options = {
-        // 'key': 'rzp_live_WkqZiZtSI6LGQ9',
-        'key': 'rzp_test_4H63BqbBLQlmNQ',
+        'key': 'rzp_live_WkqZiZtSI6LGQ9',
+        // 'key': 'rzp_test_4H63BqbBLQlmNQ',
         //amount will be multiple of 100
-        // 'order_id': responseData["id"],
+        'order_id': responseData["id"],
         'amount': paymentPrice.toString(), //so its pay 500
         'name': 'VECTORWIND-TEC',
         'description': 'SciPro',
@@ -133,7 +132,4 @@ class CartController extends GetxController {
     final data = dataserver.collection('SubscribedStudents').doc(uid);
     await data.set(userselectCourseDetails!.toMap());
   }
-
-
-
 }
