@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -46,5 +47,7 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     await _auth.signOut();
     await _googleSignIn.signOut();
+    Get.offAll(() => const GoogleSigninScreen());
+    Get.snackbar('Logout', 'Logout Sucessfully');
   }
 }
