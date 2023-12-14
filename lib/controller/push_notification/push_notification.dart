@@ -8,7 +8,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:scipro_application/controller/push_notification/notification_service.dart';
-import 'package:scipro_application/view/constant/constant.validate.dart';
 
 class PushNotificationController extends GetxController {
   @override
@@ -58,7 +57,7 @@ class PushNotificationController extends GetxController {
   void saveDeviceTokenToFireBase(String deviceToken) async {
     await FirebaseFirestore.instance
         .collection("UserDeviceToken")
-        .doc(currentuserUID)
+        .doc(deviceToken)
         .set({'deviceToken': deviceToken}).then(
             (value) => log('Device Token Saved To FIREBASE'));
   }

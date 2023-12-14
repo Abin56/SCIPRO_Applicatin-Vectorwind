@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/create_profile/create_profile.dart';
 import 'package:scipro_application/view/colors/colors.dart';
+import 'package:scipro_application/view/constant/const.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
@@ -89,7 +90,10 @@ class CreateProfile extends StatelessWidget {
                   keyboardType: TextInputType.number,
                 ),
                 Obx(() => createProfileController.pageLoading.value == true
-                    ? const LoadingLottieWidget(height: 200,width: double.infinity,)
+                    ? const LoadingLottieWidget(
+                        height: 200,
+                        width: double.infinity,
+                      )
                     : Padding(
                         padding: EdgeInsets.only(top: 20.r),
                         child: (ButtonContainerWidget(
@@ -99,26 +103,34 @@ class CreateProfile extends StatelessWidget {
                           fontSize: 19.sp,
                           onTap: () {
                             if (formKey.currentState!.validate()) {
-                              createProfileController.pageLoading.value = true;
+                              if (createProfileController
+                                      .studentImagePath.value ==
+                                  null) {
+                                return showToast(
+                                    msg: "Please upload your image");
+                              } else {
+                                createProfileController.pageLoading.value =
+                                    true;
 
-                              createProfileController
-                                  .uploadImageFirebaseStore(
-                                      createProfileController
-                                          .studentImagePath.value!)
-                                  .then((value) {
                                 createProfileController
-                                    .addStudentDetailsToServer()
+                                    .uploadImageFirebaseStore(
+                                        createProfileController
+                                            .studentImagePath.value!)
                                     .then((value) {
-                                  createProfileController.pageLoading.value =
-                                      false;
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SciproHomePage()),
-                                  );
+                                  createProfileController
+                                      .addStudentDetailsToServer()
+                                      .then((value) {
+                                    createProfileController.pageLoading.value =
+                                        false;
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SciproHomePage()),
+                                    );
+                                  });
                                 });
-                              });
+                              }
                             }
                           },
                         )),

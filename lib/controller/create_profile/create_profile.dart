@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/model/create_profile_student/create_profile_model.dart';
 import 'package:scipro_application/view/constant/const.dart';
-import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/core/core.dart';
 
 class CreateProfileController extends GetxController {
@@ -44,14 +43,14 @@ class CreateProfileController extends GetxController {
   }
 
   Future<void> addStudentDetailsToServer() async {
-    final studentID = getRandomString(10).toString();
+    final studentID = dataserverUserAuth!.uid;
     final server = dataserver.collection("StudentProfileCollection");
     final studentDetail = StudentProfileCreationModel(
         studentid: studentID,
-        uid: studentID,
+        uid: dataserverUserAuth!.uid,
         name: studentNameController.text.trim(),
         imageUrl: downloadURL,
-        email: 'abinjohn8089@gmail.com',
+        email: dataserverUserAuth!.email!,
         address: addressController.text.trim(),
         phoneno: phonenoController.text.trim(),
         district: districtController.text.trim(),
