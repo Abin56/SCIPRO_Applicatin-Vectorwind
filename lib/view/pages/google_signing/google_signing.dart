@@ -5,6 +5,7 @@ import 'package:scipro_application/controller/auth_controller/auth_controller.da
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
 
 import '../../../utils/shared_preference_class.dart';
 
@@ -60,8 +61,15 @@ class GoogleSigninScreen extends StatelessWidget {
                       onPressed: () async {
                         await Get.find<AuthController>().signInWithGoogle();
                         await Get.find<AuthController>().checkSignIn();
+                        final isUserCollectionExist =
+                            await Get.find<AuthController>()
+                                .isUserCollectionExist();
                         if (Get.find<AuthController>().user.value != null) {
-                          Get.offAll(() => CreateProfile());
+                          if (isUserCollectionExist) {
+                            Get.offAll(() => const SciproHomePage());
+                          } else {
+                            Get.offAll(() => CreateProfile());
+                          }
                         } else {
                           Get.offAll(() => const GoogleSigninScreen());
                         }
