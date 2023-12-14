@@ -152,6 +152,7 @@ Future<String?> getUidFromEmail(String email) async {
   }
 }
 
+final String  currentuserUID = FirebaseAuth.instance.currentUser!.uid;
 String? uid;
 
 // Call this function when the user enters their email

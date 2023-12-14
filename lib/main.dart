@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          home: const SplashScreen(),
+          home: SplashScreen(),
         );
       },
     );
