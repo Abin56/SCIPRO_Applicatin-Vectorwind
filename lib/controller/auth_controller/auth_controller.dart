@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,6 +9,7 @@ import 'package:scipro_application/view/pages/google_signing/google_signing.dart
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final dataserver = FirebaseFirestore.instance;
 
   Rx<User?> user = Rx<User?>(null);
 
@@ -42,6 +44,22 @@ class AuthController extends GetxController {
 
   Future<void> checkSignIn() async {
     user.value = FirebaseAuth.instance.currentUser;
+  }
+
+  Future<bool> isUserCollectionExist() async {
+    try {
+      final server = dataserver.collection("StudentProfileCollection");
+
+      final userId = user.value;
+      if (userId != null) {
+        final userData = await server.doc(userId.uid).get();
+        return userData.exists;
+      }
+      return false;
+    } catch (e) {
+      log(e.toString(), name: 'AuthController - isUserCollectionExist');
+      return false;
+    }
   }
 
   Future<void> signOut() async {

@@ -4,13 +4,19 @@ import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:scipro_application/view/pages/home/homepage.dart';
+import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
+
+import '../../../utils/shared_preference_class.dart';
 
 class GoogleSigninScreen extends StatelessWidget {
   const GoogleSigninScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      SharedPreferenceClass.setBool(
+          SharedPreferenceClass.isOnBoardingScreenViewed, true);
+    });
     return Scaffold(
       backgroundColor: cWhite,
       body: SafeArea(
@@ -55,7 +61,7 @@ class GoogleSigninScreen extends StatelessWidget {
                         await Get.find<AuthController>().signInWithGoogle();
                         await Get.find<AuthController>().checkSignIn();
                         if (Get.find<AuthController>().user.value != null) {
-                          Get.offAll(() => const SciproHomePage());
+                          Get.offAll(() => CreateProfile());
                         } else {
                           Get.offAll(() => const GoogleSigninScreen());
                         }

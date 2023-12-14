@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scipro_application/utils/shared_preference_class.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
 import 'package:scipro_application/view/pages/home/subscribed_button/subscribed_button.dart';
@@ -17,11 +16,6 @@ class SciproHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      SharedPreferenceClass.setBool(
-          SharedPreferenceClass.isOnBoardingScreenViewed, true);
-    });
-
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
 import 'package:scipro_application/controller/push_notification/push_notification.dart';
+import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
 import 'package:scipro_application/view/pages/on_boardingScreen/introduction_screen.dart';
@@ -15,20 +16,28 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
- 
-
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final authController = Get.put(AuthController());
       await SharedPreferenceClass.initSp();
-      if (SharedPreferenceClass.getBool(
-              SharedPreferenceClass.isOnBoardingScreenViewed) &&
-          authController.user.value != null) {
-        Get.offAll(() => const SciproHomePage());
-      } else if (!SharedPreferenceClass.getBool(
-          SharedPreferenceClass.isOnBoardingScreenViewed)) {
-        Get.offAll(() => const OnBoardingPage());
+
+      final isUserCollectionExist =
+          await authController.isUserCollectionExist();
+      final isOnBoardingScreenViewed = SharedPreferenceClass.getBool(
+          SharedPreferenceClass.isOnBoardingScreenViewed);
+      final userData = authController.user.value;
+
+      if (userData != null) {
+        if (isUserCollectionExist) {
+          Get.to(const SciproHomePage());
+        } else {
+          Get.to(CreateProfile());
+        }
       } else {
-        Get.offAll(() => const GoogleSigninScreen());
+        if (isOnBoardingScreenViewed) {
+          Get.to(const GoogleSigninScreen());
+        } else {
+          Get.to(const OnBoardingPage());
+        }
       }
     });
     return Scaffold(
@@ -38,5 +47,4 @@ class SplashScreen extends StatelessWidget {
       ),
     );
   }
-
 }
