@@ -11,16 +11,6 @@ class UserDetailsFecController extends GetxController {
   RxString currentUserUid = ''.obs;
   RxString currentemail = ''.obs;
 
-  @override
-  void onInit() {
-    currentuid.value = FirebaseAuth.instance.currentUser!.uid;
-    currentemail.value = FirebaseAuth.instance.currentUser!.uid;
-    fectingStudentDetails();
-    super.onInit();
-    log("USER UID :: ${currentUserUid.value}");
-    log("USER E MAil :: ${currentUserUid.value}");
-  }
-
   Future<void> fectingStudentDetails() async {
     final data = await dataserver
         .collection('StudentProfileCollection')
@@ -29,9 +19,15 @@ class UserDetailsFecController extends GetxController {
 
     studentName.value = await data.data()?['name'];
     phoneNumber.value = await data.data()?['phoneno'];
+  }
 
-    // log("Student Details : ${StudentDetails.studentname}");
-    // // log("From GETX : $FirebaseAuth.instance.currentUser!.uid");
-    // log("Student Details : ${StudentDetails.phoneNumber}");
+  Future<void> currentStudentDetails() async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    final email = FirebaseAuth.instance.currentUser!.email!;
+
+    currentUserUid.value = uid;
+    currentemail.value = email;
+    log("USER UID :: ${currentUserUid.value}");
+    log("USER E MAil :: ${currentemail.value}");
   }
 }

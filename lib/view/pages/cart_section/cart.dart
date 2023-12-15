@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/controller/cart_controller/cart_controllers.dart';
 import 'package:scipro_application/model/afterpayment_model/after_payment_model.dart';
 import 'package:scipro_application/view/colors/colors.dart';
@@ -398,10 +399,24 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
                                               cartController
                                                       .userselectCourseDetails =
                                                   UserAfterPaymentModel(
+                                                      deactive: false,
+                                                      phonenumber: Get.find<
+                                                              UserDetailsFecController>()
+                                                          .phoneNumber
+                                                          .value,
+                                                      studentname:
+                                                          Get.find<UserDetailsFecController>()
+                                                              .studentName
+                                                              .value,
+                                                      emailid: Get.find<UserDetailsFecController>()
+                                                          .currentemail
+                                                          .value,
                                                       coursecategoryid:
                                                           widget.categoryid,
-                                                      uid:
-                                                          'abinjohn8089@gmail.com',
+                                                      uid: Get.find<
+                                                              UserDetailsFecController>()
+                                                          .currentUserUid
+                                                          .value,
                                                       coursefee: widget
                                                           .courseprice
                                                           .toInt(),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 const sw50 = SizedBox(
   width: 50,
@@ -152,7 +153,7 @@ Future<String?> getUidFromEmail(String email) async {
   }
 }
 
-final String  currentuserUID = FirebaseAuth.instance.currentUser!.uid;
+final String currentuserUID = FirebaseAuth.instance.currentUser!.uid;
 String? uid;
 
 // Call this function when the user enters their email
@@ -160,4 +161,9 @@ void getUserUid() async {
   String email = '12@gmail.com'; // Replace with the entered email
   uid = await getUidFromEmail(email);
   print('UID: $uid');
+}
+
+dateConveter(DateTime date) {
+  String formattedDate = DateFormat('dd-MM-yyyy').format(date);
+  return formattedDate;
 }

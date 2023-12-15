@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 
 class AuthController extends GetxController {
@@ -34,7 +35,10 @@ class AuthController extends GetxController {
       );
 
       await _auth.signInWithCredential(credential);
-
+      Get.find<UserDetailsFecController>().currentUserUid.value =
+          FirebaseAuth.instance.currentUser!.uid;
+      Get.find<UserDetailsFecController>().currentemail.value =
+          FirebaseAuth.instance.currentUser!.email!;
       return _auth.currentUser;
     } catch (e) {
       log("Error during Google Sign In: $e");

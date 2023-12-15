@@ -1,11 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/model/afterpayment_model/after_payment_model.dart';
+import 'package:scipro_application/model/afterpayment_model/user_details_model.dart';
+import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/const.dart';
 import 'package:scipro_application/view/core/core.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
+import 'package:uuid/uuid.dart';
 
 class CartController extends GetxController {
   RxBool starttyping = false.obs;
@@ -108,10 +114,10 @@ class CartController extends GetxController {
       }
 
       var options = {
-        'key': 'rzp_live_WkqZiZtSI6LGQ9',
-        // 'key': 'rzp_test_4H63BqbBLQlmNQ',
+        // 'key': 'rzp_live_WkqZiZtSI6LGQ9',
+        'key': 'rzp_test_4H63BqbBLQlmNQ',
         //amount will be multiple of 100
-        'order_id': responseData["id"],
+        // 'order_id': responseData["id"],
         'amount': paymentPrice.toString(), //so its pay 500
         'name': 'VECTORWIND-TEC',
         'description': 'SciPro',
@@ -128,8 +134,38 @@ class CartController extends GetxController {
   }
 
   Future<void> userAfterPaymentSuccess() async {
-    String uid = 'abinjohn8089@gmail.com';
-    final data = dataserver.collection('SubscribedStudents').doc(uid);
-    await data.set(userselectCourseDetails!.toMap());
+    final uuid = const Uuid().v1();
+    String uid = Get.find<UserDetailsFecController>().currentUserUid.value;
+    final userdetails = UserDetailsModel(
+        uid: uid,
+        email: Get.find<UserDetailsFecController>().currentemail.value,
+        studentname: Get.find<UserDetailsFecController>().studentName.value,
+        phonenumber: Get.find<UserDetailsFecController>().phoneNumber.value,
+        joindate: DateTime.now().toString());
+
+    await dataserver
+        .collection('SubscribedStudents')
+        .doc(uid)
+        .set(userdetails.toMap())
+        .then((value) async {
+      await dataserver
+          .collection('SubscribedStudents')
+          .doc(uid)
+          .collection("PurchasedCourses")
+          .doc(uuid)
+          .set(userselectCourseDetails!.toMap())
+          .then((value) async {
+        await dataserver
+            .collection('SubscribedStudents')
+            .doc(uid)
+            .collection("PurchasedCourses")
+            .doc(uuid)
+            .set({'docid': uuid}, SetOptions(merge: true)).then((value) {
+          Get.off(SciproHomePage());
+          return Get.snackbar("Message", "Payement Successfull",
+              backgroundColor: cWhite);
+        });
+      });
+    });
   }
 }
