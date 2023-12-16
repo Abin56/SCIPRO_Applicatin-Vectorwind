@@ -15,7 +15,7 @@ import 'package:uuid/uuid.dart';
 
 class CartController extends GetxController {
   RxBool starttyping = false.obs;
-
+  RxInt currentInvoiceNumber = 0.obs;
   RxBool coupenboxvalue = false.obs;
   RxInt gstpercentagevalue = 0.obs;
   RxDouble subtotal = 0.0.obs;
@@ -50,7 +50,7 @@ class CartController extends GetxController {
   Future<void> getAutoFillCoupenCode() async {
     final data = await dataserver
         .collection('CoupenManagement')
-        .doc('abinjohn8089@gmail.com')
+        .doc(Get.find<UserDetailsFecController>().currentUserUid.value)
         .get();
     if (data.data() == null) {
       coupenUSER.value = false;
@@ -142,30 +142,41 @@ class CartController extends GetxController {
         studentname: Get.find<UserDetailsFecController>().studentName.value,
         phonenumber: Get.find<UserDetailsFecController>().phoneNumber.value,
         joindate: DateTime.now().toString());
-
-    await dataserver
-        .collection('SubscribedStudents')
-        .doc(uid)
-        .set(userdetails.toMap())
-        .then((value) async {
+    incrementInvoiceNumber().then((value) async {
       await dataserver
           .collection('SubscribedStudents')
           .doc(uid)
-          .collection("PurchasedCourses")
-          .doc(uuid)
-          .set(userselectCourseDetails!.toMap())
+          .set(userdetails.toMap())
           .then((value) async {
         await dataserver
             .collection('SubscribedStudents')
             .doc(uid)
             .collection("PurchasedCourses")
             .doc(uuid)
-            .set({'docid': uuid}, SetOptions(merge: true)).then((value) {
-          Get.off(SciproHomePage());
-          return Get.snackbar("Message", "Payement Successfull",
-              backgroundColor: cWhite);
+            .set(userselectCourseDetails!.toMap())
+            .then((value) async {
+          await dataserver
+              .collection('SubscribedStudents')
+              .doc(uid)
+              .collection("PurchasedCourses")
+              .doc(uuid)
+              .set({'docid': uuid}, SetOptions(merge: true)).then((value) {
+            Get.off(SciproHomePage());
+            return Get.snackbar("Message", "Payement Successfull",
+                backgroundColor: cWhite);
+          });
         });
       });
     });
+  }
+
+  Future<void> incrementInvoiceNumber() async {
+    final data = await dataserver.collection("Invoice_number").get();
+    int intdata = await data.docs[0].data()['number'];
+    currentInvoiceNumber.value = intdata;
+    await dataserver
+        .collection("Invoice_number")
+        .doc('number')
+        .update({'number': currentInvoiceNumber.value + 1});
   }
 }

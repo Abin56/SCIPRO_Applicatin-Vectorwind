@@ -396,38 +396,38 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
                                               DateTime exDate = DateTime.now()
                                                   .add(Duration(
                                                       days: widget.duration));
-                                              cartController
-                                                      .userselectCourseDetails =
-                                                  UserAfterPaymentModel(
-                                                      deactive: false,
-                                                      phonenumber: Get.find<
-                                                              UserDetailsFecController>()
+                                              cartController.userselectCourseDetails = UserAfterPaymentModel(
+                                                  invoicenumber: cartController
+                                                      .currentInvoiceNumber
+                                                      .value,
+                                                  deactive: false,
+                                                  phonenumber:
+                                                      Get.find<UserDetailsFecController>()
                                                           .phoneNumber
                                                           .value,
-                                                      studentname:
-                                                          Get.find<UserDetailsFecController>()
-                                                              .studentName
-                                                              .value,
-                                                      emailid: Get.find<UserDetailsFecController>()
+                                                  studentname:
+                                                      Get.find<UserDetailsFecController>()
+                                                          .studentName
+                                                          .value,
+                                                  emailid:
+                                                      Get.find<UserDetailsFecController>()
                                                           .currentemail
                                                           .value,
-                                                      coursecategoryid:
-                                                          widget.categoryid,
-                                                      uid: Get.find<
-                                                              UserDetailsFecController>()
+                                                  coursecategoryid:
+                                                      widget.categoryid,
+                                                  uid:
+                                                      Get.find<UserDetailsFecController>()
                                                           .currentUserUid
                                                           .value,
-                                                      coursefee: widget
-                                                          .courseprice
-                                                          .toInt(),
-                                                      coursename: widget.course,
-                                                      courseid: widget.courseID,
-                                                      duration: widget.duration,
-                                                      expirydate:
-                                                          exDate.toString(),
-                                                      joindate: DateTime.now()
-                                                          .toString(),
-                                                      olduser: true);
+                                                  coursefee: cartController
+                                                      .totalPrice.value,
+                                                  coursename: widget.course,
+                                                  courseid: widget.courseID,
+                                                  duration: widget.duration,
+                                                  expirydate: exDate.toString(),
+                                                  joindate:
+                                                      DateTime.now().toString(),
+                                                  olduser: true);
 
                                               if (cartController
                                                       .userselectCourseDetails ==

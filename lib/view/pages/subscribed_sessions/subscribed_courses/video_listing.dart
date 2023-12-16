@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:scipro_application/view/pages/subscribed_sessions/video_player/video_player.dart';
+import 'package:scipro_application/view/pages/recorded_course_plan/videoList/recorded_video_list.dart';
 
 class VideoListingOfCourses extends StatelessWidget {
   final String courseName;
@@ -80,8 +80,15 @@ class VideoListingOfCourses extends StatelessWidget {
                       return ListView.separated(
                           itemBuilder: (BuildContext context, int index) {
                             final data = snaps.data!.docs[index];
-                            return VideoListingContainerWidget(
-                                text: data['folderName'], text1: 'Folder');
+                            return GestureDetector(
+                              onTap: () => Get.to(() => RecordedVideoList(
+                                  recCatID: categoryID,
+                                  courseID: courseID,
+                                  folderID: data['id'],
+                                  folderName: data['folderName'])),
+                              child: VideoListingContainerWidget(
+                                  text: data['folderName'], text1: 'Folder'),
+                            );
                           },
                           separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox();
@@ -114,47 +121,42 @@ class VideoListingContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(8.0.r),
-      child: GestureDetector(
-        onTap: () {
-          Get.to(() => VideoPlayerScreen());
-        },
-        child: Container(
-          height: 80.h,
-          width: 380.w,
-          decoration: BoxDecoration(
-              color: cWhite,
-              borderRadius: BorderRadius.circular(10.r),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(0.r, 4.r),
-                    blurRadius: 8.r,
-                    spreadRadius: 2.r),
-              ]),
-          child: Row(children: [
-            Container(
-              width: 100.w,
-              color: cBlue,
+      child: Container(
+        height: 80.h,
+        width: 380.w,
+        decoration: BoxDecoration(
+            color: cWhite,
+            borderRadius: BorderRadius.circular(10.r),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0.r, 4.r),
+                  blurRadius: 8.r,
+                  spreadRadius: 2.r),
+            ]),
+        child: Row(children: [
+          Container(
+            width: 100.w,
+            color: cBlue,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 8.0.r, left: 25.r),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GooglePoppinsWidgets(
+                  text: text,
+                  fontsize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 01.r),
+                  child: GooglePoppinsWidgets(text: text1, fontsize: 12.sp),
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 8.0.r, left: 25.r),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GooglePoppinsWidgets(
-                    text: text,
-                    fontsize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 01.r),
-                    child: GooglePoppinsWidgets(text: text1, fontsize: 12.sp),
-                  ),
-                ],
-              ),
-            )
-          ]),
-        ),
+          )
+        ]),
       ),
     );
   }

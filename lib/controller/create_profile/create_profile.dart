@@ -48,7 +48,9 @@ class CreateProfileController extends GetxController {
   Future<void> addStudentDetailsToServer() async {
     final studentID = userDetailsFecController.currentUserUid.value;
     final server = dataserver.collection("StudentProfileCollection");
+    
     final studentDetail = StudentProfileCreationModel(
+        joindate: DateTime.now().toString(),
         studentid: studentID,
         uid: studentID,
         name: studentNameController.text.trim(),

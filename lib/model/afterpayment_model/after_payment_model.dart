@@ -2,12 +2,13 @@
 import 'dart:convert';
 
 class UserAfterPaymentModel {
- String uid;
+  String uid;
   int coursefee;
   String coursename;
   String coursecategoryid;
   String studentname;
   String phonenumber;
+  int invoicenumber;
   String emailid;
   String courseid;
   int duration;
@@ -22,6 +23,7 @@ class UserAfterPaymentModel {
     required this.coursecategoryid,
     required this.studentname,
     required this.phonenumber,
+    required this.invoicenumber,
     required this.emailid,
     required this.courseid,
     required this.duration,
@@ -38,6 +40,7 @@ class UserAfterPaymentModel {
     String? coursecategoryid,
     String? studentname,
     String? phonenumber,
+    int? invoicenumber,
     String? emailid,
     String? courseid,
     int? duration,
@@ -53,6 +56,7 @@ class UserAfterPaymentModel {
       coursecategoryid: coursecategoryid ?? this.coursecategoryid,
       studentname: studentname ?? this.studentname,
       phonenumber: phonenumber ?? this.phonenumber,
+      invoicenumber: invoicenumber ?? this.invoicenumber,
       emailid: emailid ?? this.emailid,
       courseid: courseid ?? this.courseid,
       duration: duration ?? this.duration,
@@ -71,6 +75,7 @@ class UserAfterPaymentModel {
       'coursecategoryid': coursecategoryid,
       'studentname': studentname,
       'phonenumber': phonenumber,
+      'invoicenumber': invoicenumber,
       'emailid': emailid,
       'courseid': courseid,
       'duration': duration,
@@ -89,6 +94,7 @@ class UserAfterPaymentModel {
       coursecategoryid: map['coursecategoryid'] as String,
       studentname: map['studentname'] as String,
       phonenumber: map['phonenumber'] as String,
+      invoicenumber: map['invoicenumber'] as int,
       emailid: map['emailid'] as String,
       courseid: map['courseid'] as String,
       duration: map['duration'] as int,
@@ -107,7 +113,7 @@ class UserAfterPaymentModel {
 
   @override
   String toString() {
-    return 'UserAfterPaymentModel(uid: $uid, coursefee: $coursefee, coursename: $coursename, coursecategoryid: $coursecategoryid, studentname: $studentname, phonenumber: $phonenumber, emailid: $emailid, courseid: $courseid, duration: $duration, expirydate: $expirydate, joindate: $joindate, olduser: $olduser, deactive: $deactive)';
+    return 'UserAfterPaymentModel(uid: $uid, coursefee: $coursefee, coursename: $coursename, coursecategoryid: $coursecategoryid, studentname: $studentname, phonenumber: $phonenumber, invoicenumber: $invoicenumber, emailid: $emailid, courseid: $courseid, duration: $duration, expirydate: $expirydate, joindate: $joindate, olduser: $olduser, deactive: $deactive)';
   }
 
   @override
@@ -121,6 +127,7 @@ class UserAfterPaymentModel {
       other.coursecategoryid == coursecategoryid &&
       other.studentname == studentname &&
       other.phonenumber == phonenumber &&
+      other.invoicenumber == invoicenumber &&
       other.emailid == emailid &&
       other.courseid == courseid &&
       other.duration == duration &&
@@ -138,6 +145,7 @@ class UserAfterPaymentModel {
       coursecategoryid.hashCode ^
       studentname.hashCode ^
       phonenumber.hashCode ^
+      invoicenumber.hashCode ^
       emailid.hashCode ^
       courseid.hashCode ^
       duration.hashCode ^
