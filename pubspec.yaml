@@ -59,7 +59,8 @@ dependencies:
   firebase_messaging:
   flutter_local_notifications:
   http: 
-  flick_video_player: 
+  flutter_windowmanager:
+  mobs_player: ^0.2.6
 flutter_icons:
   android: true
   ios: true

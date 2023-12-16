@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_monstre.dart';
@@ -53,9 +52,13 @@ class RecordedVideoList extends StatelessWidget {
                         final data = snap.data!.docs[index];
                         return GestureDetector(
                           onTap: () {
-                            Get.to(() => Videoplayer(
-                                  videoUrl: data['videoUrl'],
-                                ));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return PlayVideoFromNetwork(
+                                  url: data['videoUrl'],
+                                );
+                              },
+                            ));
                           },
                           child: AllVideoListContainer(
                             imageurl: data['thumbnailUrl'],
