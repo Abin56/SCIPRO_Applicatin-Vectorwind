@@ -4,14 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/user_uid.dart';
+import 'package:scipro_application/controller/invoice_controller/invoice_controller.dart';
 import 'package:scipro_application/controller/subscribed_controller/subscribed_controller.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class RecordCourseCategoryList extends StatelessWidget {
-  const RecordCourseCategoryList({super.key});
+  final GetInvoiceController getinvoicecontroller =
+      Get.put(GetInvoiceController());
+  RecordCourseCategoryList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +50,13 @@ class RecordCourseCategoryList extends StatelessWidget {
                           exdate: DateTime.parse(data['expirydate']),
                           courseID: data['docid']);
                     },
-                    // onTap: () => Get.to(() => VideoListingOfCourses(
-                    //       categoryID: data['coursecategoryid'],
-                    //       courseName: data['coursename'],
-                    //       courseID: data['courseid'],
-                    //     )),
                     child: SelectedCourseListingContainer(
-                        exdate: data['expirydate'], text: data['coursename']),
+                      exdate: data['expirydate'],
+                      text: data['coursename'],
+                      getinvoiceonTap: () async {
+                        return _createPdf();
+                      },
+                    ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
@@ -73,7 +77,9 @@ class RecordCourseCategoryList extends StatelessWidget {
 class SelectedCourseListingContainer extends StatelessWidget {
   final String text;
   final String exdate;
+  final void Function()? getinvoiceonTap;
   const SelectedCourseListingContainer({
+    required this.getinvoiceonTap,
     required this.text,
     super.key,
     required this.exdate,
@@ -130,8 +136,22 @@ class SelectedCourseListingContainer extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 20.r),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    // GestureDetector(
+                    //   onTap: getinvoiceonTap,
+                    //   child: Container(
+                    //     color: cWhite.withOpacity(0.2),
+                    //     height: 35.h,
+                    //     width: 80.w,
+                    //     child: GooglePoppinsWidgets(
+                    //       text: " Get Invoice",
+                    //       fontsize: 11.sp,
+                    //       fontWeight: FontWeight.bold,
+                    //     ),
+                    //   ),
+                    // ),
+                    const Spacer(),
                     Container(
                       color: cWhite.withOpacity(0.2),
                       height: 40.h,
@@ -161,4 +181,26 @@ class SelectedCourseListingContainer extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _createPdf() async {
+  // Create a PDF document
+  final PdfDocument document = PdfDocument();
+
+  // Add a page to the document
+  final PdfPage page = document.pages.add();
+
+  // Draw text on the page
+  final PdfGraphics graphics = page.graphics;
+  graphics.drawString(
+      'Hello, Syncfusion PDF!', PdfStandardFont(PdfFontFamily.helvetica, 20),
+      brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+      bounds: const Rect.fromLTWH(10, 10, 200, 20));
+
+  // Save the document to a file
+  // final List<int> bytes = document.save();
+  document.dispose();
+
+  // Display or save the PDF as needed
+  // For example, you can save it to a file or display it in a PDF viewer
 }

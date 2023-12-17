@@ -1,20 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_monstre.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:scipro_application/view/pages/studyMaterils/list_materilas.dart';
-import 'package:scipro_application/view/pages/subscribed_sessions/video_player/video_player.dart';
+import 'package:scipro_application/view/pages/studyMaterils/pdf_viewer.dart';
 
-class RecordedVideoList extends StatelessWidget {
+class PDFListScreen extends StatelessWidget {
   final String recCatID;
   final String courseID;
   final String folderID;
   final String folderName;
-  const RecordedVideoList({
+  const PDFListScreen({
     Key? key,
     required this.recCatID,
     required this.courseID,
@@ -29,38 +26,11 @@ class RecordedVideoList extends StatelessWidget {
         foregroundColor: cWhite,
         backgroundColor: themeColorBlue,
         title: GoogleMonstserratWidgets(
-          text: "$folderName videos",
+          text: "$folderName PDF",
           color: cWhite,
           fontsize: 15,
           fontWeight: FontWeight.bold,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(top: 20.r),
-            child: GestureDetector(
-              onTap: () {
-                Get.to(() => PDFListScreen(
-                    recCatID: recCatID,
-                    courseID: courseID,
-                    folderID: folderID,
-                    folderName: folderName));
-              },
-              child: Container(
-                color: cWhite.withOpacity(0.2),
-                height: 40.h,
-                width: 200.w,
-                child: Center(
-                  child: GooglePoppinsWidgets(
-                    text: "STUDY MATERIALS",
-                    fontsize: 14.sp,
-                    color: cWhite,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -71,7 +41,7 @@ class RecordedVideoList extends StatelessWidget {
                   .doc(courseID)
                   .collection('folders')
                   .doc(folderID)
-                  .collection('videos')
+                  .collection('studyMaterial')
                   .orderBy('position', descending: false)
                   .snapshots(),
               builder: (context, snap) {
@@ -83,16 +53,15 @@ class RecordedVideoList extends StatelessWidget {
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return PlayVideoFromNetwork(
-                                  url: data['videoUrl'],
+                                return PDFViewerScreen(
+                                  url: data['pdfUrl'],
                                 );
                               },
                             ));
                           },
-                          child: AllVideoListContainer(
-                            imageurl: data['thumbnailUrl'],
+                          child: AllPDFListContainer(
                             index: index + 1,
-                            text: data['videoName'],
+                            text: data['pdfName'],
                           ),
                         );
                       },
@@ -112,15 +81,13 @@ class RecordedVideoList extends StatelessWidget {
   }
 }
 
-class AllVideoListContainer extends StatelessWidget {
+class AllPDFListContainer extends StatelessWidget {
   final int index;
   final String text;
-  final String imageurl;
-  const AllVideoListContainer({
+  const AllPDFListContainer({
     required this.text,
     super.key,
     required this.index,
-    required this.imageurl,
   });
 
   @override
@@ -160,10 +127,6 @@ class AllVideoListContainer extends StatelessWidget {
           SizedBox(
             width: 10.w,
           ),
-          SizedBox(
-            width: 100.w,
-            child: Image.network(imageurl),
-          ),
           Padding(
             padding: EdgeInsets.only(top: 8.0.r, left: 25.r),
             child: Column(
@@ -176,7 +139,7 @@ class AllVideoListContainer extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 01.r),
-                  child: GooglePoppinsWidgets(text: 'Video', fontsize: 12.sp),
+                  child: GooglePoppinsWidgets(text: 'PDF', fontsize: 12.sp),
                 ),
               ],
             ),

@@ -61,6 +61,8 @@ dependencies:
   http: 
   flutter_windowmanager:
   mobs_player: ^0.2.6
+  syncfusion_flutter_pdf:
+  syncfusion_flutter_pdfviewer:
 flutter_icons:
   android: true
   ios: true

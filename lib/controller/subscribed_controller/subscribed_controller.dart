@@ -19,7 +19,7 @@ class SubScribedController extends GetxController {
       return Get.snackbar('Message', 'Sorry you are not subscribed ',
           backgroundColor: cWhite);
     } else {
-      return Get.to(const RecordCourseCategoryList());
+      return Get.to( RecordCourseCategoryList());
     }
   }
 
