@@ -57,3 +57,30 @@ customShowDilogBox(
     },
   );
 }
+
+// uploadingProgressInc(BuildContext context) async {
+//   return showDialog(
+//     context: context,
+//     barrierDismissible: false, // user must tap button!
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+//           title: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               GooglePoppinsWidgets(
+//                   text: 'PLease wait....',
+//                   fontsize: 13.sp,
+//                   fontWeight: FontWeight.w600),
+//             ],
+//           ),
+//           content: const SingleChildScrollView(
+//             child: ListBody(
+//               children: [
+//                 ///// Circular in
+//               ],
+//             ),
+//           ));
+//     },
+//   );
+// }

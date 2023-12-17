@@ -19,6 +19,8 @@ class UserDetailsFecController extends GetxController {
 
     studentName.value = await data.data()?['name'];
     phoneNumber.value = await data.data()?['phoneno'];
+    log("USER NAme :: ::::::::::::::::::::::::::::::::${studentName.value}");
+    log("USER Phone :: ${phoneNumber.value}");
   }
 
   Future<void> currentStudentDetails() async {
@@ -27,7 +29,7 @@ class UserDetailsFecController extends GetxController {
 
     currentUserUid.value = uid;
     currentemail.value = email;
-    log("USER UID :: ${currentUserUid.value}");
-    log("USER E MAil :: ${currentemail.value}");
+    // log("USER UID :: ${currentUserUid.value}");
+    // log("USER E MAil :: ${currentemail.value}");
   }
 }

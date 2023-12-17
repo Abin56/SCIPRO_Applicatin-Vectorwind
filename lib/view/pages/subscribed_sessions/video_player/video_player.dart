@@ -92,6 +92,9 @@ class _PlayVideoFromNetworkState extends State<PlayVideoFromNetwork> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Video Player'),
+      ),
       backgroundColor: cBlack,
       body: PodVideoPlayer(controller: controller),
     );

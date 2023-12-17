@@ -28,6 +28,7 @@ class SciproHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    userDetailsFecController.fectingStudentDetails();
     log("HOME UID ${FirebaseAuth.instance.currentUser!.uid}");
     log("HOME E mail ${FirebaseAuth.instance.currentUser!.email!}");
     log("GETX UID ${Get.find<UserDetailsFecController>().currentUserUid}");
