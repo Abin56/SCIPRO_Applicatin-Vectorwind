@@ -6,22 +6,31 @@ class UserAfterPaymentModel {
   int coursefee;
   String coursename;
   String coursecategoryid;
-  
+  String studentname;
+  String phonenumber;
+  int invoicenumber;
+  String emailid;
   String courseid;
   int duration;
   String expirydate;
   String joindate;
   bool olduser = true;
+  bool deactive = false;
   UserAfterPaymentModel({
     required this.uid,
     required this.coursefee,
     required this.coursename,
     required this.coursecategoryid,
+    required this.studentname,
+    required this.phonenumber,
+    required this.invoicenumber,
+    required this.emailid,
     required this.courseid,
     required this.duration,
     required this.expirydate,
     required this.joindate,
     required this.olduser,
+    required this.deactive,
   });
 
   UserAfterPaymentModel copyWith({
@@ -29,22 +38,32 @@ class UserAfterPaymentModel {
     int? coursefee,
     String? coursename,
     String? coursecategoryid,
+    String? studentname,
+    String? phonenumber,
+    int? invoicenumber,
+    String? emailid,
     String? courseid,
     int? duration,
     String? expirydate,
     String? joindate,
     bool? olduser,
+    bool? deactive,
   }) {
     return UserAfterPaymentModel(
       uid: uid ?? this.uid,
       coursefee: coursefee ?? this.coursefee,
       coursename: coursename ?? this.coursename,
       coursecategoryid: coursecategoryid ?? this.coursecategoryid,
+      studentname: studentname ?? this.studentname,
+      phonenumber: phonenumber ?? this.phonenumber,
+      invoicenumber: invoicenumber ?? this.invoicenumber,
+      emailid: emailid ?? this.emailid,
       courseid: courseid ?? this.courseid,
       duration: duration ?? this.duration,
       expirydate: expirydate ?? this.expirydate,
       joindate: joindate ?? this.joindate,
       olduser: olduser ?? this.olduser,
+      deactive: deactive ?? this.deactive,
     );
   }
 
@@ -54,11 +73,16 @@ class UserAfterPaymentModel {
       'coursefee': coursefee,
       'coursename': coursename,
       'coursecategoryid': coursecategoryid,
+      'studentname': studentname,
+      'phonenumber': phonenumber,
+      'invoicenumber': invoicenumber,
+      'emailid': emailid,
       'courseid': courseid,
       'duration': duration,
       'expirydate': expirydate,
       'joindate': joindate,
       'olduser': olduser,
+      'deactive': deactive,
     };
   }
 
@@ -68,11 +92,16 @@ class UserAfterPaymentModel {
       coursefee: map['coursefee'] as int,
       coursename: map['coursename'] as String,
       coursecategoryid: map['coursecategoryid'] as String,
+      studentname: map['studentname'] as String,
+      phonenumber: map['phonenumber'] as String,
+      invoicenumber: map['invoicenumber'] as int,
+      emailid: map['emailid'] as String,
       courseid: map['courseid'] as String,
       duration: map['duration'] as int,
       expirydate: map['expirydate'] as String,
       joindate: map['joindate'] as String,
       olduser: map['olduser'] as bool,
+      deactive: map['deactive'] as bool,
     );
   }
 
@@ -84,7 +113,7 @@ class UserAfterPaymentModel {
 
   @override
   String toString() {
-    return 'UserAfterPaymentModel(uid: $uid, coursefee: $coursefee, coursename: $coursename, coursecategoryid: $coursecategoryid, courseid: $courseid, duration: $duration, expirydate: $expirydate, joindate: $joindate, olduser: $olduser)';
+    return 'UserAfterPaymentModel(uid: $uid, coursefee: $coursefee, coursename: $coursename, coursecategoryid: $coursecategoryid, studentname: $studentname, phonenumber: $phonenumber, invoicenumber: $invoicenumber, emailid: $emailid, courseid: $courseid, duration: $duration, expirydate: $expirydate, joindate: $joindate, olduser: $olduser, deactive: $deactive)';
   }
 
   @override
@@ -96,11 +125,16 @@ class UserAfterPaymentModel {
       other.coursefee == coursefee &&
       other.coursename == coursename &&
       other.coursecategoryid == coursecategoryid &&
+      other.studentname == studentname &&
+      other.phonenumber == phonenumber &&
+      other.invoicenumber == invoicenumber &&
+      other.emailid == emailid &&
       other.courseid == courseid &&
       other.duration == duration &&
       other.expirydate == expirydate &&
       other.joindate == joindate &&
-      other.olduser == olduser;
+      other.olduser == olduser &&
+      other.deactive == deactive;
   }
 
   @override
@@ -109,10 +143,15 @@ class UserAfterPaymentModel {
       coursefee.hashCode ^
       coursename.hashCode ^
       coursecategoryid.hashCode ^
+      studentname.hashCode ^
+      phonenumber.hashCode ^
+      invoicenumber.hashCode ^
+      emailid.hashCode ^
       courseid.hashCode ^
       duration.hashCode ^
       expirydate.hashCode ^
       joindate.hashCode ^
-      olduser.hashCode;
+      olduser.hashCode ^
+      deactive.hashCode;
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/pages/home/drawer/menu.dart';
 
@@ -191,7 +192,8 @@ Widget MyDrawerList(context) {
         MenuItem(6, "Logout", Icons.logout,
             currentPage == DrawerSections.dashboard ? true : false, () async {
           await Get.find<AuthController>().signOut();
-          
+          Get.find<UserDetailsFecController>().currentUserUid.value = '';
+          Get.find<UserDetailsFecController>().currentemail.value = '';
         }),
         Container(
           height: 20,

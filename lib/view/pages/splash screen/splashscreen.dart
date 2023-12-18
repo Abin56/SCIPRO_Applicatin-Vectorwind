@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
-import 'package:scipro_application/controller/push_notification/push_notification.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 import 'package:scipro_application/view/pages/home/homepage.dart';
@@ -10,8 +10,9 @@ import 'package:scipro_application/view/pages/on_boardingScreen/introduction_scr
 import '../../../utils/shared_preference_class.dart';
 
 class SplashScreen extends StatelessWidget {
-  final PushNotificationController pushNotificationController =
-      Get.put(PushNotificationController());
+ final UserDetailsFecController userDetailsFecController =
+      Get.put(UserDetailsFecController());
+
   SplashScreen({super.key});
 
   @override
@@ -27,8 +28,11 @@ class SplashScreen extends StatelessWidget {
       final userData = authController.user.value;
 
       if (userData != null) {
+        userDetailsFecController
+            .fectingStudentDetails()
+            .then((value) => userDetailsFecController.currentStudentDetails());
         if (isUserCollectionExist) {
-          Get.to(const SciproHomePage());
+          Get.to(SciproHomePage());
         } else {
           Get.to(CreateProfile());
         }

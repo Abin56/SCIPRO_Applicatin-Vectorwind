@@ -12,6 +12,7 @@ class StudentProfileCreationModel {
   final String district;
   final String state;
   final String pincode;
+  final String joindate;
 
   StudentProfileCreationModel({
     required this.uid,
@@ -24,6 +25,7 @@ class StudentProfileCreationModel {
     required this.district,
     required this.state,
     required this.pincode,
+    required this.joindate,
   });
 
   StudentProfileCreationModel copyWith({
@@ -37,6 +39,7 @@ class StudentProfileCreationModel {
     String? district,
     String? state,
     String? pincode,
+    String? joindate,
   }) {
     return StudentProfileCreationModel(
       uid: uid ?? this.uid,
@@ -49,6 +52,7 @@ class StudentProfileCreationModel {
       district: district ?? this.district,
       state: state ?? this.state,
       pincode: pincode ?? this.pincode,
+      joindate: joindate ?? this.joindate,
     );
   }
 
@@ -64,6 +68,7 @@ class StudentProfileCreationModel {
       'district': district,
       'state': state,
       'pincode': pincode,
+      'joindate': joindate,
     };
   }
 
@@ -79,6 +84,7 @@ class StudentProfileCreationModel {
       district: map['district'] as String,
       state: map['state'] as String,
       pincode: map['pincode'] as String,
+      joindate: map['joindate'] as String,
     );
   }
 
@@ -90,7 +96,7 @@ class StudentProfileCreationModel {
 
   @override
   String toString() {
-    return 'StudentProfileCreationModel(uid: $uid, studentid: $studentid, name: $name, email: $email, imageUrl: $imageUrl, address: $address, phoneno: $phoneno, district: $district, state: $state, pincode: $pincode)';
+    return 'StudentProfileCreationModel(uid: $uid, studentid: $studentid, name: $name, email: $email, imageUrl: $imageUrl, address: $address, phoneno: $phoneno, district: $district, state: $state, pincode: $pincode, joindate: $joindate)';
   }
 
   @override
@@ -107,7 +113,8 @@ class StudentProfileCreationModel {
       other.phoneno == phoneno &&
       other.district == district &&
       other.state == state &&
-      other.pincode == pincode;
+      other.pincode == pincode &&
+      other.joindate == joindate;
   }
 
   @override
@@ -121,6 +128,7 @@ class StudentProfileCreationModel {
       phoneno.hashCode ^
       district.hashCode ^
       state.hashCode ^
-      pincode.hashCode;
+      pincode.hashCode ^
+      joindate.hashCode;
   }
 }

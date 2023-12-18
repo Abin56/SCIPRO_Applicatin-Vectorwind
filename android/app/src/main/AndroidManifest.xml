@@ -48,5 +48,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="io.flutter.embedding.android.OnBackPressedDispatcher"
+            android:value="io.flutter.embedding.android.FlutterView" />
+        <meta-data
+            android:name="android.enableOnBackInvokedCallback"
+            android:value="true" />
     </application>
 </manifest>

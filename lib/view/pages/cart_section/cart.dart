@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/controller/cart_controller/cart_controllers.dart';
 import 'package:scipro_application/model/afterpayment_model/after_payment_model.dart';
 import 'package:scipro_application/view/colors/colors.dart';
@@ -395,24 +396,38 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
                                               DateTime exDate = DateTime.now()
                                                   .add(Duration(
                                                       days: widget.duration));
-                                              cartController
-                                                      .userselectCourseDetails =
-                                                  UserAfterPaymentModel(
-                                                      coursecategoryid:
-                                                          widget.categoryid,
-                                                      uid:
-                                                          'abinjohn8089@gmail.com',
-                                                      coursefee: widget
-                                                          .courseprice
-                                                          .toInt(),
-                                                      coursename: widget.course,
-                                                      courseid: widget.courseID,
-                                                      duration: widget.duration,
-                                                      expirydate:
-                                                          exDate.toString(),
-                                                      joindate: DateTime.now()
-                                                          .toString(),
-                                                      olduser: true);
+                                              cartController.userselectCourseDetails = UserAfterPaymentModel(
+                                                  invoicenumber: cartController
+                                                      .currentInvoiceNumber
+                                                      .value,
+                                                  deactive: false,
+                                                  phonenumber:
+                                                      Get.find<UserDetailsFecController>()
+                                                          .phoneNumber
+                                                          .value,
+                                                  studentname:
+                                                      Get.find<UserDetailsFecController>()
+                                                          .studentName
+                                                          .value,
+                                                  emailid:
+                                                      Get.find<UserDetailsFecController>()
+                                                          .currentemail
+                                                          .value,
+                                                  coursecategoryid:
+                                                      widget.categoryid,
+                                                  uid:
+                                                      Get.find<UserDetailsFecController>()
+                                                          .currentUserUid
+                                                          .value,
+                                                  coursefee: cartController
+                                                      .totalPrice.value,
+                                                  coursename: widget.course,
+                                                  courseid: widget.courseID,
+                                                  duration: widget.duration,
+                                                  expirydate: exDate.toString(),
+                                                  joindate:
+                                                      DateTime.now().toString(),
+                                                  olduser: true);
 
                                               if (cartController
                                                       .userselectCourseDetails ==

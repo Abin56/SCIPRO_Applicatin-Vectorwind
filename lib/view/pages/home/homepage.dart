@@ -1,6 +1,12 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:scipro_application/view/constant/constant.validate.dart';
+import 'package:get/get.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
+import 'package:scipro_application/controller/push_notification/push_notification.dart';
+import 'package:scipro_application/controller/subscribed_controller/subscribed_controller.dart';
 import 'package:scipro_application/view/pages/home/drawer/drawer.dart';
 import 'package:scipro_application/view/pages/home/subscribed_button/subscribed_button.dart';
 import 'package:scipro_application/view/pages/recorded_course_plan/recorded%20couse%20or%20category/record_category.dart';
@@ -12,10 +18,21 @@ import 'popular courses/popular_courses.dart';
 import 'recorded courses/recorded_courses.dart';
 
 class SciproHomePage extends StatelessWidget {
-  const SciproHomePage({super.key});
+  final PushNotificationController pushNotificationController =
+      Get.put(PushNotificationController());
+  final UserDetailsFecController userDetailsFecController =
+      Get.put(UserDetailsFecController());
+  final SubScribedController subScribedController =
+      Get.put(SubScribedController());
+  SciproHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    userDetailsFecController.fectingStudentDetails();
+    log("HOME UID ${FirebaseAuth.instance.currentUser!.uid}");
+    log("HOME E mail ${FirebaseAuth.instance.currentUser!.email!}");
+    log("GETX UID ${Get.find<UserDetailsFecController>().currentUserUid}");
+    log("GETX mail ${Get.find<UserDetailsFecController>().currentemail}");
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -54,15 +71,7 @@ class SciproHomePage extends StatelessWidget {
                       ),
                       child: GestureDetector(
                           onTap: () async {
-                            getUserUid();
-                            // String? uuid =
-                            //     await getUidFromEmail('abinjohn8089@gmail.com');
-                            // print("Getted UUID : ${uuid.toString()}");
-                            // print("object");
-                            // Navigator.push(context,
-                            //     MaterialPageRoute(builder: (context) {
-                            //   return const RecordCourseCategoryList();
-                            // }));
+                            subScribedController.fectingUserisSubscribed();
                           },
                           child: SubscribedButton(text: 'SUBSCRIBED COURSES'))),
                   Padding(

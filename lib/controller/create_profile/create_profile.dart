@@ -5,11 +5,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/model/create_profile_student/create_profile_model.dart';
 import 'package:scipro_application/view/constant/const.dart';
 import 'package:scipro_application/view/core/core.dart';
 
 class CreateProfileController extends GetxController {
+  UserDetailsFecController userDetailsFecController =
+      Get.find<UserDetailsFecController>();
   RxBool pageLoading = false.obs;
   RxString imagePATH = ''.obs;
   Rxn<File> studentImagePath = Rxn();
@@ -43,14 +46,16 @@ class CreateProfileController extends GetxController {
   }
 
   Future<void> addStudentDetailsToServer() async {
-    final studentID = dataserverUserAuth!.uid;
+    final studentID = userDetailsFecController.currentUserUid.value;
     final server = dataserver.collection("StudentProfileCollection");
+    
     final studentDetail = StudentProfileCreationModel(
+        joindate: DateTime.now().toString(),
         studentid: studentID,
-        uid: dataserverUserAuth!.uid,
+        uid: studentID,
         name: studentNameController.text.trim(),
         imageUrl: downloadURL,
-        email: dataserverUserAuth!.email!,
+        email: userDetailsFecController.currentemail.value,
         address: addressController.text.trim(),
         phoneno: phonenoController.text.trim(),
         district: districtController.text.trim(),

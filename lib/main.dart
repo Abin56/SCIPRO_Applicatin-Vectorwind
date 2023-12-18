@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/firebase_options.dart';
 import 'package:scipro_application/view/pages/splash%20screen/splashscreen.dart';
@@ -11,7 +13,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await ScreenUtil.ensureScreenSize();
-
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  await disableCapture();
   runApp(const MyApp());
 }
 
@@ -34,4 +40,9 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
+
+Future disableCapture() async {
+  await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_KEEP_SCREEN_ON);
 }

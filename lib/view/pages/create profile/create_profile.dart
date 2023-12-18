@@ -126,7 +126,7 @@ class CreateProfile extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const SciproHomePage()),
+                                              SciproHomePage()),
                                     );
                                   });
                                 });

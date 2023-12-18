@@ -10,6 +10,7 @@ import 'package:scipro_application/view/pages/home/homepage.dart';
 import '../../../utils/shared_preference_class.dart';
 
 class GoogleSigninScreen extends StatelessWidget {
+  
   const GoogleSigninScreen({super.key});
 
   @override
@@ -66,7 +67,7 @@ class GoogleSigninScreen extends StatelessWidget {
                                 .isUserCollectionExist();
                         if (Get.find<AuthController>().user.value != null) {
                           if (isUserCollectionExist) {
-                            Get.offAll(() => const SciproHomePage());
+                            Get.offAll(() =>  SciproHomePage());
                           } else {
                             Get.offAll(() => CreateProfile());
                           }

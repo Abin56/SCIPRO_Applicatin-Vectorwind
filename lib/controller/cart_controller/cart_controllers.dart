@@ -1,15 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/model/afterpayment_model/after_payment_model.dart';
+import 'package:scipro_application/model/afterpayment_model/user_details_model.dart';
+import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/const.dart';
 import 'package:scipro_application/view/core/core.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
+import 'package:uuid/uuid.dart';
 
 class CartController extends GetxController {
   RxBool starttyping = false.obs;
-
+  RxInt currentInvoiceNumber = 0.obs;
   RxBool coupenboxvalue = false.obs;
   RxInt gstpercentagevalue = 0.obs;
   RxDouble subtotal = 0.0.obs;
@@ -22,6 +28,7 @@ class CartController extends GetxController {
   FocusNode focusNode = FocusNode();
   UserAfterPaymentModel? userselectCourseDetails;
   RxBool razorpayopen = false.obs;
+  RxString coupenDocID = ''.obs;
 
   TextEditingController coupenController = TextEditingController();
 
@@ -42,33 +49,65 @@ class CartController extends GetxController {
   }
 
   Future<void> getAutoFillCoupenCode() async {
+    coupenDocID.value =
+        Get.find<UserDetailsFecController>().currentUserUid.value;
     final data = await dataserver
         .collection('CoupenManagement')
-        .doc('abinjohn8089@gmail.com')
+        .doc(Get.find<UserDetailsFecController>().currentUserUid.value)
         .get();
     if (data.data() == null) {
       coupenUSER.value = false;
     } else {
-      coupenUSER.value = true;
-      coupenboxvalue.value = true;
-      userCoupenCode.value = data.data()?['coupenCode'];
-      coupenDiscount.value = data.data()?['discount'];
-      return showToast(msg: 'Coupon auto applied');
+      if (DateTime.parse(data.data()!['validity']).isBefore(DateTime.now())) {
+        return showToast(
+            msg:
+                'Oh 😨 This coupon code is has expired.\nPlease Apply Another code ');
+      } else {
+        if (data.data()!['totalusage'] == data.data()!['usage']) {
+          await dataserver
+              .collection('CoupenManagement')
+              .doc(coupenDocID.value)
+              .delete();
+        } else {
+          coupenUSER.value = true;
+          coupenboxvalue.value = true;
+          userCoupenCode.value = data.data()?['coupenCode'];
+          coupenDiscount.value = data.data()?['discount'];
+          return showToast(
+              msg:
+                  'Coupon auto applied 😊\nPlease Apply this coupen Before payment');
+        }
+      }
     }
   }
 
   Future<void> getUserTypingCoupenCode() async {
-    String iddd = '28678100-a61a-1def-ad15-edc92e0e56c2';
+    String iddd = coupenController.text.trim();
+    coupenDocID.value = iddd;
     final data =
         await dataserver.collection('CoupenManagement').doc(iddd).get();
     // print("KKKKKKK ${coupenController.text.trim()}");
     if (data.data() == null) {
-      return showToast(msg: 'Ohh ! Sorry this coupon is found');
+      return showToast(msg: 'Ohh ! Sorry this coupon is not found');
     } else {
-      coupenUSER.value = true;
-      userCoupenCode.value = data.data()?['coupenCode'];
-      coupenDiscount.value = data.data()?['discount'];
-      return showToast(msg: 'Ohh ! Great ');
+      if (DateTime.parse(data.data()!['validity']).isBefore(DateTime.now())) {
+        return showToast(
+            msg:
+                'Oh 😨 This coupon code is has expired.\nPlease apply another coupon code ');
+      } else {
+        if (data.data()!['totalusage'] == data.data()!['usage']) {
+          await dataserver
+              .collection('CoupenManagement')
+              .doc(coupenDocID.value)
+              .delete();
+        } else {
+          coupenUSER.value = true;
+          userCoupenCode.value = data.data()?['coupenCode'];
+          coupenDiscount.value = data.data()?['discount'];
+          return showToast(
+              msg: 'Coupen found 😊\nPlease Apply this coupen Before payment');
+        }
+      }
 
       // print(">>>>>>>>>>>>>>>>  ${userCoupenCode.value}");
     }
@@ -78,10 +117,11 @@ class CartController extends GetxController {
     disableApplyCoupen.value = true;
     var result = totalPrice.value * coupenDiscount.value / 100;
     var totalprice = totalPrice.value - result.toInt();
-    print('/////////////// $result');
     totalPrice.value = totalprice.toInt();
     var calculatesubtotal = subtotal.value * coupenDiscount.value / 100;
     var subtotalresult = subtotal.value - calculatesubtotal.toInt();
+    final gst = totalPrice.value * gstpercentagevalue.value / 100;
+    productGST.value = gst;
 
     subtotal.value = subtotalresult.toDouble();
   }
@@ -108,10 +148,10 @@ class CartController extends GetxController {
       }
 
       var options = {
-        'key': 'rzp_live_WkqZiZtSI6LGQ9',
-        // 'key': 'rzp_test_4H63BqbBLQlmNQ',
+        // 'key': 'rzp_live_WkqZiZtSI6LGQ9',
+        'key': 'rzp_test_4H63BqbBLQlmNQ',
         //amount will be multiple of 100
-        'order_id': responseData["id"],
+        // 'order_id': responseData["id"],
         'amount': paymentPrice.toString(), //so its pay 500
         'name': 'VECTORWIND-TEC',
         'description': 'SciPro',
@@ -128,8 +168,78 @@ class CartController extends GetxController {
   }
 
   Future<void> userAfterPaymentSuccess() async {
-    String uid = 'abinjohn8089@gmail.com';
-    final data = dataserver.collection('SubscribedStudents').doc(uid);
-    await data.set(userselectCourseDetails!.toMap());
+    final uuid = const Uuid().v1();
+    String uid = Get.find<UserDetailsFecController>().currentUserUid.value;
+    final userdetails = UserDetailsModel(
+        uid: uid,
+        email: Get.find<UserDetailsFecController>().currentemail.value,
+        studentname: Get.find<UserDetailsFecController>().studentName.value,
+        phonenumber: Get.find<UserDetailsFecController>().phoneNumber.value,
+        joindate: DateTime.now().toString());
+    incrementInvoiceNumber().then((value) async {
+      await dataserver
+          .collection('SubscribedStudents')
+          .doc(uid)
+          .set(userdetails.toMap())
+          .then((value) async {
+        await dataserver
+            .collection('SubscribedStudents')
+            .doc(uid)
+            .collection("PurchasedCourses")
+            .doc(uuid)
+            .set(userselectCourseDetails!.toMap())
+            .then((value) async {
+          await dataserver
+              .collection('SubscribedStudents')
+              .doc(uid)
+              .collection("PurchasedCourses")
+              .doc(uuid)
+              .set({'docid': uuid}, SetOptions(merge: true)).then(
+                  (value) async {
+            await afterpaymentCoupenManage();
+            Get.off(SciproHomePage());
+            return Get.snackbar("Message", "Payement Successfull",
+                backgroundColor: cWhite);
+          });
+        });
+      });
+    });
+  }
+
+  Future<void> incrementInvoiceNumber() async {
+    final data = await dataserver.collection("Invoice_number").get();
+    int intdata = await data.docs[0].data()['number'];
+    currentInvoiceNumber.value = intdata;
+    await dataserver
+        .collection("Invoice_number")
+        .doc('number')
+        .update({'number': currentInvoiceNumber.value + 1});
+  }
+
+  Future<void> afterpaymentCoupenManage() async {
+    int index = 0;
+
+    final data = await dataserver
+        .collection('CoupenManagement')
+        .doc(coupenDocID.value)
+        .get();
+    index = data.data()!['totalusage'];
+    if (DateTime.parse(data.data()!['validity']).isBefore(DateTime.now())) {
+      return showToast(
+          msg:
+              'Oh 😨 This coupon code is has expired.\nPlease Apply Another code ');
+    } else {
+      if (data.data()!['totalusage'] == data.data()!['usage']) {
+        await dataserver
+            .collection('CoupenManagement')
+            .doc(coupenDocID.value)
+            .delete();
+      } else {
+        await dataserver
+            .collection('CoupenManagement')
+            .doc(coupenDocID.value)
+            .update({'totalusage': index + 1});
+      }
+    }
   }
 }
