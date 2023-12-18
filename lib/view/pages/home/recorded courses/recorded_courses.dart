@@ -51,11 +51,9 @@ class RecordedCourses extends StatelessWidget {
             ),
           ),
           FeatureTextWidget(
-            fetureText: 'Recorded Vedios with class room tools',
+            fetureText: 'Recorded Videos with class room tools',
           ),
-          FeatureTextWidget(
-            fetureText: '3 Months Duration',
-          ),
+         
           FeatureTextWidget(
             fetureText: 'Teachers Support',
           ),

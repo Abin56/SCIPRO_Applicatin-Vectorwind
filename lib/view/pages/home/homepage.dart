@@ -29,10 +29,10 @@ class SciproHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     userDetailsFecController.fectingStudentDetails();
-    log("HOME UID ${FirebaseAuth.instance.currentUser!.uid}");
-    log("HOME E mail ${FirebaseAuth.instance.currentUser!.email!}");
-    log("GETX UID ${Get.find<UserDetailsFecController>().currentUserUid}");
-    log("GETX mail ${Get.find<UserDetailsFecController>().currentemail}");
+    // log("HOME UID ${FirebaseAuth.instance.currentUser?.uid??''}");
+    // log("HOME E mail ${FirebaseAuth.instance.currentUser!.email!}");
+    // log("GETX UID ${Get.find<UserDetailsFecController>().currentUserUid}");
+    // log("GETX mail ${Get.find<UserDetailsFecController>().currentemail}");
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(

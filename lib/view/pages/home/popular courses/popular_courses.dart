@@ -96,13 +96,13 @@ List<String> popularCourseImages = [
   'assets/images/main15archana.jpg',
   'assets/images/main2ancy.jpg',
   'assets/images/main6akhilmon.jpg',
-  'assets/images/main13archanaartist.jpg',
+  'assets/images/mainexam1.jpg',
   'assets/images/main8sara.jpg',
   'assets/images/main10vishnu.jpg',
   'assets/images/main12nandhana.jpg',
+  'assets/images/examwriting.jpg',
+  'assets/images/main13archanaartist.jpg',
   'assets/images/mainsanush1.jpg',
-  'assets/images/main15archana.jpg',
-  'assets/images/main2ancy.jpg',
   
 
 ];

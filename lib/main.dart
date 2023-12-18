@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:scipro_application/firebase_options.dart';
 import 'package:scipro_application/view/pages/splash%20screen/splashscreen.dart';
 
+import 'view/pages/home/homepage.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

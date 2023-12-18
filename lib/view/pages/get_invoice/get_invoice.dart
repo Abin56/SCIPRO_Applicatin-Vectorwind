@@ -1,10 +1,5 @@
-import 'dart:io';
-
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:open_file/open_file.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:scipro_application/controller/invoice_controller/invoice_controller.dart';
 // ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_pdf/pdf.dart';
@@ -13,7 +8,7 @@ import '../../constant/constant.validate.dart';
 
 //Local imports
 
-Future<void> generateInvoice(BuildContext context) async {
+Future<void> generateInvoice() async {
   //Create a PDF document.
   final PdfDocument document = PdfDocument();
   //Add page to the PDF
@@ -33,22 +28,12 @@ Future<void> generateInvoice(BuildContext context) async {
   //Add invoice footer
   // drawFooter(page, pageSize);
   //Save the PDF document
-  final List<int> bytes = document.saveSync();
+  // final List<int> bytes = document.saveSync();
   //Dispose the document.
   document.dispose();
-
   //Save and launch the file.
-
-  if (Theme.of(context).platform == TargetPlatform.android ||
-      Theme.of(context).platform == TargetPlatform.iOS) {
-    final directory = await getApplicationSupportDirectory();
-    final path = directory.path;
-    File file = File(
-        '$path/VSCI${Get.find<GetInvoiceController>().invoiceNumber} .pdf');
-    await file.writeAsBytes(bytes, flush: true);
-    OpenFile.open(
-        '$path/VSCI${Get.find<GetInvoiceController>().invoiceNumber}.pdf');
-  } else {}
+  // await saveAndLaunchFile(
+  //     bytes, 'Invoice${Get.find<GetInvoiceController>().invoiceNumber}.pdf');
 }
 
 //Draws the invoice header
@@ -96,7 +81,7 @@ PdfLayoutResult drawHeader(PdfPage page, Size pageSize, PdfGrid grid) {
   //Create data foramt and convert it to text.
 
   final String invoiceNumber =
-      'Date: ${dateConveter(DateTime.parse(getinvoiceController.date.value))}\r\n \r\nInvoice Number: VSCI ${getinvoiceController.invoiceNumber.value} \r\n  \r\nGST number: 32AAFCV1427J1ZH\r\n  \r\nSAC Code: 9992';
+      'Date: ${dateConveter(DateTime.parse(getinvoiceController.date.value))}\r\n \r\nInvoice Number: ${getinvoiceController.invoiceNumber.value} \r\n  \r\nGST number: 32AAFCV1427J1ZH\r\n  \r\nSAC Code: 9992';
   final Size contentSize = contentFont.measureString(invoiceNumber);
   // ignore: leading_newlines_in_multiline_strings
   String address =
@@ -152,6 +137,11 @@ void drawGrid(PdfPage page, PdfGrid grid, PdfLayoutResult result) {
 
   // Add SGST and CGST below Grand Total.
 
+//  page.graphics.drawString('GST : ${getinvoiceController.rxgstPrice.value}',
+//       PdfStandardFont(PdfFontFamily.helvetica, 9),
+//       bounds: Rect.fromLTWH(quantityCellBounds!.left, result.bounds.bottom + 30,
+//           quantityCellBounds!.width, quantityCellBounds!.height));
+
   page.graphics.drawString('SGST : ${getinvoiceController.rxsgst.value}',
       PdfStandardFont(PdfFontFamily.helvetica, 9),
       bounds: Rect.fromLTWH(quantityCellBounds!.left, result.bounds.bottom + 50,
@@ -161,7 +151,23 @@ void drawGrid(PdfPage page, PdfGrid grid, PdfLayoutResult result) {
       PdfStandardFont(PdfFontFamily.helvetica, 9),
       bounds: Rect.fromLTWH(quantityCellBounds!.left, result.bounds.bottom + 70,
           quantityCellBounds!.width, quantityCellBounds!.height));
+  //     page.graphics.drawString('Total Amount: : ${getinvoiceController.totalPrice.value}',
+  // PdfStandardFont(PdfFontFamily.helvetica, 9),
+  // bounds: Rect.fromLTWH(quantityCellBounds!.left, result.bounds.bottom + 90,
+  //     quantityCellBounds!.width, quantityCellBounds!.height));
+  // Draw total amount.String totalAmountText = 'Total Amount: ${getTotalAmount(grid)}'; // Modify this line
 
+  // String totalAmountText =
+  //     'Total Amount: 1000'; // Modify this line
+
+  // page.graphics.drawString(totalAmountText,
+  //     PdfStandardFont(PdfFontFamily.helvetica, 9, style: PdfFontStyle.bold),
+  //     bounds: Rect.fromLTWH(
+  //         totalPriceCellBounds!.left+20,
+  //         result.bounds.bottom + 90,
+  //         totalPriceCellBounds!.width,
+  //         totalPriceCellBounds!.height));
+  //Draw grand total.
   page.graphics.drawString('Total Price',
       PdfStandardFont(PdfFontFamily.helvetica, 9, style: PdfFontStyle.bold),
       bounds: Rect.fromLTWH(

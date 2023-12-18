@@ -37,7 +37,7 @@ class MyHeaderDrawer extends StatelessWidget {
             ),
           ),
           const Text(
-            "SCI PRO",
+            "SCIPRO",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           const SizedBox(
@@ -153,7 +153,7 @@ Widget MyDrawerList(context) {
                 height: 100,
                 width: 100,
               ),
-              applicationName: "SCI PRO",
+              applicationName: "SCIPRO",
               applicationVersion: '1.0.2',
               children: [
                 Row(
