@@ -59,7 +59,9 @@ class SciproHomePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10.r),
                     child: GooglePoppinsWidgets(
-                      text: 'Nainika v',
+                      text: Get.find<UserDetailsFecController>()
+                          .studentName
+                          .value,
                       fontsize: 20.sp,
                       color: cBlack,
                       fontWeight: FontWeight.bold,

@@ -10,7 +10,7 @@ import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
+import 'package:scipro_application/view/pages/get_invoice/get_invoice.dart';
 
 class RecordCourseCategoryList extends StatelessWidget {
   final GetInvoiceController getinvoicecontroller =
@@ -54,7 +54,31 @@ class RecordCourseCategoryList extends StatelessWidget {
                       exdate: data['expirydate'],
                       text: data['coursename'],
                       getinvoiceonTap: () async {
-                        return _createPdf();
+                        getinvoicecontroller
+                            .calculateCgst(data['coursefee'])
+                            .toString();
+                        getinvoicecontroller
+                            .calculateGst(data['coursefee'])
+                            .toString();
+                        getinvoicecontroller.purchasedCourses.value =
+                            data['coursename']; ////course name
+                        getinvoicecontroller.studentName.value =
+                            data['studentname']; //////student name
+
+                        getinvoicecontroller.date.value = data['joindate'];
+                        getinvoicecontroller ///////join date
+                            .studentEmail
+                            .value = data['emailid']; ////////email
+                        getinvoicecontroller.invoiceNumber.value =
+                            data['invoicenumber'].toString(); /////invoice num
+                        getinvoicecontroller.totalPrice.value =
+                            data['coursefee'].toString(); //////total price
+                        getinvoicecontroller.totalPrice.value =
+                            data['coursefee'].toString(); //////actual price
+                        Future.delayed(const Duration(seconds: 2))
+                            .then((value) async {
+                          await generateInvoice(context);
+                        });
                       },
                     ),
                   );
@@ -138,19 +162,21 @@ class SelectedCourseListingContainer extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    // GestureDetector(
-                    //   onTap: getinvoiceonTap,
-                    //   child: Container(
-                    //     color: cWhite.withOpacity(0.2),
-                    //     height: 35.h,
-                    //     width: 80.w,
-                    //     child: GooglePoppinsWidgets(
-                    //       text: " Get Invoice",
-                    //       fontsize: 11.sp,
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //   ),
-                    // ),
+                    GestureDetector(
+                      onTap: getinvoiceonTap,
+                      child: Container(
+                        color: cWhite.withOpacity(0.2),
+                        height: 35.h,
+                        width: 80.w,
+                        child: Center(
+                          child: GooglePoppinsWidgets(
+                            text: " Get Invoice",
+                            fontsize: 11.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                     const Spacer(),
                     Container(
                       color: cWhite.withOpacity(0.2),
@@ -181,26 +207,4 @@ class SelectedCourseListingContainer extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<void> _createPdf() async {
-  // Create a PDF document
-  final PdfDocument document = PdfDocument();
-
-  // Add a page to the document
-  final PdfPage page = document.pages.add();
-
-  // Draw text on the page
-  final PdfGraphics graphics = page.graphics;
-  graphics.drawString(
-      'Hello, Syncfusion PDF!', PdfStandardFont(PdfFontFamily.helvetica, 20),
-      brush: PdfSolidBrush(PdfColor(0, 0, 0)),
-      bounds: const Rect.fromLTWH(10, 10, 200, 20));
-
-  // Save the document to a file
-  // final List<int> bytes = document.save();
-  document.dispose();
-
-  // Display or save the PDF as needed
-  // For example, you can save it to a file or display it in a PDF viewer
 }

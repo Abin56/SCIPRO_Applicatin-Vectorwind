@@ -11,6 +11,9 @@ class PDFViewerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(child: SfPdfViewer.network(url)));
+    return Scaffold(
+        body: Center(
+      child: SizedBox(height: 500, child: SfPdfViewer.network(url)),
+    ));
   }
 }
