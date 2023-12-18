@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobs_player/mobs_player.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 
 // class VideoPlayerScreen extends StatefulWidget {
@@ -42,61 +41,64 @@ import 'package:scipro_application/view/colors/colors.dart';
 //   }
 // }
 
-class Videoplayer extends StatefulWidget {
-  final String videoUrl;
+// class Videoplayer extends StatefulWidget {
+//   final String videoUrl;
 
-  const Videoplayer({Key? key, required this.videoUrl}) : super(key: key);
+//   const Videoplayer({Key? key, required this.videoUrl}) : super(key: key);
 
-  @override
-  State<Videoplayer> createState() => _VideoplayerState();
-}
+//   @override
+//   State<Videoplayer> createState() => _VideoplayerState();
+// }
 
-class _VideoplayerState extends State<Videoplayer> {
-  Future<void> initializePlayer() async {}
+// class _VideoplayerState extends State<Videoplayer> {
+//   Future<void> initializePlayer() async {}
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(),
+//     );
+//   }
+// }
 
-class PlayVideoFromNetwork extends StatefulWidget {
-  final String url;
-  const PlayVideoFromNetwork({Key? key, required this.url}) : super(key: key);
+// class PlayVideoFromNetwork extends StatefulWidget {
+//   final String url;
+//   const PlayVideoFromNetwork({Key? key, required this.url}) : super(key: key);
 
-  @override
-  State<PlayVideoFromNetwork> createState() => _PlayVideoFromNetworkState();
-}
+//   @override
+//   State<PlayVideoFromNetwork> createState() => _PlayVideoFromNetworkState();
+// }
 
-class _PlayVideoFromNetworkState extends State<PlayVideoFromNetwork> {
-  late final PodPlayerController controller;
+// class _PlayVideoFromNetworkState extends State<PlayVideoFromNetwork> {
+//   late final PodPlayerController controller;
 
-  @override
-  void initState() {
-    controller = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.network(
-        widget.url,
-      ),
-    )..initialise();
-    super.initState();
-  }
+//   @override
+//   void initState() {
+//     controller = PodPlayerController(
+//       playVideoFrom: PlayVideoFrom.network(
+//         widget.url,
+//       ),
+//     )..initialise();
+//     super.initState();
+//   }
 
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+//   @override
+//   void dispose() {
+//     controller.dispose();
+//     controller.disableFullScreen(context);
+  
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Video Player'),
-      ),
-      backgroundColor: cBlack,
-      body: PodVideoPlayer(controller: controller),
-    );
-  }
-}
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Video Player'),
+//       ),
+//       backgroundColor: cBlack,
+//       body: PodVideoPlayer(controller: controller),
+//     );
+//   }
+// }

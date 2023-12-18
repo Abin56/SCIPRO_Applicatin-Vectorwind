@@ -196,10 +196,10 @@ class CartController extends GetxController {
               .doc(uuid)
               .set({'docid': uuid}, SetOptions(merge: true)).then(
                   (value) async {
-            await afterpaymentCoupenManage();
-            Get.off(SciproHomePage());
-            return Get.snackbar("Message", "Payement Successfull",
+            Get.offAll(() => SciproHomePage());
+            Get.snackbar("Message", "Payement Successfull",
                 backgroundColor: cWhite);
+            await afterpaymentCoupenManage();
           });
         });
       });

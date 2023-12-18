@@ -7,7 +7,7 @@ import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_monstre.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/studyMaterils/list_materilas.dart';
-import 'package:scipro_application/view/pages/subscribed_sessions/video_player/video_player.dart';
+import 'package:scipro_application/view/pages/subscribed_sessions/video_player/sample.dart';
 
 class RecordedVideoList extends StatelessWidget {
   final String recCatID;
@@ -83,9 +83,10 @@ class RecordedVideoList extends StatelessWidget {
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return PlayVideoFromNetwork(
-                                  url: data['videoUrl'],
-                                );
+                                return const SampleVideoPLayer();
+                                // return PlayVideoFromNetwork(
+                                //   url: data['videoUrl'],
+                                // );
                               },
                             ));
                           },

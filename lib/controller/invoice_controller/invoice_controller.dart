@@ -23,7 +23,7 @@ class GetInvoiceController extends GetxController {
     final data =
         await dataserver.collection('Gst_settings').doc('percentage').get();
 
-    final gst = await data.data()!['percentage'];
+    final gst = int.parse(await data.data()!['percentage']);
 
     final result = totalPrice * gst / 100;
     final gstprice = totalPrice - result;
@@ -36,7 +36,7 @@ class GetInvoiceController extends GetxController {
     final data =
         await dataserver.collection('Gst_settings').doc('percentage').get();
 
-    final gst = await data.data()!['percentage'];
+    final gst = int.parse(await data.data()!['percentage']);
 
     final result = totalPrice * gst / 100;
     log('gst result  $result');
