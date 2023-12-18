@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/firebase_options.dart';
-import 'package:scipro_application/view/pages/splash%20screen/splashscreen.dart';
+
+import 'view/pages/get inoice/ruff.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          home: SplashScreen(),
+          home: CreatePdfWidget(),
         );
       },
     );
