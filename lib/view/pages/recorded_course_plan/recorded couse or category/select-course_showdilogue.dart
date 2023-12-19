@@ -117,10 +117,12 @@ class DetailsOfCourseContainerWidget extends StatelessWidget {
                 text: text,
                 fontsize: 12.sp,
               ),
-              GooglePoppinsWidgets(
-                text: text1,
-                fontsize: 12.sp,
-                fontWeight: FontWeight.bold,
+              Expanded(
+                child: GooglePoppinsWidgets(
+                  text: text1,
+                  fontsize: 12.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               )
             ],
           ),

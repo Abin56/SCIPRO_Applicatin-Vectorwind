@@ -55,7 +55,7 @@ class SelectYourPlanPart extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: SizedBox(
-                    height: 800,
+                    height: 850,
                     child: StreamBuilder(
                         stream: dataserver
                             .collection("recorded_course")
@@ -131,32 +131,34 @@ class SeletPlanContanierWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: 15.r),
         child: Container(
-          height: 130.h,
+          height: 160.h,
           width: 380.w,
           decoration: const BoxDecoration(
             color: cWhite,
           ),
           child: Padding(
-            padding: EdgeInsets.only(top: 8.0.r, bottom: 8.r, left: 14.r),
+            padding: EdgeInsets.only(top: 8.0.r, bottom: 8.r, left: 14.r,right: 14.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Container(
-                      height: 35.h,
-                      width: 170.w,
-                      decoration: BoxDecoration(
-                        color: themeColorBlue,
-                        borderRadius: BorderRadius.circular(8.r),
+                    Expanded(
+                      child: Container(
+                        height: 45.h,
+                      
+                        decoration: BoxDecoration(
+                          color: themeColorBlue,
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Center(
+                            child: GooglePoppinsWidgets(
+                          text: text,
+                          fontsize: 17.sp,
+                          color: cWhite,
+                          fontWeight: FontWeight.w500,
+                        )),
                       ),
-                      child: Center(
-                          child: GooglePoppinsWidgets(
-                        text: text,
-                        fontsize: 18.sp,
-                        color: cWhite,
-                        fontWeight: FontWeight.w500,
-                      )),
                     ),
                   ],
                 ),

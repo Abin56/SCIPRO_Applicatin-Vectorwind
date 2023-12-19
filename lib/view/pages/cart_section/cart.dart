@@ -100,31 +100,33 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
                                   child:
                                       Image.asset("assets/images/SCIPRO.png")),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 15.r),
-                                  child: GooglePoppinsWidgets(
-                                    text: "RECORDED COURSE",
-                                    fontsize: 16.sp,
-                                    fontWeight: FontWeight.w500,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 15.r),
+                                    child: GooglePoppinsWidgets(
+                                      text: "RECORDED COURSE",
+                                      fontsize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 15.r),
-                                  child: GooglePoppinsWidgets(
-                                      text: widget.course, fontsize: 16.sp),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 16.r,
-                                    top: 8.r,
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 15.r),
+                                    child: GooglePoppinsWidgets(
+                                        text: widget.course, fontsize: 16.sp),
                                   ),
-                                  child: GooglePoppinsWidgets(
-                                      text: widget.category, fontsize: 14.sp),
-                                )
-                              ],
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      left: 16.r,
+                                      top: 8.r,
+                                    ),
+                                    child: GooglePoppinsWidgets(
+                                        text: widget.category, fontsize: 14.sp),
+                                  )
+                                ],
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(
@@ -451,7 +453,7 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
                                               child: Center(
                                                 child: GooglePoppinsWidgets(
                                                   text: "PAY AMOUNT",
-                                                  fontsize: 16.sp,
+                                                  fontsize: 15.sp,
                                                   color: cWhite,
                                                   fontWeight: FontWeight.bold,
                                                 ),

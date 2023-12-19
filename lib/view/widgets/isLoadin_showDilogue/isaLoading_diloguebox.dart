@@ -43,10 +43,12 @@ class LoadingLottieWidget extends StatelessWidget {
               fontsize: 16,
               fontWeight: FontWeight.bold,
             ),
-            SizedBox(
-              width: 80,
-              child: LottieBuilder.asset(
-                'assets/png/Animation - 1702360112312.json',
+            Expanded(
+              child: SizedBox(
+                width: 80,
+                child: LottieBuilder.asset(
+                  'assets/png/Animation - 1702360112312.json',
+                ),
               ),
             ),
           ],

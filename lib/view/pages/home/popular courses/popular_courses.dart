@@ -94,7 +94,7 @@ class PopularCourses extends StatelessWidget {
 
 List<String> popularCourseImages = [
   'assets/images/main15archana.jpg',
-  'assets/images/main2ancy.jpg',
+  'assets/images/exam.jpg',
   'assets/images/main6akhilmon.jpg',
   'assets/images/mainexam1.jpg',
   'assets/images/main8sara.jpg',

@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/firebase_options.dart';
-import 'package:scipro_application/view/pages/splash%20screen/splashscreen.dart';
 
 import 'view/pages/home/homepage.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(),
           debugShowCheckedModeBanner: false,
           title: 'First Method',
-          home: SplashScreen(),
+          home: SciproHomePage(),
         );
       },
     );
