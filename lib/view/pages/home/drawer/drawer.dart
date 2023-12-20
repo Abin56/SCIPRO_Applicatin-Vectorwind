@@ -146,48 +146,124 @@ Widget MyDrawerList(context) {
         }),
         MenuItem(5, "About", Icons.account_box_outlined,
             currentPage == DrawerSections.about ? true : false, () {
-          showAboutDialog(
-              context: context,
-              applicationIcon: const Image(
-                image: AssetImage('assets/images/SCIPRO.png'),
-                height: 100,
-                width: 100,
-              ),
-              applicationName: "SCIPRO",
-              applicationVersion: '1.0.2',
-              children: [
-                Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        GooglePoppinsWidgets(
-                            text: 'Developed by', fontsize: 14.h),
-                        Row(
-                          children: [
-                            const CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 10.h),
-                              child: GooglePoppinsWidgets(
-                                text: 'Lepton Plus Communications',
-                                fontsize: 14.h,
-                                color: cBlack,
-                                fontWeight: FontWeight.w600,
+              showDialog(context: context, builder: (BuildContext context) { return SizedBox(
+                child: SizedBox(
+                  height: 200,
+                  child: AlertDialog(
+                            
+                            content: SizedBox(
+                              height: 170,
+                              child: Column(children: [
+                                 Row(children: [ const Image(
+                                                image: AssetImage('assets/images/SCIPRO.png'),
+                                                height: 100,
+                                                width: 100,
+                                              ), Padding(
+                                                padding: const EdgeInsets.only(left: 10),
+                                                child: Column(children: [GooglePoppinsWidgets(text: 'SCIPRO', fontsize: 18),
+                                                GooglePoppinsWidgets(text: '1.0.2', fontsize: 14)
+                                                ],),
+                                              )
+                                              ],),
+                                                Row(
+                                                  children: [
+                                                    Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: GooglePoppinsWidgets(
+                                    text: 'Developed by', fontsize: 14.h),
                               ),
+                              Row(
+                                children: [
+                                  const CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10.h),
+                                    child: GooglePoppinsWidgets(
+                                      text: 'Lepton Plus Communications',
+                                      fontsize: 14.h,
+                                      color: cBlack,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                                                      ],
+                                                    ),
+                                              
+                                                    // const Text(
+                                                    //     'SCI PRO is a Education App created by Lepton Plus Communications.'),
+                                                  ],
+                                                ),
+                              ],),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                            actions: <Widget>[
+                              TextButton(
+                                              style: TextButton.styleFrom(
+                                                textStyle: Theme.of(context).textTheme.labelLarge,
+                                              ),
+                                              child: const Text('Cancel'),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                              ),
+                             
+                            ],
+                          ),
+                ),
+              ); });
+      
+          // showAboutDialog(
+            
+          //     context: context,
+          //     applicationIcon: const Image(
+          //       image: AssetImage('assets/images/SCIPRO.png'),
+          //       height: 100,
+          //       width: 100,
+          //     ),
+          //     applicationName: "SCIPRO",
+          //     applicationVersion: '1.0.2',
+          //     // useRootNavigator:false,
+          //     children: [
+                // Row(
+                //   children: [
+                //     Column(
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //         GooglePoppinsWidgets(
+                //             text: 'Developed by', fontsize: 14.h),
+                //         Row(
+                //           children: [
+                //             const CircleAvatar(
+                //               backgroundImage: NetworkImage(
+                //                   'https://firebasestorage.googleapis.com/v0/b/leptonscipro-31792.appspot.com/o/files%2Fimages%2FL.png?alt=media&token=135e14d0-fb5a-4a21-83a6-411f647ec974'),
+                //             ),
+                //             Padding(
+                //               padding: EdgeInsets.only(left: 10.h),
+                //               child: GooglePoppinsWidgets(
+                //                 text: 'Lepton Plus Communications',
+                //                 fontsize: 14.h,
+                //                 color: cBlack,
+                //                 fontWeight: FontWeight.w600,
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //       ],
+                //     ),
 
                     // const Text(
                     //     'SCI PRO is a Education App created by Lepton Plus Communications.'),
-                  ],
-                )
-              ]);
+                //   ],
+                // ),
+                
+              
+          //     ]
+          //     );
         }),
         MenuItem(6, "Logout", Icons.logout,
             currentPage == DrawerSections.dashboard ? true : false, () async {

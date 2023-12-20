@@ -123,7 +123,6 @@ contactus(BuildContext context) {
 }
 
 const _contactus = ''' 
-Contact Us
 
 If for any reason, you wish to cancel an order that you have placed, it has to
 be done by calling our
