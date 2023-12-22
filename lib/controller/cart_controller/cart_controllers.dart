@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
@@ -36,13 +38,14 @@ class CartController extends GetxController {
     final data =
         await dataserver.collection('Gst_settings').doc('percentage').get();
 
-    final int result = data.data()?['percentage'];
+    final int result = await data.data()?['percentage'];
     gstpercentagevalue.value = result;
   }
 
   calculateSubtotal(int price) {
     var gst = price * gstpercentagevalue.value / 100;
     productGST.value = gst;
+    // log("productGST.value === ${productGST.value}");
 
     double result = price - gst;
     subtotal.value = result;
@@ -122,14 +125,15 @@ class CartController extends GetxController {
     var subtotalresult = subtotal.value - calculatesubtotal.toInt();
     final gst = totalPrice.value * gstpercentagevalue.value / 100;
     productGST.value = gst;
+    log("productGST==$productGST");
 
-    subtotal.value = subtotalresult.toDouble();
+    subtotal.value = subtotalresult;
   }
 
   Future<void> openRazorPay(Razorpay razorpay) async {
     //
     try {
-      double paymentPrice = 1 * 100;
+      double paymentPrice = totalPrice.value * 100;
       //
       final functions = FirebaseFunctions.instance;
 
@@ -176,7 +180,7 @@ class CartController extends GetxController {
         studentname: Get.find<UserDetailsFecController>().studentName.value,
         phonenumber: Get.find<UserDetailsFecController>().phoneNumber.value,
         joindate: DateTime.now().toString());
-    incrementInvoiceNumber().then((value) async {
+   await incrementInvoiceNumber().then((value) async {
       await dataserver
           .collection('SubscribedStudents')
           .doc(uid)
@@ -242,4 +246,12 @@ class CartController extends GetxController {
       }
     }
   }
+  
+  Future<void> fetchcurrentInvoiceNumber() async {
+    final data = await dataserver.collection("Invoice_number").get();
+    int intdata = await data.docs[0].data()['number'];
+    currentInvoiceNumber.value = intdata;
+    log("Current invoice number == ${currentInvoiceNumber.value}");
+  }
+
 }

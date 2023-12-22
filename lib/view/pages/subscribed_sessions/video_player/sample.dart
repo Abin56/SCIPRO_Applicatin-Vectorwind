@@ -1,9 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:scipro_application/view/colors/colors.dart';
 
 class SampleVideoPLayer extends StatefulWidget {
-  const SampleVideoPLayer({super.key});
+  String videourl;
+   SampleVideoPLayer({
+    Key? key,
+    required this.videourl,
+  }) : super(key: key);
 
   @override
   State<SampleVideoPLayer> createState() => _SampleVideoPLayerState();
@@ -14,14 +20,11 @@ class _SampleVideoPLayerState extends State<SampleVideoPLayer> {
 
   late CustomVideoPlayerController _customVideoPlayerController;
 
-  String videoUrl =
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-
   @override
   void initState() {
     super.initState();
     videoPlayerController =
-        VideoPlayerController.networkUrl(Uri.parse(videoUrl))
+        VideoPlayerController.networkUrl(Uri.parse(widget.videourl))
           ..initialize().then((value) => setState(() {}));
     _customVideoPlayerController = CustomVideoPlayerController(
       context: context,

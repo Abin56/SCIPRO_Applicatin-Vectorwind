@@ -9,6 +9,7 @@ import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_monstre.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/cart_section/widget/cartwidget_container.dart';
+import 'package:scipro_application/view/pages/home/homepage.dart';
 import 'package:scipro_application/view/widgets/isLoadin_showDilogue/isaLoading_diloguebox.dart';
 import 'package:scipro_application/view/widgets/textform%20feild%20Widget/textformfeildWidget.dart';
 
@@ -52,7 +53,7 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    // print("RezorSucess:" + response.paymentId! + "--" + response.orderId!);
+    Get.offAll(SciproHomePage());
   }
 
   void _handlePaymentWallet(ExternalWalletResponse response) {
@@ -393,43 +394,47 @@ class _CartSectionDesignState extends State<CartSectionDesign> {
                                           )
                                         : GestureDetector(
                                             onTap: () async {
-                                              cartController
-                                                  .razorpayopen.value = true;
-                                              DateTime exDate = DateTime.now()
-                                                  .add(Duration(
-                                                      days: widget.duration));
-                                              cartController.userselectCourseDetails = UserAfterPaymentModel(
-                                                  invoicenumber: cartController
-                                                      .currentInvoiceNumber
-                                                      .value,
-                                                  deactive: false,
-                                                  phonenumber:
-                                                      Get.find<UserDetailsFecController>()
-                                                          .phoneNumber
-                                                          .value,
-                                                  studentname:
-                                                      Get.find<UserDetailsFecController>()
-                                                          .studentName
-                                                          .value,
-                                                  emailid:
-                                                      Get.find<UserDetailsFecController>()
-                                                          .currentemail
-                                                          .value,
-                                                  coursecategoryid:
-                                                      widget.categoryid,
-                                                  uid:
-                                                      Get.find<UserDetailsFecController>()
-                                                          .currentUserUid
-                                                          .value,
-                                                  coursefee: cartController
-                                                      .totalPrice.value,
-                                                  coursename: widget.course,
-                                                  courseid: widget.courseID,
-                                                  duration: widget.duration,
-                                                  expirydate: exDate.toString(),
-                                                  joindate:
-                                                      DateTime.now().toString(),
-                                                  olduser: true);
+                                              await cartController
+                                                  .fetchcurrentInvoiceNumber()
+                                                  .then((value) {
+                                                cartController
+                                                    .razorpayopen.value = true;
+                                                DateTime exDate = DateTime.now()
+                                                    .add(Duration(
+                                                        days: widget.duration));
+                                                cartController.userselectCourseDetails = UserAfterPaymentModel(
+                                                    invoicenumber: cartController
+                                                        .currentInvoiceNumber
+                                                        .value,
+                                                    deactive: false,
+                                                    phonenumber:
+                                                        Get.find<UserDetailsFecController>()
+                                                            .phoneNumber
+                                                            .value,
+                                                    studentname:
+                                                        Get.find<UserDetailsFecController>()
+                                                            .studentName
+                                                            .value,
+                                                    emailid:
+                                                        Get.find<UserDetailsFecController>()
+                                                            .currentemail
+                                                            .value,
+                                                    coursecategoryid:
+                                                        widget.categoryid,
+                                                    uid: Get.find<UserDetailsFecController>()
+                                                        .currentUserUid
+                                                        .value,
+                                                    coursefee: cartController
+                                                        .totalPrice.value,
+                                                    coursename: widget.course,
+                                                    courseid: widget.courseID,
+                                                    duration: widget.duration,
+                                                    expirydate:
+                                                        exDate.toString(),
+                                                    joindate: DateTime.now()
+                                                        .toString(),
+                                                    olduser: true);
+                                              });
 
                                               if (cartController
                                                       .userselectCourseDetails ==

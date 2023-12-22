@@ -51,7 +51,7 @@ class VideoListingOfCourses extends StatelessWidget {
                   padding: EdgeInsets.only(top: 5.r, left: 100.r),
                   child: GooglePoppinsWidgets(
                     text: courseName,
-                    fontsize: 35.sp,
+                    fontsize: 28.sp,
                     fontWeight: FontWeight.bold,
                     color: cWhite,
                   ),

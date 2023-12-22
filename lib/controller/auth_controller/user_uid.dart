@@ -32,4 +32,10 @@ class UserDetailsFecController extends GetxController {
     // log("USER UID :: ${currentUserUid.value}");
     // log("USER E MAil :: ${currentemail.value}");
   }
+
+  @override
+  void onInit() {
+    fectingStudentDetails();
+    super.onInit();
+  }
 }

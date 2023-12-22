@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,11 +26,6 @@ class SciproHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    userDetailsFecController.fectingStudentDetails();
-    // log("HOME UID ${FirebaseAuth.instance.currentUser?.uid??''}");
-    // log("HOME E mail ${FirebaseAuth.instance.currentUser!.email!}");
-    // log("GETX UID ${Get.find<UserDetailsFecController>().currentUserUid}");
-    // log("GETX mail ${Get.find<UserDetailsFecController>().currentemail}");
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -59,9 +52,7 @@ class SciproHomePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10.r),
                     child: GooglePoppinsWidgets(
-                      text: Get.find<UserDetailsFecController>()
-                          .studentName
-                          .value,
+                      text: FirebaseAuth.instance.currentUser!.displayName!,
                       fontsize: 20.sp,
                       color: cBlack,
                       fontWeight: FontWeight.bold,

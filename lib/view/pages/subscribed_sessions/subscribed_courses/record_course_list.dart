@@ -10,7 +10,6 @@ import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
-import 'package:scipro_application/view/pages/get_invoice/get_invoice.dart';
 
 class RecordCourseCategoryList extends StatelessWidget {
   final GetInvoiceController getinvoicecontroller =
@@ -54,31 +53,31 @@ class RecordCourseCategoryList extends StatelessWidget {
                       exdate: data['expirydate'],
                       text: data['coursename'],
                       getinvoiceonTap: () async {
-                        getinvoicecontroller
-                            .calculateCgst(data['coursefee'])
-                            .toString();
-                        getinvoicecontroller
-                            .calculateGst(data['coursefee'])
-                            .toString();
-                        getinvoicecontroller.purchasedCourses.value =
-                            data['coursename']; ////course name
-                        getinvoicecontroller.studentName.value =
-                            data['studentname']; //////student name
+                        // var courseefee = int.parse(data['coursefee']);
+                        // getinvoicecontroller.calculateCgst(courseefee);
+                        // getinvoicecontroller
+                        //     .calculateGst(courseefee)
+                        //     .toString();
+                        // getinvoicecontroller.purchasedCourses.value =
+                        //     data['coursename'].toString(); ////course name
+                        // getinvoicecontroller.studentName.value =
+                        //     data['studentname'].toString(); //////student name
 
-                        getinvoicecontroller.date.value = data['joindate'];
-                        getinvoicecontroller ///////join date
-                            .studentEmail
-                            .value = data['emailid']; ////////email
-                        getinvoicecontroller.invoiceNumber.value =
-                            data['invoicenumber'].toString(); /////invoice num
-                        getinvoicecontroller.totalPrice.value =
-                            data['coursefee'].toString(); //////total price
-                        getinvoicecontroller.totalPrice.value =
-                            data['coursefee'].toString(); //////actual price
-                        Future.delayed(const Duration(seconds: 2))
-                            .then((value) async {
-                          await generateInvoice();
-                        });
+                        // getinvoicecontroller.date.value =
+                        //     data['joindate'].toString();
+                        // getinvoicecontroller ///////join date
+                        //     .studentEmail
+                        //     .value = data['emailid']; ////////email
+                        // getinvoicecontroller.invoiceNumber.value =
+                        //     data['invoicenumber'].toString(); /////invoice num
+                        // getinvoicecontroller.totalPrice.value =
+                        //     data['coursefee'].toString(); //////total price
+                        // getinvoicecontroller.totalPrice.value =
+                        //     data['coursefee'].toString(); //////actual price
+                        // Future.delayed(const Duration(seconds: 2))
+                        //     .then((value) async {
+                        //   await generateInvoice(context);
+                        // });
                       },
                     ),
                   );
@@ -170,7 +169,8 @@ class SelectedCourseListingContainer extends StatelessWidget {
                         width: 80.w,
                         child: Center(
                           child: GooglePoppinsWidgets(
-                            text: " Get Invoice",
+                            // text: " Get Invoice",
+                            text: '',
                             fontsize: 11.sp,
                             fontWeight: FontWeight.bold,
                           ),

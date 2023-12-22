@@ -5,6 +5,7 @@ import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/recorded_course_plan/recorded%20couse%20or%20category/select-course_showdilogue.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 class SelectYourPlanPart extends StatelessWidget {
   final String docid;
@@ -87,8 +88,7 @@ class SelectYourPlanPart extends StatelessWidget {
                                         data.duration,
                                         data.createdDate,
                                         data.id,
-                                        data.categoryId
-                                        ),
+                                        data.categoryId),
                                     child: SeletPlanContanierWidget(
                                         text: data.courseName,
                                         text1: data.duration.toString(),
@@ -127,7 +127,6 @@ class SeletPlanContanierWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
- 
       child: Padding(
         padding: EdgeInsets.only(top: 15.r),
         child: Container(
@@ -137,7 +136,8 @@ class SeletPlanContanierWidget extends StatelessWidget {
             color: cWhite,
           ),
           child: Padding(
-            padding: EdgeInsets.only(top: 8.0.r, bottom: 8.r, left: 14.r,right: 14.r),
+            padding: EdgeInsets.only(
+                top: 8.0.r, bottom: 8.r, left: 14.r, right: 14.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -146,18 +146,27 @@ class SeletPlanContanierWidget extends StatelessWidget {
                     Expanded(
                       child: Container(
                         height: 45.h,
-                      
                         decoration: BoxDecoration(
                           color: themeColorBlue,
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Center(
-                            child: GooglePoppinsWidgets(
-                          text: text,
-                          fontsize: 17.sp,
-                          color: cWhite,
-                          fontWeight: FontWeight.w500,
-                        )),
+                          child: TextScroll(
+                            text,
+                            style: TextStyle(
+                              color: cWhite,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17.sp,
+                            ),
+                          ),
+                          // child: GooglePoppinsWidgets(
+                          //   text:
+                          //       'asndjfnasijdnio  ajisdfoin asdfkmasdfl kn  hsbd',
+                          //   fontsize: 17.sp,
+                          //   color: cWhite,
+                          //   fontWeight: FontWeight.w500,
+                          // ),
+                        ),
                       ),
                     ),
                   ],

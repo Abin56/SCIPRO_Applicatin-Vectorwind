@@ -31,7 +31,7 @@ class RecordedVideoList extends StatelessWidget {
         title: GoogleMonstserratWidgets(
           text: "$folderName videos",
           color: cWhite,
-          fontsize: 15,
+          fontsize: 12.sp,
           fontWeight: FontWeight.bold,
         ),
         actions: [
@@ -83,10 +83,10 @@ class RecordedVideoList extends StatelessWidget {
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return const SampleVideoPLayer();
-                                // return PlayVideoFromNetwork(
-                                //   url: data['videoUrl'],
-                                // );
+                                return SampleVideoPLayer(
+                                  videourl: data['videoUrl'],
+                                );
+                             
                               },
                             ));
                           },
