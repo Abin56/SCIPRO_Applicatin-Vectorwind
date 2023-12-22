@@ -156,7 +156,7 @@ class SelectedCourseListingContainer extends StatelessWidget {
                         ),
                       ],
                     )
-                  : const Text('Get Invoice'),
+                  : const Text(''),
               Padding(
                 padding: EdgeInsets.only(top: 40.r),
                 child: GooglePoppinsWidgets(
@@ -179,8 +179,8 @@ class SelectedCourseListingContainer extends StatelessWidget {
                         width: 80.w,
                         child: Center(
                           child: GooglePoppinsWidgets(
-                            // text: " Get Invoice",
-                            text: '',
+                            text: " Get Invoice",
+                            // text: '',
                             fontsize: 11.sp,
                             fontWeight: FontWeight.bold,
                           ),

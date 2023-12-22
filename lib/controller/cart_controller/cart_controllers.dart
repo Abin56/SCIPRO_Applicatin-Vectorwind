@@ -152,10 +152,10 @@ class CartController extends GetxController {
       }
 
       var options = {
-        // 'key': 'rzp_live_WkqZiZtSI6LGQ9',
-        'key': 'rzp_test_4H63BqbBLQlmNQ',
+        'key': 'rzp_live_WkqZiZtSI6LGQ9',
+        // 'key': 'rzp_test_4H63BqbBLQlmNQ',
         //amount will be multiple of 100
-        // 'order_id': responseData["id"],
+        'order_id': responseData["id"],
         'amount': paymentPrice.toString(), //so its pay 500
         'name': 'VECTORWIND-TEC',
         'description': 'SciPro',
