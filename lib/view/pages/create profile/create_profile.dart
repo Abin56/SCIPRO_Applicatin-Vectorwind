@@ -122,6 +122,7 @@ class CreateProfile extends StatelessWidget {
                                       .then((value) {
                                     createProfileController.pageLoading.value =
                                         false;
+                                        
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(

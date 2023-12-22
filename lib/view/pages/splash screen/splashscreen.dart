@@ -38,7 +38,7 @@ class SplashScreen extends StatelessWidget {
         }
       } else {
         if (isOnBoardingScreenViewed) {
-          Get.to(const GoogleSigninScreen());
+          Get.to( GoogleSigninScreen());
         } else {
           Get.to(const OnBoardingPage());
         }

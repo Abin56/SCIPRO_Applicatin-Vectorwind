@@ -12,6 +12,7 @@ class UserDetailsFecController extends GetxController {
   RxString currentemail = ''.obs;
 
   Future<void> fectingStudentDetails() async {
+    currentUserUid.value = FirebaseAuth.instance.currentUser!.uid;
     final data = await dataserver
         .collection('StudentProfileCollection')
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -34,8 +35,8 @@ class UserDetailsFecController extends GetxController {
   }
 
   @override
-  void onInit() {
-    fectingStudentDetails();
+  void onInit() async {
+    await fectingStudentDetails();
     super.onInit();
   }
 }

@@ -8,6 +8,7 @@ import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/pages/google_signing/google_signing.dart';
 
 class AuthController extends GetxController {
+  final userdetailController = Get.put(UserDetailsFecController());
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final dataserver = FirebaseFirestore.instance;
@@ -35,10 +36,7 @@ class AuthController extends GetxController {
       );
 
       await _auth.signInWithCredential(credential);
-      Get.find<UserDetailsFecController>().currentUserUid.value =
-          FirebaseAuth.instance.currentUser!.uid;
-      Get.find<UserDetailsFecController>().currentemail.value =
-          FirebaseAuth.instance.currentUser!.email!;
+     await userdetailController.fectingStudentDetails();
       return _auth.currentUser;
     } catch (e) {
       log("Error during Google Sign In: $e");
@@ -69,7 +67,7 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     await _auth.signOut();
     await _googleSignIn.signOut();
-    Get.offAll(() => const GoogleSigninScreen());
+    Get.offAll(() =>  GoogleSigninScreen());
     Get.snackbar('Logout', 'Logout Sucessfully');
   }
 }

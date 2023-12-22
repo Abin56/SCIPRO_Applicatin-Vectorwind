@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/colors/colors.dart';
@@ -10,7 +7,7 @@ import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_cou
 
 class SubScribedController extends GetxController {
   fectingUserisSubscribed() async {
-    log("User UID $FirebaseAuth.instance.currentUser!.uid");
+    // log("User UID $FirebaseAuth.instance.currentUser!.uid");
     final server = await dataserver
         .collection('SubscribedStudents')
         .doc(Get.find<UserDetailsFecController>().currentUserUid.value)
@@ -19,7 +16,7 @@ class SubScribedController extends GetxController {
       return Get.snackbar('Message', 'Sorry you are not subscribed ',
           backgroundColor: cWhite);
     } else {
-      return Get.to( RecordCourseCategoryList());
+      return Get.to(RecordCourseCategoryList());
     }
   }
 

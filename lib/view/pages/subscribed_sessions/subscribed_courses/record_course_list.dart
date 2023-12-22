@@ -181,6 +181,7 @@ class SelectedCourseListingContainer extends StatelessWidget {
                           child: GooglePoppinsWidgets(
                             text: " Get Invoice",
                             // text: '',
+                            color: cWhite,
                             fontsize: 11.sp,
                             fontWeight: FontWeight.bold,
                           ),

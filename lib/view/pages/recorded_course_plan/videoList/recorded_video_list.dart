@@ -81,12 +81,14 @@ class RecordedVideoList extends StatelessWidget {
                         final data = snap.data!.docs[index];
                         return GestureDetector(
                           onTap: () {
+                            // Get.off(() => SampleVideoPLayer(
+                            //       videourl: data['videoUrl'],
+                            //     ));
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 return SampleVideoPLayer(
                                   videourl: data['videoUrl'],
                                 );
-                             
                               },
                             ));
                           },

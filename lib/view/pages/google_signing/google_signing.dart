@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/auth_controller.dart';
+import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/create%20profile/create_profile.dart';
@@ -10,8 +11,9 @@ import 'package:scipro_application/view/pages/home/homepage.dart';
 import '../../../utils/shared_preference_class.dart';
 
 class GoogleSigninScreen extends StatelessWidget {
-  
-  const GoogleSigninScreen({super.key});
+  final userDetailController = Get.put(UserDetailsFecController());
+
+   GoogleSigninScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +69,13 @@ class GoogleSigninScreen extends StatelessWidget {
                                 .isUserCollectionExist();
                         if (Get.find<AuthController>().user.value != null) {
                           if (isUserCollectionExist) {
-                            Get.offAll(() =>  SciproHomePage());
+                             await userDetailController.fectingStudentDetails();
+                            Get.offAll(() => SciproHomePage());
                           } else {
                             Get.offAll(() => CreateProfile());
                           }
                         } else {
-                          Get.offAll(() => const GoogleSigninScreen());
+                          Get.offAll(() =>  GoogleSigninScreen());
                         }
 
                         //Get.to(const OnBoardingPage());
