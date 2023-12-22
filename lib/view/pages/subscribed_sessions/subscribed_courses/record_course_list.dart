@@ -10,6 +10,7 @@ import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/constant/constant.validate.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
+import 'package:scipro_application/view/pages/get_invoice/get_invoice.dart';
 
 class RecordCourseCategoryList extends StatelessWidget {
   final GetInvoiceController getinvoicecontroller =
@@ -53,31 +54,40 @@ class RecordCourseCategoryList extends StatelessWidget {
                       exdate: data['expirydate'],
                       text: data['coursename'],
                       getinvoiceonTap: () async {
-                        // var courseefee = int.parse(data['coursefee']);
-                        // getinvoicecontroller.calculateCgst(courseefee);
-                        // getinvoicecontroller
-                        //     .calculateGst(courseefee)
-                        //     .toString();
-                        // getinvoicecontroller.purchasedCourses.value =
-                        //     data['coursename'].toString(); ////course name
-                        // getinvoicecontroller.studentName.value =
-                        //     data['studentname'].toString(); //////student name
+                        // final int price = data['coursefee'];
+                        // final gst = price * 18 / 100;
+                        // final subtotal = price - gst;
+                        // final cgst = gst / 2;
 
-                        // getinvoicecontroller.date.value =
-                        //     data['joindate'].toString();
-                        // getinvoicecontroller ///////join date
-                        //     .studentEmail
-                        //     .value = data['emailid']; ////////email
-                        // getinvoicecontroller.invoiceNumber.value =
-                        //     data['invoicenumber'].toString(); /////invoice num
-                        // getinvoicecontroller.totalPrice.value =
-                        //     data['coursefee'].toString(); //////total price
-                        // getinvoicecontroller.totalPrice.value =
-                        //     data['coursefee'].toString(); //////actual price
-                        // Future.delayed(const Duration(seconds: 2))
-                        //     .then((value) async {
-                        //   await generateInvoice(context);
-                        // });
+                        // log("price $price");
+                        // log("gst $gst");
+                        // log("subtotal $subtotal");
+                        // log("cgst $cgst");
+
+                        getinvoicecontroller.calculateCgst(data['coursefee']);
+                        getinvoicecontroller
+                            .calculateGst(data['coursefee'])
+                            .toString();
+                        getinvoicecontroller.purchasedCourses.value =
+                            data['coursename'].toString(); ////course name
+                        getinvoicecontroller.studentName.value =
+                            data['studentname'].toString(); //////student name
+
+                        getinvoicecontroller.date.value =
+                            data['joindate'].toString();
+                        getinvoicecontroller ///////join date
+                            .studentEmail
+                            .value = data['emailid']; ////////email
+                        getinvoicecontroller.invoiceNumber.value =
+                            data['invoicenumber'].toString(); /////invoice num
+                        getinvoicecontroller.totalPrice.value =
+                            data['coursefee'].toString(); //////total price
+                        getinvoicecontroller.totalPrice.value =
+                            data['coursefee'].toString(); //////actual price
+                        Future.delayed(const Duration(seconds: 2))
+                            .then((value) async {
+                          await generateInvoice(context);
+                        });
                       },
                     ),
                   );
@@ -146,7 +156,7 @@ class SelectedCourseListingContainer extends StatelessWidget {
                         ),
                       ],
                     )
-                  : const Text(''),
+                  : const Text('Get Invoice'),
               Padding(
                 padding: EdgeInsets.only(top: 40.r),
                 child: GooglePoppinsWidgets(

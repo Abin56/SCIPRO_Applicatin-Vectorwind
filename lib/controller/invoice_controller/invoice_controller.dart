@@ -23,12 +23,12 @@ class GetInvoiceController extends GetxController {
     final data =
         await dataserver.collection('Gst_settings').doc('percentage').get();
 
-    final gst = int.parse(await data.data()!['percentage']);
+    final gst = data.data()!['percentage'];
 
     final result = totalPrice * gst / 100;
     final gstprice = totalPrice - result;
     log('gst result  $result');
-    actualPrice.value = gstprice.toString();
+    actualPrice.value = gstprice.toStringAsFixed(2);
     rxgstPrice.value = result.toString();
   }
 
@@ -36,14 +36,14 @@ class GetInvoiceController extends GetxController {
     final data =
         await dataserver.collection('Gst_settings').doc('percentage').get();
 
-    final gst = int.parse(await data.data()!['percentage']);
+    final gst = data.data()!['percentage'];
 
     final result = totalPrice * gst / 100;
     log('gst result  $result');
     final cgst = result / 2;
 
-    rxcgst.value = cgst.toString();
-    rxsgst.value = cgst.toString();
+    rxcgst.value = cgst.toStringAsFixed(2);
+    rxsgst.value = cgst.toStringAsFixed(2);
     return cgst;
   }
 

@@ -180,7 +180,7 @@ class CartController extends GetxController {
         studentname: Get.find<UserDetailsFecController>().studentName.value,
         phonenumber: Get.find<UserDetailsFecController>().phoneNumber.value,
         joindate: DateTime.now().toString());
-   await incrementInvoiceNumber().then((value) async {
+    await incrementInvoiceNumber().then((value) async {
       await dataserver
           .collection('SubscribedStudents')
           .doc(uid)
@@ -246,12 +246,11 @@ class CartController extends GetxController {
       }
     }
   }
-  
+
   Future<void> fetchcurrentInvoiceNumber() async {
     final data = await dataserver.collection("Invoice_number").get();
     int intdata = await data.docs[0].data()['number'];
     currentInvoiceNumber.value = intdata;
     log("Current invoice number == ${currentInvoiceNumber.value}");
   }
-
 }
