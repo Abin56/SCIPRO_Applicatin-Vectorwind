@@ -1,61 +1,57 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:appinio_video_player/appinio_video_player.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:chewie/chewie.dart';
+import 'package:flutter/material.dart';
 import 'package:scipro_application/view/colors/colors.dart';
+import 'package:video_player/video_player.dart';
 
-class SampleVideoPLayer extends StatefulWidget {
-  String videourl;
-   SampleVideoPLayer({
-    Key? key,
-    required this.videourl,
-  }) : super(key: key);
+class ChewieDemo extends StatefulWidget {
+  final String videourl;
+  const ChewieDemo({super.key, required this.videourl});
 
   @override
-  State<SampleVideoPLayer> createState() => _SampleVideoPLayerState();
+  _ChewieDemoState createState() => _ChewieDemoState();
 }
 
-class _SampleVideoPLayerState extends State<SampleVideoPLayer> {
-  late VideoPlayerController videoPlayerController;
-
-  late CustomVideoPlayerController _customVideoPlayerController;
+class _ChewieDemoState extends State<ChewieDemo> {
+  late VideoPlayerController _videoPlayerController;
+  late ChewieController _chewieController;
 
   @override
   void initState() {
     super.initState();
-    videoPlayerController =
-        VideoPlayerController.networkUrl(Uri.parse(widget.videourl))
-          ..initialize().then((value) => setState(() {}));
-    _customVideoPlayerController = CustomVideoPlayerController(
-      context: context,
-      videoPlayerController: videoPlayerController,
+    _videoPlayerController =
+        VideoPlayerController.networkUrl(Uri.parse(widget.videourl));
+    _chewieController = ChewieController(
+      videoPlayerController: _videoPlayerController,
+      aspectRatio: 16 / 9,
+      autoPlay: true,
+      looping: true,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        foregroundColor: cWhite,
+        title: const Text(
+          'Video Player',
+          style: TextStyle(color: cWhite),
+        ),
+      ),
+      body: Center(
+        child: Chewie(
+          controller: _chewieController,
+        ),
+      ),
     );
   }
 
   @override
   void dispose() {
-    _customVideoPlayerController.dispose();
+    _videoPlayerController.dispose();
+    _chewieController.dispose();
     super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      backgroundColor: cBlack,
-      navigationBar: const CupertinoNavigationBar(
-        backgroundColor: cBlack,
-        middle: Text(
-          'Video Player',
-          style: TextStyle(color: cWhite),
-        ),
-      ),
-      child: SafeArea(
-        child: SizedBox(
-          height: 500,
-          child: CustomVideoPlayer(
-              customVideoPlayerController: _customVideoPlayerController),
-        ),
-      ),
-    );
   }
 }

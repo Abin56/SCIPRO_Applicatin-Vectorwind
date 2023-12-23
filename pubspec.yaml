@@ -61,9 +61,10 @@ dependencies:
   flutter_windowmanager:
   syncfusion_flutter_pdfviewer:
   path_provider: 
-  appinio_video_player:
   open_file: 
   text_scroll:
+  chewie: ^1.7.4
+  video_player:
 flutter_icons:
   android: true
   ios: true

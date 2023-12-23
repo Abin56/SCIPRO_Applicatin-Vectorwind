@@ -9,6 +9,7 @@ import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/studyMaterils/list_materilas.dart';
 import 'package:scipro_application/view/pages/subscribed_sessions/video_player/sample.dart';
 
+
 class RecordedVideoList extends StatelessWidget {
   final String recCatID;
   final String courseID;
@@ -86,7 +87,7 @@ class RecordedVideoList extends StatelessWidget {
                             //     ));
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return SampleVideoPLayer(
+                                return ChewieDemo(
                                   videourl: data['videoUrl'],
                                 );
                               },
