@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +55,7 @@ class CreateProfileController extends GetxController {
         uid: studentID,
         name: studentNameController.text.trim(),
         imageUrl: downloadURL,
-        email: userDetailsFecController.currentemail.value,
+        email: FirebaseAuth.instance.currentUser!.email.toString(),
         address: addressController.text.trim(),
         phoneno: phonenoController.text.trim(),
         district: districtController.text.trim(),

@@ -44,11 +44,13 @@ class RecordCourseCategoryList extends StatelessWidget {
                   return GestureDetector(
                     onTap: () async {
                       Get.find<SubScribedController>().checkExpiryDate(
+                        context: context,
                           coursecategoryid: data['coursecategoryid'],
                           courseid: data['courseid'],
                           coursename: data['coursename'],
                           exdate: DateTime.parse(data['expirydate']),
                           courseID: data['docid']);
+               
                     },
                     child: SelectedCourseListingContainer(
                       exdate: data['expirydate'],

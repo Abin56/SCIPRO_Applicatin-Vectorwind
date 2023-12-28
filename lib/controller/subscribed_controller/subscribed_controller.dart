@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/controller/auth_controller/user_uid.dart';
 import 'package:scipro_application/view/colors/colors.dart';
@@ -6,7 +7,7 @@ import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_cou
 import 'package:scipro_application/view/pages/subscribed_sessions/subscribed_courses/video_listing.dart';
 
 class SubScribedController extends GetxController {
-  fectingUserisSubscribed() async {
+  fectingUserisSubscribed(BuildContext context) async {
     // log("User UID $FirebaseAuth.instance.currentUser!.uid");
     final server = await dataserver
         .collection('SubscribedStudents')
@@ -16,11 +17,14 @@ class SubScribedController extends GetxController {
       return Get.snackbar('Message', 'Sorry you are not subscribed ',
           backgroundColor: cWhite);
     } else {
-      return Get.to(RecordCourseCategoryList());
+      return Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return RecordCourseCategoryList();
+      }));
     }
   }
 
   checkExpiryDate({
+    required BuildContext context,
     required DateTime exdate,
     required String courseID,
     required String coursecategoryid,
@@ -37,11 +41,13 @@ class SubScribedController extends GetxController {
       return Get.snackbar("Message", "Subscription Expired",
           backgroundColor: cWhite);
     } else {
-      return Get.to(() => VideoListingOfCourses(
-            categoryID: coursecategoryid,
-            courseName: coursename,
-            courseID: courseid,
-          ));
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return VideoListingOfCourses(
+          categoryID: coursecategoryid,
+          courseName: coursename,
+          courseID: courseid,
+        );
+      }));
     }
   }
 }

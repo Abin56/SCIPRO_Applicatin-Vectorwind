@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:scipro_application/view/colors/colors.dart';
 import 'package:scipro_application/view/core/core.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
@@ -80,12 +79,18 @@ class VideoListingOfCourses extends StatelessWidget {
                       return ListView.separated(
                           itemBuilder: (BuildContext context, int index) {
                             final data = snaps.data!.docs[index];
+
                             return GestureDetector(
-                              onTap: () => Get.to(() => RecordedVideoList(
-                                  recCatID: categoryID,
-                                  courseID: courseID,
-                                  folderID: data['id'],
-                                  folderName: data['folderName'])),
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return RecordedVideoList(
+                                      recCatID: categoryID,
+                                      courseID: courseID,
+                                      folderID: data['id'],
+                                      folderName: data['folderName']);
+                                }));
+                              },
                               child: VideoListingContainerWidget(
                                   text: data['folderName'], text1: 'Folder'),
                             );

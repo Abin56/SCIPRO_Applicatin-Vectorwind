@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro_application/view/colors/colors.dart';
@@ -8,7 +9,6 @@ import 'package:scipro_application/view/fonts/google_monstre.dart';
 import 'package:scipro_application/view/fonts/google_poppins.dart';
 import 'package:scipro_application/view/pages/studyMaterils/list_materilas.dart';
 import 'package:scipro_application/view/pages/subscribed_sessions/video_player/sample.dart';
-
 
 class RecordedVideoList extends StatelessWidget {
   final String recCatID;
@@ -73,7 +73,7 @@ class RecordedVideoList extends StatelessWidget {
                   .collection('folders')
                   .doc(folderID)
                   .collection('videos')
-                  .orderBy('position', descending: false)
+                  .orderBy('position', descending: true)
                   .snapshots(),
               builder: (context, snap) {
                 if (snap.hasData) {
@@ -81,13 +81,17 @@ class RecordedVideoList extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         final data = snap.data!.docs[index];
                         return GestureDetector(
+                          // onTap: (){
+
+                          // },
                           onTap: () {
-                            // Get.off(() => SampleVideoPLayer(
-                            //       videourl: data['videoUrl'],
-                            //     ));
+                            SystemChrome.setPreferredOrientations([
+                              DeviceOrientation.portraitUp,
+                              DeviceOrientation.portraitDown,
+                            ]);
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return ChewieDemo(
+                                return PlayVideoFromNetwork(
                                   videourl: data['videoUrl'],
                                 );
                               },

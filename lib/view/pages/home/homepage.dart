@@ -64,7 +64,7 @@ class SciproHomePage extends StatelessWidget {
                       ),
                       child: GestureDetector(
                           onTap: () async {
-                            subScribedController.fectingUserisSubscribed();
+                            subScribedController.fectingUserisSubscribed(context);
                           },
                           child: SubscribedButton(text: 'SUBSCRIBED COURSES'))),
                   Padding(

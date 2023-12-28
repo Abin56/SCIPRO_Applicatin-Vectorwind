@@ -13,12 +13,15 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await ScreenUtil.ensureScreenSize();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+
   await disableCapture();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+
+  ]).then((value) {
   runApp(const MyApp());
+
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -26,12 +29,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//     SystemChrome.setPreferredOrientations([
+//       DeviceOrientation.portraitUp,
+// //ensures portrait at all times. you can override this if necessary
+//     ]);
     return ScreenUtilInit(
       designSize: const Size(423.5294196844927, 897.2549187389994),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
         return GetMaterialApp(
+
           debugShowCheckedModeBanner: false,
           title: 'First Method',
           home: SplashScreen(),
